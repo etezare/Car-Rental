@@ -9,7 +9,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class Customer {
 	
 	@Id
 	@Column(name = "user_id")
@@ -46,9 +46,9 @@ public class User {
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
 	private Credential credential;
 
-    public User() {}
+    public Customer() {}
 
-	public User(Long userId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
+	public Customer(Long userId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
 		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
