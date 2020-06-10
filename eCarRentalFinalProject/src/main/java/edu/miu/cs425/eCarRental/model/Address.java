@@ -1,3 +1,4 @@
+package edu.miu.cs425.eCarRental.model;
 
 import com.sun.istack.NotNull;
 
@@ -10,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "addresses")
@@ -21,26 +23,26 @@ public class Address {
     private Long addressId;
 
     @Column(name = "street_line1")
-    @NotNull(message = "*Please provide street number")
+    @NotBlank(message = "Please provide street number!")
     private String streetLine1;
 
-    @Column(name = "street_line2")
-    private String streetLine2;
+    @Column(name = "apartment_number")
+    private String apartmentNumber;
 
     @Column(name = "city")
-    @NotNull(message = "*Please provide city name")
+    @NotBlank(message = "Please provide city name!")
     private String city;
 
     @Column(name = "state")
-    @NotNull(message = "*Please provide state name")
+    @NotBlank(message = "Please provide state name!")
     private String state;
 
     @Column(name = "zip_code")
-    @NotNull(message = "*Please provide zip/area code")
+    @NotBlank(message = "Please provide zip/area code!")
     private Integer zipCode;
 
     @Column(name = "country")
-    @NotNull(message = "*Please provide country name")
+    @NotBlank(message = "Please provide country name!")
     private String country;
 
     @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
