@@ -68,7 +68,7 @@ public class Booking {
 
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = true, unique = true)
-    private Customer customer;
+    private User user;
 
     @OneToOne
     @JoinColumn(name = "payment_id", nullable = true, unique = true)
@@ -84,7 +84,7 @@ public class Booking {
             Double totalPrice, @NotBlank(message = "Please provide customer first name") String firstName,
                    @NotBlank(message = "Please provide customer last name") String lastName,
                    @Past(message = "Please provide correct date of birth") LocalDate dateOfBirth, Long licenseNumber,
-                   @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, Customer customer,
+                   @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, User user,
                    Payment payment) {
         this.bookingId = bookingId;
         this.referenceNumber = referenceNumber;
@@ -98,7 +98,7 @@ public class Booking {
         this.licenseNumber = licenseNumber;
         this.email = email;
         this.vehicle = vehicle;
-        this.customer = customer;
+        this.user = user;
         this.payment = payment;
     }
 
@@ -225,12 +225,12 @@ public class Booking {
         this.payment = payment;
     }
 
-    public Customer getCustomer() {
-        return customer;
+    public User getUser() {
+        return user;
     }
 
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

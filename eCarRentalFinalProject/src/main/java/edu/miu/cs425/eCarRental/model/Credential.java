@@ -2,10 +2,9 @@ package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 
 
-    @Entity
+@Entity
     @Table(name = "credentials")
     public class Credential {
 
@@ -23,22 +22,22 @@ import javax.validation.constraints.NotNull;
         private String password;
 
         @OneToOne(mappedBy = "credential", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-        private Customer customer;
+        private User user;
 
         public Credential() {}
 
-        public Credential(Long credentialId, String userName, String password, Customer customer) {
+        public Credential(Long credentialId, String userName, String password, User user) {
             this.credentialId = credentialId;
             this.userName = userName;
             this.password = password;
-            this.customer = customer;
+            this.user = user;
         }
 
         public Credential(@NotBlank(message = "*Please provide user name") String userName,
-                          @NotBlank(message = "*Please provide password") String password, Customer customer) {
+                          @NotBlank(message = "*Please provide password") String password, User user) {
             this.userName = userName;
             this.password = password;
-            this.customer = customer;
+            this.user = user;
         }
 
         public Long getCredentialId() {
@@ -65,12 +64,12 @@ import javax.validation.constraints.NotNull;
             this.password = password;
         }
 
-        public Customer getUser() {
-            return customer;
+        public User getUser() {
+            return user;
         }
 
-        public void setUser(Customer customer) {
-            this.customer = customer;
+        public void setUser(User user) {
+            this.user = user;
         }
 
         @Override
@@ -79,7 +78,7 @@ import javax.validation.constraints.NotNull;
                     "credentialId=" + credentialId +
                     ", userName='" + userName + '\'' +
                     ", password='" + password + '\'' +
-                    ", customer=" + customer +
+                    ", customer=" + user +
                     '}';
         }
     }

@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "Customers")
-public class Customer {
+@Table(name = "User")
+public class User {
 	
 	@Id
-	@Column(name = "Customer_id",nullable=false)
+	@Column(name = "user_id",nullable=false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long customerId;
+	private Long userId;
 
 	@Column(name = "first_name",nullable=false)
 	@NotBlank(message = "Please provide user first name")
@@ -38,26 +38,26 @@ public class Customer {
 	@NotBlank(message = "Please provide user date of birth")
     private String licenseNumber;
 	
-	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Booking> bookings;
 
 	@ManyToMany
 	@JoinTable(
-            name="Customer_staffs",
-            joinColumns={@JoinColumn(name="customer_id", referencedColumnName="customer_id")},
+            name="user_staffs",
+            joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},
             inverseJoinColumns={@JoinColumn(name="staff_id", referencedColumnName="staff_id")})
-	private List<Staff> staffs;
+	private List<Role> roles;
 	
 	@OneToOne
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
 	private Credential credential;
 
-    public Customer() {
+    public User() {
 
 	}
 
-	public Customer(Long customerId, String firstName, String lastName, LocalDate dateOfBirth, String licenseNumber) {
-		this.customerId = customerId;
+	public User(Long userId, String firstName, String lastName, LocalDate dateOfBirth, String licenseNumber) {
+		this.userId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
@@ -65,25 +65,25 @@ public class Customer {
 
 	}
 
-	public Customer( String firstName,
-					String lastName,
-					 LocalDate dateOfBirth, String licenseNumber,
-					List<Booking> bookings, List<Staff> staffs, Credential credential) {
+	public User(String firstName,
+				String lastName,
+				LocalDate dateOfBirth, String licenseNumber,
+				List<Booking> bookings, List<Role> roles, Credential credential) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.licenseNumber = licenseNumber;
 		this.bookings = bookings;
-		this.staffs = staffs;
+		this.roles = roles;
 		this.credential = credential;
 	}
 
-	public Long getCustomerId() {
-		return customerId;
+	public Long getUserId() {
+		return userId;
 	}
 
-	public void setCustomerId(Long userId) {
-		this.customerId = userId;
+	public void setUserId(Long userId) {
+		this.userId = userId;
 	}
 
 	public String getFirstName() {
@@ -126,12 +126,12 @@ public class Customer {
 		this.bookings = bookings;
 	}
 
-	public List<Staff> getStaffs() {
-		return staffs;
+	public List<Role> getRoles() {
+		return roles;
 	}
 
-	public void setStaffs(List<Staff> staffs) {
-		this.staffs = staffs;
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
 	}
 
 	public Credential getCredential() {
@@ -144,8 +144,8 @@ public class Customer {
 
 	@Override
 	public String toString() {
-		return "Customer{" +
-				"customerId=" + customerId +
+		return "User{" +
+				"userId=" + userId +
 				", firstName='" + firstName + '\'' +
 				", lastName='" + lastName + '\'' +
 				", dateOfBirth=" + dateOfBirth +

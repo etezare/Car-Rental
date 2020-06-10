@@ -1,9 +1,9 @@
 package edu.miu.cs425.eCarRental.repository;
 
-import edu.miu.cs425.eCarRental.model.Staff;
+import edu.miu.cs425.eCarRental.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository("staffRepository")
-public interface IStaffRepository extends JpaRepository<Staff, Long> {
+@Repository("customerRepository")
+public interface IUserRepository extends JpaRepository<User, Long> {
 }
