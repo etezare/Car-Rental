@@ -33,15 +33,15 @@ public class Customer {
 	@Column(name = "license_number")
     private Long licenseNumber;
 	
-//	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//	private List<Booking> bookings;
+	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private List<Booking> bookings;
 
 	@ManyToMany
 	@JoinTable(
-            name="Customer_roles",
+            name="Customer_staffes",
             joinColumns={@JoinColumn(name="customer_id", referencedColumnName="customer_id")},
-            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})
-	private List<Role> roles;
+            inverseJoinColumns={@JoinColumn(name="staff_id", referencedColumnName="staff_id")})
+	private List<Staff> staffes;
 	
 	@OneToOne
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
@@ -100,20 +100,20 @@ public class Customer {
 		this.licenseNumber = licenseNumber;
 	}
 
-//	public List<Booking> getBookings() {
-//		return bookings;
-//	}
-//
-//	public void setBookings(List<Booking> bookings) {
-//		this.bookings = bookings;
-//	}
-
-	public List<Role> getRoles() {
-		return roles;
+	public List<Booking> getBookings() {
+		return bookings;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setBookings(List<Booking> bookings) {
+		this.bookings = bookings;
+	}
+
+	public List<Staff> getStaffes() {
+		return staffes;
+	}
+
+	public void setStaffes(List<Staff> staffes) {
+		this.staffes = staffes;
 	}
 
 	public Credential getCredential() {
