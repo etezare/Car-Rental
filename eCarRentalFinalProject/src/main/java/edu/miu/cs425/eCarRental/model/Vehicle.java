@@ -3,6 +3,7 @@ package edu.miu.cs425.eCarRental.model;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
 import java.util.List;
 
 @Entity
@@ -31,7 +32,7 @@ public class Vehicle {
     private String model;
 	
 	@Column(name = "year")
-	@NotBlank(message = "Please provide year")
+	@Past(message = "Please provide year")
     private Integer year;
 	
 	@ManyToOne
