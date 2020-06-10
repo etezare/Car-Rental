@@ -10,15 +10,15 @@ import javax.validation.constraints.NotNull;
     public class Credential {
 
         @Id
-        @Column(name = "credential_id")
+        @Column(name = "credential_id",nullable=false)
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long credentialId;
 
-        @Column(name = "user_name")
+        @Column(name = "user_name",nullable=false)
         @NotBlank(message = "Please provide user name")
         private String userName;
 
-        @Column(name = "password")
+        @Column(name = "password",nullable=false)
         @NotBlank(message = "Please provide password")
         private String password;
 

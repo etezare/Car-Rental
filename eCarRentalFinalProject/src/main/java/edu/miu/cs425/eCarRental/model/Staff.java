@@ -9,11 +9,11 @@ import java.util.List;
 public class Staff {
 
     @Id
-    @Column(name = "staff_id")
+    @Column(name = "staff_id",nullable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long staffId;
 
-    @Column(name = "staff_name")
+    @Column(name = "staff_name",nullable=false)
     @NotBlank(message = "Please provide user staff")
     private String staffName;
 

@@ -9,30 +9,30 @@ import java.time.LocalDate;
 public class Payment {
 
     @Id
-    @Column(name = "payment_id")
+    @Column(name = "payment_id",nullable=false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
 
-    @Column(name = "payment_date")
+    @Column(name = "payment_date",nullable=false)
 	@NotBlank(message = "Please provide payment date")
     private LocalDate paymentDate;
 
-    @Column(name = "payment_type")
+    @Column(name = "payment_type",nullable=false)
 	@NotBlank(message = "Please provide payment type")
     private String paymentType;
 
-    @Column(name = "card_number")
+    @Column(name = "card_number",nullable=false)
 	@NotBlank(message = "Please provide payment card type")
     private Long cardNumber;
 
-    @Column(name = "card_cvv")
+    @Column(name = "card_cvv",nullable=false)
 	@NotBlank(message = "Please provide payment card CVV")
     private Integer cardCVV;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price",nullable=false)
     private Double totalPrice;
 
-    @Column(name = "payment_status")
+    @Column(name = "payment_status",nullable=false)
 	@NotBlank
     private String paymentStatus;
 

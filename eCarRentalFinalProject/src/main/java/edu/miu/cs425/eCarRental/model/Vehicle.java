@@ -11,27 +11,27 @@ import java.util.List;
 public class Vehicle {
 	
 	@Id
-	@Column(name = "vehicle_id")
+	@Column(name = "vehicle_id",nullable=false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long vehicleId;
 	
-	@Column(name = "vehicle_number")
+	@Column(name = "vehicle_number",nullable=false)
 	@NotBlank(message = "Please provide vehicle number")
 	private String vehicleNumber;
 	
-	@Column(name = "plate_number")
+	@Column(name = "plate_number",nullable=false)
 	@NotBlank
     private String plateNumber;
 	
-	@Column(name = "make")
+	@Column(name = "make",nullable=false)
 	@NotBlank(message = "Please provide make")
     private String make;
 	
-	@Column(name = "model")
+	@Column(name = "model",nullable=false)
 	@NotBlank(message = "Please provide model")
     private String model;
 	
-	@Column(name = "year")
+	@Column(name = "year",nullable=false)
 	@Past(message = "Please provide year")
     private Integer year;
 	

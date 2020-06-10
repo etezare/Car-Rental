@@ -13,28 +13,28 @@ import java.util.List;
 public class Customer {
 	
 	@Id
-	@Column(name = "Customer_id")
+	@Column(name = "Customer_id",nullable=false)
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long customerId;
 
-	@Column(name = "first_name")
+	@Column(name = "first_name",nullable=false)
 	@NotBlank(message = "Please provide user first name")
     private String firstName;
 
 	@Column(name = "middle_name")
 	private String middleName;
 
-	@Column(name = "last_name")
+	@Column(name = "last_name",nullable=false)
 	@NotBlank(message = "Please provide user last name")
     private String lastName;
 
-	@Column(name = "date_of_birth")
+	@Column(name = "date_of_birth",nullable=false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	//@NotBlank(message = "*Please provide user date of birth")
 	@Past(message = "Please provide user date of birth")
     private LocalDate dateOfBirth;
 
-	@Column(name = "license_number")
+	@Column(name = "license_number",nullable=false)
 	@NotBlank(message = "Please provide user date of birth")
     private String licenseNumber;
 	
