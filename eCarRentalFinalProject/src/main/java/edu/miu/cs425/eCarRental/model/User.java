@@ -30,7 +30,6 @@ public class User {
 
 	@Column(name = "date_of_birth",nullable=false)
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	//@NotBlank(message = "*Please provide user date of birth")
 	@Past(message = "Please provide user date of birth")
     private LocalDate dateOfBirth;
 
