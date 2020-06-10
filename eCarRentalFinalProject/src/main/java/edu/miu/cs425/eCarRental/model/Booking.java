@@ -42,11 +42,11 @@ public class Booking {
     private Double totalPrice;
 
     @Column(name = "first_name",nullable=false)
-    @NotBlank(message = "Please provide customer first name")
+    @NotBlank(message = "Please provide user first name")
     private String firstName;
 
     @Column(name = "last_name",nullable=false)
-    @NotBlank(message = "Please provide customer last name")
+    @NotBlank(message = "Please provide user last name")
     private String lastName;
 
     @Column(name = "date_of_birth",nullable=false)
@@ -67,7 +67,7 @@ public class Booking {
     private Vehicle vehicle;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id", nullable = true, unique = true)
+    @JoinColumn(name = "user_id", nullable = true, unique = true)
     private User user;
 
     @OneToOne
@@ -81,8 +81,8 @@ public class Booking {
             LocalDate bookingDate, @FutureOrPresent(message = "Please provide booking start date and time")
             LocalDate startDate, @Future(message = "Please provide future booking end date and time")
             LocalDate endDate, @DecimalMin(value = "0.00", message = "Total-price must be greater than 0")
-            Double totalPrice, @NotBlank(message = "Please provide customer first name") String firstName,
-                   @NotBlank(message = "Please provide customer last name") String lastName,
+            Double totalPrice, @NotBlank(message = "Please provide user first name") String firstName,
+                   @NotBlank(message = "Please provide user last name") String lastName,
                    @Past(message = "Please provide correct date of birth") LocalDate dateOfBirth, Long licenseNumber,
                    @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, User user,
                    Payment payment) {

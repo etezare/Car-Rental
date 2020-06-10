@@ -78,7 +78,7 @@ import javax.validation.constraints.NotBlank;
                     "credentialId=" + credentialId +
                     ", userName='" + userName + '\'' +
                     ", password='" + password + '\'' +
-                    ", customer=" + user +
+                    ", user=" + user +
                     '}';
         }
     }
