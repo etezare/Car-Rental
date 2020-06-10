@@ -1,5 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,7 +16,6 @@ import javax.validation.constraints.NotBlank;
 @Entity
 @Table(name = "addresses")
 public class Address {
-
 
     @Id
     @Column(name = "address_id")
@@ -66,7 +67,6 @@ public class Address {
         return "Address{" +
                 "addressId=" + addressId +
                 ", streetLine='" + streetLine + '\'' +
-               
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +
