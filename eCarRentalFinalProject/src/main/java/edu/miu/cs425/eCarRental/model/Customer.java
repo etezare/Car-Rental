@@ -2,7 +2,6 @@ package edu.miu.cs425.eCarRental.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
