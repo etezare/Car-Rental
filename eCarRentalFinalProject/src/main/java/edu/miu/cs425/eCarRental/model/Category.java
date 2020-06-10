@@ -40,7 +40,7 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long categoryId, @NotBlank(message = "Please provide category name") String categoryName,
+    public Category(Long categoryId, String categoryName,
                     Integer seats, Integer doors, Double ratePerDay) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
@@ -49,10 +49,10 @@ public class Category {
         this.ratePerDay = ratePerDay;
     }
 
-    public Category(@NotBlank(message = "Please provide category name") String categoryName,
-                    @NotBlank(message = "Please provide number of seats") Integer seats,
-                    @NotBlank(message = "Please provide number of doors") Integer doors,
-                    @NotBlank(message = "Please provide rate per day") Double ratePerDay, List<Vehicle> vehicles) {
+    public Category( String categoryName,
+                    Integer seats,
+                    Integer doors,
+                    Double ratePerDay, List<Vehicle> vehicles) {
         this.categoryName = categoryName;
         this.seats = seats;
         this.doors = doors;
