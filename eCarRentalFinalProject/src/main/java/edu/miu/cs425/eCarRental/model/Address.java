@@ -1,6 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -12,9 +13,9 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
 
-    @Column(name = "street_line")
+    @Column(name = "street")
     @NotBlank(message = "Please provide street number!")
-    private String streetLine;
+    private String street;
 
     @Column(name = "city")
     @NotBlank(message = "Please provide city name!")
@@ -25,7 +26,8 @@ public class Address {
     private String state;
 
     @Column(name = "zip_code")
-    @NotBlank(message = "Please provide zip/area code!")
+   // @NotBlank(message = "Please provide zip/area code!")
+    @Digits(integer = "5",message = "Please provide valid zip code")
     private Integer zipCode;
 
     @Column(name = "country")
@@ -35,9 +37,9 @@ public class Address {
     @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Payment payment;
 
-    public Address(Long addressId, String streetLine, String city, String state, Integer zipCode, String country, Payment payment) {
+    public Address(Long addressId, String street, String city, String state, Integer zipCode, String country, Payment payment) {
         this.addressId = addressId;
-        this.streetLine = streetLine;
+        this.street = street;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
@@ -45,8 +47,8 @@ public class Address {
         this.payment = payment;
     }
 
-    public Address(@NotBlank(message = "Please provide street number!") String streetLine, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state, @NotBlank(message = "Please provide zip/area code!") Integer zipCode, @NotBlank(message = "Please provide country name!") String country, Payment payment) {
-        this.streetLine = streetLine;
+    public Address(@NotBlank(message = "Please provide street number!") String street, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state,  Integer zipCode, @NotBlank(message = "Please provide country name!") String country, Payment payment) {
+        this.street = street;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
@@ -63,12 +65,12 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public String getstreetLine() {
-        return streetLine;
+    public String getstreet() {
+        return street;
     }
 
-    public void setstreetLine(String streetLine) {
-        this.streetLine = streetLine;
+    public void setstreet(String street) {
+        this.street = street;
     }
     
 
@@ -104,12 +106,12 @@ public class Address {
         this.country = country;
     }
 
-    public String getStreetLine() {
-        return streetLine;
+    public String getStreet() {
+        return street;
     }
 
-    public void setStreetLine(String streetLine) {
-        this.streetLine = streetLine;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     public Payment getPayment() {
@@ -124,7 +126,7 @@ public class Address {
     public String toString() {
         return "Address{" +
                 "addressId=" + addressId +
-                ", streetLine='" + streetLine + '\'' +
+                ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +
