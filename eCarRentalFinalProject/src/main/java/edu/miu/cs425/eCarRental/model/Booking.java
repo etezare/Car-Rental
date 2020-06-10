@@ -16,49 +16,49 @@ public class Booking {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long bookingId;
 
-    @Column(name = "reference_number")
+    @Column(name = "reference_number",nullable=false)
     @NotBlank
     private String referenceNumber;
 
-    @Column(name = "booking_date")
+    @Column(name = "booking_date",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     @NotBlank(message = "Please provide booking date")
     private LocalDate bookingDate;
 
-    @Column(name = "start_date")
+    @Column(name = "start_date",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@NotBlank(message = "Please provide booking start date and time")
     @FutureOrPresent(message = "Please provide booking start date and time")
     private LocalDate startDate;
 
-    @Column(name = "end_date")
+    @Column(name = "end_date",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@NotBlank(message = "Please provide booking end date and time")
     @Future(message = "Please provide future booking end date and time")
     private LocalDate endDate;
 
-    @Column(name = "total_price")
+    @Column(name = "total_price",nullable=false)
     @DecimalMin(value = "0.00", message = "Total-price must be greater than 0")
     private Double totalPrice;
 
-    @Column(name = "first_name")
+    @Column(name = "first_name",nullable=false)
     @NotBlank(message = "Please provide customer first name")
     private String firstName;
 
-    @Column(name = "last_name")
+    @Column(name = "last_name",nullable=false)
     @NotBlank(message = "Please provide customer last name")
     private String lastName;
 
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     //@NotBlank(message = "Please provide user date of birth")
     @Past(message = "Please provide correct date of birth")
     private LocalDate dateOfBirth;
 
-    @Column(name = "license_number")
+    @Column(name = "license_number",nullable=false)
     private Long licenseNumber;
 
-    @Column(name = "email")
+    @Column(name = "email",nullable=false)
     @NotBlank(message = "Please provide email address")
     private String email;
 

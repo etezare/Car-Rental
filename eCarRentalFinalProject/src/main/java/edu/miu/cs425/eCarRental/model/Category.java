@@ -14,22 +14,22 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column(name = "category_name")
+    @Column(name = "category_name",nullable=false)
     @NotBlank(message = "Please provide category name")
     private String categoryName;
 
-    @Column(name = "seats")
+    @Column(name = "seats",nullable=false)
     @Min(2)
     @Max(8)
     private Integer seats;
 
-    @Column(name = "doors")
+    @Column(name = "doors",nullable=false)
     @Min(2)
     @Max(4)
     //@NotBlank(message = "Please provide number of doors")
     private Integer doors;
 
-    @Column(name = "rate_per_day")
+    @Column(name = "rate_per_day",nullable=false)
     @NotBlank(message = "Please provide rate per day")
     @DecimalMin(value = "0.00" , message = "Please provide rate per day")
     private Double ratePerDay;

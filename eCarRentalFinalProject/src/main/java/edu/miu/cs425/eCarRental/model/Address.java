@@ -14,25 +14,24 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
 
-    @Column(name = "street")
+    @Column(name = "street", nullable=false)
     @NotBlank(message = "Please provide street number!")
     private String street;
 
-    @Column(name = "city")
+    @Column(name = "city",nullable=false)
     @NotBlank(message = "Please provide city name!")
     private String city;
 
-    @Column(name = "state")
+    @Column(name = "state",nullable=false)
     @NotBlank(message = "Please provide state name!")
     private String state;
 
-    @Column(name = "zip_code")
-   // @NotBlank(message = "Please provide zip/area code!")
-    //@Digits(integer = 5,message = "Please provide valid zip code")
+    @Column(name = "zip_code",nullable=false)
     @Digits(fraction = 0,integer = 5,message = "Please provide valid zip code")
     private Integer zipCode;
 
-    @Column(name = "country")
+
+    @Column(name = "country",nullable=false)
     @NotBlank(message = "Please provide country name!")
     private String country;
 
