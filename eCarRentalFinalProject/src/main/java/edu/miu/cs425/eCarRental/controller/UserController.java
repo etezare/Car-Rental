@@ -1,4 +1,4 @@
 package edu.miu.cs425.eCarRental.controller;
 
-public class StaffController {
+public class UserController {
 }

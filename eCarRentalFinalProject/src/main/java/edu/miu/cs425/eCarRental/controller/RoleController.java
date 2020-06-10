@@ -1,4 +1,4 @@
 package edu.miu.cs425.eCarRental.controller;
 
-public class CustomerController {
+public class RoleController {
 }
