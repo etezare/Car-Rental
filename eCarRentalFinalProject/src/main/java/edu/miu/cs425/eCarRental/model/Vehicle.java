@@ -1,6 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
@@ -14,27 +15,27 @@ public class Vehicle {
 	private Long vehicleId;
 	
 	@Column(name = "vehicle_number")
-	@NotNull(message = "*Please provide vehicle number")
+	@NotBlank(message = "*Please provide vehicle number")
 	private String vehicleNumber;
 	
 	@Column(name = "plate_number")
     private Integer plateNumber;
 	
 	@Column(name = "make")
-	@NotNull(message = "*Please provide make")
+	@NotBlank(message = "*Please provide make")
     private String make;
 	
 	@Column(name = "model")
-	@NotNull(message = "*Please provide model")
+	@NotBlank(message = "*Please provide model")
     private String model;
 	
 	@Column(name = "year")
-	@NotNull(message = "*Please provide year")
+	@NotBlank(message = "*Please provide year")
     private Integer year;
 	
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable = false)
-	@NotNull(message = "*Please select category")
+	@NotBlank(message = "*Please select category")
 	private Category category;
 	
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)

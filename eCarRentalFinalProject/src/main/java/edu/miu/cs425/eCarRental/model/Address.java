@@ -22,13 +22,10 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
 
-    @Column(name = "street_line1")
+    @Column(name = "street_line")
     @NotBlank(message = "Please provide street number!")
-    private String streetLine1;
-
-    @Column(name = "apartment_number")
-    private String apartmentNumber;
-
+    private String streetLine;
+    
     @Column(name = "city")
     @NotBlank(message = "Please provide city name!")
     private String city;
@@ -45,17 +42,39 @@ public class Address {
     @NotBlank(message = "Please provide country name!")
     private String country;
 
-    @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private Payment payment;
+//    @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//    private Payment payment;
 
-    public Address(Long addressId, String streetLine1, String streetLine2, String city, String state, Integer zipCode, String country) {
+    public Address(Long addressId, String streetLine, String city, String state, Integer zipCode, String country) {
         this.addressId = addressId;
-        this.streetLine1 = streetLine1;
-        this.streetLine2 = streetLine2;
+        this.streetLine = streetLine;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
         this.country = country;
+    }
+
+    public Address(@NotBlank(message = "Please provide street number!") String streetLine, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state, @NotBlank(message = "Please provide zip/area code!") Integer zipCode, @NotBlank(message = "Please provide country name!") String country) {
+        this.streetLine = streetLine;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.country = country;
+
+    }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", streetLine='" + streetLine + '\'' +
+               
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode=" + zipCode +
+                ", country='" + country + '\'' +
+
+                '}';
     }
 
     public Address() {}
@@ -68,21 +87,14 @@ public class Address {
         this.addressId = addressId;
     }
 
-    public String getStreetLine1() {
-        return streetLine1;
+    public String getstreetLine() {
+        return streetLine;
     }
 
-    public void setStreetLine1(String streetLine1) {
-        this.streetLine1 = streetLine1;
+    public void setstreetLine(String streetLine) {
+        this.streetLine = streetLine;
     }
-
-    public String getStreetLine2() {
-        return streetLine2;
-    }
-
-    public void setStreetLine2(String streetLine2) {
-        this.streetLine2 = streetLine2;
-    }
+    
 
     public String getCity() {
         return city;
@@ -91,7 +103,7 @@ public class Address {
     public void setCity(String city) {
         this.city = city;
     }
-
+    
     public String getState() {
         return state;
     }
