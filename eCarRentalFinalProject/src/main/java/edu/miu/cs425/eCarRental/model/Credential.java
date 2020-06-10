@@ -4,7 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-public class Credential {
+
     @Entity
     @Table(name = "credentials")
     public class Credential {
