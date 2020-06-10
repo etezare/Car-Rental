@@ -38,10 +38,10 @@ public class Customer {
 
 	@ManyToMany
 	@JoinTable(
-            name="Customer_roles",
+            name="Customer_staffes",
             joinColumns={@JoinColumn(name="customer_id", referencedColumnName="customer_id")},
-            inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})
-	private List<Role> roles;
+            inverseJoinColumns={@JoinColumn(name="staff_id", referencedColumnName="staff_id")})
+	private List<Staff> staffes;
 	
 	@OneToOne
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
@@ -108,12 +108,12 @@ public class Customer {
 //		this.bookings = bookings;
 //	}
 
-	public List<Role> getRoles() {
-		return roles;
+	public List<Staff> getStaffes() {
+		return staffes;
 	}
 
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
+	public void setRoles(List<Staff> staffes) {
+		this.staffes = staffes;
 	}
 
 	public Credential getCredential() {
