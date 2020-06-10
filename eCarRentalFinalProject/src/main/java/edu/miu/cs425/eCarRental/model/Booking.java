@@ -6,7 +6,6 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
-import mum.edu.cs.cs425.project.ecarrent.model.Payment;
 
 @Entity
 @Table(name = "bookings")
@@ -76,7 +75,7 @@ public class Booking {
 
     public Booking(Long bookingId, String referenceNumber, LocalDate bookingDate, LocalDate startDate,
                    LocalDate endDate, Double totalPrice, String firstName, String lastName, LocalDate dateOfBirth,
-                   Long licenseNumber, String email, Vehicle vehicle, mum.edu.cs.cs425.project.ecarrent.model.Payment payment) {
+                   Long licenseNumber, String email, Vehicle vehicle, Payment payment) {
         this.bookingId = bookingId;
         this.referenceNumber = referenceNumber;
         this.bookingDate = bookingDate;
