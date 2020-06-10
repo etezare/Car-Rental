@@ -1,6 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
 @Entity
@@ -13,26 +14,26 @@ public class Payment {
     private Long paymentId;
 
     @Column(name = "payment_date")
-//	@NotNull(message = "*Please provide payment date")
+	@NotBlank(message = "*Please provide payment date")
     private LocalDate paymentDate;
 
     @Column(name = "payment_type")
-//	@NotNull(message = "*Please provide payment type")
+	@NotBlank(message = "*Please provide payment type")
     private String paymentType;
 
     @Column(name = "card_number")
-//	@NotNull(message = "*Please provide payment card type")
+	@NotBlank(message = "*Please provide payment card type")
     private Long cardNumber;
 
     @Column(name = "card_cvv")
-//	@NotNull(message = "*Please provide payment card CVV")
+	@NotBlank(message = "*Please provide payment card CVV")
     private Integer cardCVV;
 
     @Column(name = "total_price")
     private Double totalPrice;
 
     @Column(name = "payment_status")
-//	@NotNull
+	@NotBlank
     private String paymentStatus;
 
     @OneToOne(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
