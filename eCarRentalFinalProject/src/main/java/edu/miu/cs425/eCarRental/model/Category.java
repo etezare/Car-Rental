@@ -1,7 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.util.List;
 
 @Entity
@@ -10,27 +10,28 @@ public class Category {
 
 
     @Id
-    @Column(name = "categoryId")
+    @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column(name = "categoryName")
-    @NotBlank(message = "*Please provide category name")
+    @Column(name = "category_name")
+    @NotBlank(message = "Please provide category name")
     private String categoryName;
+
     @Column(name = "seats")
-    @NotBlank(message = "*Please provide number of seats")
+    @Min(2)
+    @Max(8)
     private Integer seats;
 
     @Column(name = "doors")
-    @NotBlank(message = "*Please provide number of doors")
+    @Min(2)
+    @Max(4)
+    //@NotBlank(message = "Please provide number of doors")
     private Integer doors;
 
-    @Column(name = "fuelEconomy")
-    @NotBlank(message = "*Please provide fuel economy")
-    private Integer fuelEconomy;
-
-    @Column(name = "ratePerDay")
-    @NotBlank(message = "*Please provide rate per day")
+    @Column(name = "rate_per_day")
+    @NotBlank(message = "Please provide rate per day")
+    @DecimalMin(value = "0.00" , message = "Please provide rate per day")
     private Double ratePerDay;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -39,25 +40,22 @@ public class Category {
     public Category() {
     }
 
-    public Category(Long categoryId, @NotBlank(message = "*Please provide category name") String categoryName,
-                    Integer seats, Integer doors, Integer fuelEconomy, Double ratePerDay) {
+    public Category(Long categoryId, @NotBlank(message = "Please provide category name") String categoryName,
+                    Integer seats, Integer doors, Double ratePerDay) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.seats = seats;
         this.doors = doors;
-        this.fuelEconomy = fuelEconomy;
         this.ratePerDay = ratePerDay;
     }
 
-    public Category(@NotBlank(message = "*Please provide category name") String categoryName,
-                    @NotBlank(message = "*Please provide number of seats") Integer seats,
-                    @NotBlank(message = "*Please provide number of doors") Integer doors,
-                    @NotBlank(message = "*Please provide fuel economy") Integer fuelEconomy,
-                    @NotBlank(message = "*Please provide rate per day") Double ratePerDay, List<Vehicle> vehicles) {
+    public Category(@NotBlank(message = "Please provide category name") String categoryName,
+                    @NotBlank(message = "Please provide number of seats") Integer seats,
+                    @NotBlank(message = "Please provide number of doors") Integer doors,
+                    @NotBlank(message = "Please provide rate per day") Double ratePerDay, List<Vehicle> vehicles) {
         this.categoryName = categoryName;
         this.seats = seats;
         this.doors = doors;
-        this.fuelEconomy = fuelEconomy;
         this.ratePerDay = ratePerDay;
         this.vehicles = vehicles;
     }
@@ -94,14 +92,6 @@ public class Category {
         this.doors = doors;
     }
 
-    public Integer getFuelEconomy() {
-        return fuelEconomy;
-    }
-
-    public void setFuelEconomy(Integer fuelEconomy) {
-        this.fuelEconomy = fuelEconomy;
-    }
-
     public Double getRatePerDay() {
         return ratePerDay;
     }
@@ -125,7 +115,6 @@ public class Category {
                 ", categoryName='" + categoryName + '\'' +
                 ", seats=" + seats +
                 ", doors=" + doors +
-                ", fuelEconomy=" + fuelEconomy +
                 ", ratePerDay=" + ratePerDay +
                 '}';
     }

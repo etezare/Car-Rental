@@ -3,7 +3,7 @@ package edu.miu.cs425.eCarRental.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 
@@ -27,28 +27,32 @@ public class Booking {
 
     @Column(name = "start_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotBlank(message = "Please provide booking start date and time")
+    //@NotBlank(message = "Please provide booking start date and time")
+    @FutureOrPresent(message = "Please provide booking start date and time")
     private LocalDate startDate;
 
     @Column(name = "end_date")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotBlank(message = "Please provide booking end date and time")
+    //@NotBlank(message = "Please provide booking end date and time")
+    @Future(message = "Please provide future booking end date and time")
     private LocalDate endDate;
 
     @Column(name = "total_price")
+    @DecimalMin(value = "0.00", message = "Total-price must be greater than 0")
     private Double totalPrice;
 
     @Column(name = "first_name")
-    @NotBlank(message = "Please provide user first name")
+    @NotBlank(message = "Please provide customer first name")
     private String firstName;
 
     @Column(name = "last_name")
-    @NotBlank(message = "Please provide user last name")
+    @NotBlank(message = "Please provide customer last name")
     private String lastName;
 
     @Column(name = "date_of_birth")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotBlank(message = "Please provide user date of birth")
+    //@NotBlank(message = "Please provide user date of birth")
+    @Past(message = "Please provide correct date of birth")
     private LocalDate dateOfBirth;
 
     @Column(name = "license_number")
@@ -62,15 +66,31 @@ public class Booking {
     @JoinColumn(name = "vehicle_id", nullable = true)
     private Vehicle vehicle;
 
-//	@ManyToOne
-//	@JoinColumn(name="user_id", nullable = true, unique = true)
-//	private User user;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", nullable = true, unique = true)
+    private Customer customer;
 
     @OneToOne
     @JoinColumn(name = "payment_id", nullable = true, unique = true)
     private Payment payment;
 
     public Booking() {
+    }
+
+    public Booking(@NotBlank String referenceNumber, @NotBlank(message = "Please provide booking date") LocalDate bookingDate, @FutureOrPresent(message = "Please provide booking start date and time") LocalDate startDate, @Future(message = "Please provide future booking end date and time") LocalDate endDate, @DecimalMin(value = "0.00", message = "Total-price must be greater than 0") Double totalPrice, @NotBlank(message = "Please provide customer first name") String firstName, @NotBlank(message = "Please provide customer last name") String lastName, @Past(message = "Please provide correct date of birth") LocalDate dateOfBirth, Long licenseNumber, @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, Customer customer, Payment payment) {
+        this.referenceNumber = referenceNumber;
+        this.bookingDate = bookingDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalPrice = totalPrice;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.licenseNumber = licenseNumber;
+        this.email = email;
+        this.vehicle = vehicle;
+        this.customer = customer;
+        this.payment = payment;
     }
 
     public Booking(Long bookingId, String referenceNumber, LocalDate bookingDate, LocalDate startDate,
@@ -213,6 +233,14 @@ public class Booking {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 
     @Override

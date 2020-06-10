@@ -14,19 +14,19 @@ public class Payment {
     private Long paymentId;
 
     @Column(name = "payment_date")
-	@NotBlank(message = "*Please provide payment date")
+	@NotBlank(message = "Please provide payment date")
     private LocalDate paymentDate;
 
     @Column(name = "payment_type")
-	@NotBlank(message = "*Please provide payment type")
+	@NotBlank(message = "Please provide payment type")
     private String paymentType;
 
     @Column(name = "card_number")
-	@NotBlank(message = "*Please provide payment card type")
+	@NotBlank(message = "Please provide payment card type")
     private Long cardNumber;
 
     @Column(name = "card_cvv")
-	@NotBlank(message = "*Please provide payment card CVV")
+	@NotBlank(message = "Please provide payment card CVV")
     private Integer cardCVV;
 
     @Column(name = "total_price")

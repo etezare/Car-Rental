@@ -15,27 +15,28 @@ public class Vehicle {
 	private Long vehicleId;
 	
 	@Column(name = "vehicle_number")
-	@NotBlank(message = "*Please provide vehicle number")
+	@NotBlank(message = "Please provide vehicle number")
 	private String vehicleNumber;
 	
 	@Column(name = "plate_number")
-    private Integer plateNumber;
+	@NotBlank
+    private String plateNumber;
 	
 	@Column(name = "make")
-	@NotBlank(message = "*Please provide make")
+	@NotBlank(message = "Please provide make")
     private String make;
 	
 	@Column(name = "model")
-	@NotBlank(message = "*Please provide model")
+	@NotBlank(message = "Please provide model")
     private String model;
 	
 	@Column(name = "year")
-	@NotBlank(message = "*Please provide year")
+	@NotBlank(message = "Please provide year")
     private Integer year;
 	
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable = false)
-	@NotBlank(message = "*Please select category")
+	@NotBlank(message = "Please select category")
 	private Category category;
 	
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
@@ -43,7 +44,7 @@ public class Vehicle {
     
 	public Vehicle() {}
 
-	public Vehicle(Long vehicleId, String vehicleNumber, Integer plateNumber, String make, String model,
+	public Vehicle(Long vehicleId, String vehicleNumber, String plateNumber, String make, String model,
 			Integer year) {
 		super();
 		this.vehicleId = vehicleId;
@@ -54,10 +55,10 @@ public class Vehicle {
 		this.year = year;
 	}
 
-	public Vehicle(@NotBlank(message = "*Please provide vehicle number") String vehicleNumber, Integer plateNumber,
-				   @NotBlank(message = "*Please provide make") String make,
-				   @NotBlank(message = "*Please provide model") String model, @NotBlank(message = "*Please provide year") Integer year,
-				   @NotBlank(message = "*Please select category") Category category, List<Booking> bookings) {
+	public Vehicle(@NotBlank(message = "Please provide vehicle number") String vehicleNumber, String plateNumber,
+				   @NotBlank(message = "Please provide make") String make,
+				   @NotBlank(message = "Please provide model") String model, @NotBlank(message = "Please provide year") Integer year,
+				   @NotBlank(message = "Please select category") Category category, List<Booking> bookings) {
 		this.vehicleNumber = vehicleNumber;
 		this.plateNumber = plateNumber;
 		this.make = make;
@@ -83,11 +84,11 @@ public class Vehicle {
 		this.vehicleNumber = vehicleNumber;
 	}
 
-	public Integer getPlateNumber() {
+	public String getPlateNumber() {
 		return plateNumber;
 	}
 
-	public void setPlateNumber(Integer plateNumber) {
+	public void setPlateNumber(String plateNumber) {
 		this.plateNumber = plateNumber;
 	}
 

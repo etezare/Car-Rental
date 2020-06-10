@@ -1,9 +1,9 @@
 package edu.miu.cs425.eCarRental.model;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Past;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,30 +18,35 @@ public class Customer {
 	private Long customerId;
 
 	@Column(name = "first_name")
-	@NotBlank(message = "*Please provide user first name")
+	@NotBlank(message = "Please provide user first name")
     private String firstName;
 
+	@Column(name = "middle_name")
+	private String middleName;
+
 	@Column(name = "last_name")
-	@NotBlank(message = "*Please provide user last name")
+	@NotBlank(message = "Please provide user last name")
     private String lastName;
 
 	@Column(name = "date_of_birth")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotBlank(message = "*Please provide user date of birth")
+	//@NotBlank(message = "*Please provide user date of birth")
+	@Past(message = "Please provide user date of birth")
     private LocalDate dateOfBirth;
 
 	@Column(name = "license_number")
-    private Long licenseNumber;
+	@NotBlank(message = "Please provide user date of birth")
+    private String licenseNumber;
 	
 	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Booking> bookings;
 
 	@ManyToMany
 	@JoinTable(
-            name="Customer_staffes",
+            name="Customer_staffs",
             joinColumns={@JoinColumn(name="customer_id", referencedColumnName="customer_id")},
             inverseJoinColumns={@JoinColumn(name="staff_id", referencedColumnName="staff_id")})
-	private List<Staff> staffes;
+	private List<Staff> staffs;
 	
 	@OneToOne
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
@@ -51,7 +56,7 @@ public class Customer {
 
 	}
 
-	public Customer(Long customerId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
+	public Customer(Long customerId, String firstName, String lastName, LocalDate dateOfBirth, String licenseNumber) {
 		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -60,16 +65,16 @@ public class Customer {
 
 	}
 
-	public Customer(@NotBlank(message = "*Please provide user first name") String firstName,
-					@NotBlank(message = "*Please provide user last name") String lastName,
-					@NotBlank(message = "*Please provide user date of birth") LocalDate dateOfBirth, Long licenseNumber,
-					List<Booking> bookings, List<Staff> staffes, Credential credential) {
+	public Customer(@NotBlank(message = "Please provide user first name") String firstName,
+					@NotBlank(message = "Please provide user last name") String lastName,
+					@NotBlank(message = "Please provide user date of birth") LocalDate dateOfBirth, String licenseNumber,
+					List<Booking> bookings, List<Staff> staffs, Credential credential) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.licenseNumber = licenseNumber;
 		this.bookings = bookings;
-		this.staffes = staffes;
+		this.staffs = staffs;
 		this.credential = credential;
 	}
 
@@ -105,11 +110,11 @@ public class Customer {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public Long getLicenseNumber() {
+	public String getLicenseNumber() {
 		return licenseNumber;
 	}
 
-	public void setLicenseNumber(Long licenseNumber) {
+	public void setLicenseNumber(String licenseNumber) {
 		this.licenseNumber = licenseNumber;
 	}
 
@@ -121,12 +126,12 @@ public class Customer {
 		this.bookings = bookings;
 	}
 
-	public List<Staff> getStaffes() {
-		return staffes;
+	public List<Staff> getStaffs() {
+		return staffs;
 	}
 
-	public void setStaffes(List<Staff> staffes) {
-		this.staffes = staffes;
+	public void setStaffs(List<Staff> staffs) {
+		this.staffs = staffs;
 	}
 
 	public Credential getCredential() {

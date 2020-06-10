@@ -32,25 +32,26 @@ public class Address {
     @NotBlank(message = "Please provide country name!")
     private String country;
 
-//    @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-//    private Payment payment;
+    @OneToOne(mappedBy = "billingAddress", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private Payment payment;
 
-    public Address(Long addressId, String streetLine, String city, String state, Integer zipCode, String country) {
+    public Address(Long addressId, String streetLine, String city, String state, Integer zipCode, String country, Payment payment) {
         this.addressId = addressId;
         this.streetLine = streetLine;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
         this.country = country;
+        this.payment = payment;
     }
 
-    public Address(@NotBlank(message = "Please provide street number!") String streetLine, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state, @NotBlank(message = "Please provide zip/area code!") Integer zipCode, @NotBlank(message = "Please provide country name!") String country) {
+    public Address(@NotBlank(message = "Please provide street number!") String streetLine, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state, @NotBlank(message = "Please provide zip/area code!") Integer zipCode, @NotBlank(message = "Please provide country name!") String country, Payment payment) {
         this.streetLine = streetLine;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
         this.country = country;
-
+        this.payment = payment;
     }
     public Address() {}
 
@@ -103,6 +104,22 @@ public class Address {
         this.country = country;
     }
 
+    public String getStreetLine() {
+        return streetLine;
+    }
+
+    public void setStreetLine(String streetLine) {
+        this.streetLine = streetLine;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
+    }
+
     @Override
     public String toString() {
         return "Address{" +
@@ -112,9 +129,7 @@ public class Address {
                 ", state='" + state + '\'' +
                 ", zipCode=" + zipCode +
                 ", country='" + country + '\'' +
-
+                ", payment=" + payment +
                 '}';
     }
-
-
 }

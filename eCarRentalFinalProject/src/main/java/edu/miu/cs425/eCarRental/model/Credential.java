@@ -15,11 +15,11 @@ import javax.validation.constraints.NotNull;
         private Long credentialId;
 
         @Column(name = "user_name")
-        @NotBlank(message = "*Please provide user name")
+        @NotBlank(message = "Please provide user name")
         private String userName;
 
         @Column(name = "password")
-        @NotBlank(message = "*Please provide password")
+        @NotBlank(message = "Please provide password")
         private String password;
 
         @OneToOne(mappedBy = "credential", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
