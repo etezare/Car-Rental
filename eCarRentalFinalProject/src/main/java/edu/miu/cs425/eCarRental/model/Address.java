@@ -1,7 +1,5 @@
 package edu.miu.cs425.eCarRental.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
