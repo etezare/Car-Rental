@@ -1,12 +1,13 @@
-import edu.miu.cs425.eCarRental.model.Vehicle;
+package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Table(name = "categories")
-public class Category {
+@Table(name = "catagory")
+public class Catagory {
+
 
     @Id
     @Column(name = "categoryId")
@@ -117,3 +118,5 @@ public class Category {
         this.vehicles = vehicles;
     }
 }
+
+
