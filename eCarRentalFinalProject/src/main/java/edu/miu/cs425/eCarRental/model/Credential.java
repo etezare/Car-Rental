@@ -2,8 +2,6 @@ package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-
 
     @Entity
     @Table(name = "credentials")
