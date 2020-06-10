@@ -1,5 +1,4 @@
 package edu.miu.cs425.eCarRental.controller;
 
-public class BookingConroller {
-
+public class CustomerController {
 }
