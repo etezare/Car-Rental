@@ -5,8 +5,8 @@ import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Table(name = "catagory")
-public class Catagory {
+@Table(name = "catagories")
+public class Category {
 
 
     @Id
@@ -31,7 +31,7 @@ public class Catagory {
 
     @Column(name = "ratePerDay")
     @NotBlank(message = "*Please provide rate per day")
-    private Float ratePerDay;
+    private Double ratePerDay;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Vehicle> vehicles;
@@ -40,7 +40,7 @@ public class Catagory {
     }
 
     public Category(Long categoryId, @NotBlank(message = "*Please provide category name") String categoryName,
-                    Integer seats, Integer doors, Integer fuelEconomy, Float ratePerDay) {
+                    Integer seats, Integer doors, Integer fuelEconomy, Double ratePerDay) {
         this.categoryId = categoryId;
         this.categoryName = categoryName;
         this.seats = seats;
@@ -53,7 +53,7 @@ public class Catagory {
                     @NotBlank(message = "*Please provide number of seats") Integer seats,
                     @NotBlank(message = "*Please provide number of doors") Integer doors,
                     @NotBlank(message = "*Please provide fuel economy") Integer fuelEconomy,
-                    @NotBlank(message = "*Please provide rate per day") Float ratePerDay, List<Vehicle> vehicles) {
+                    @NotBlank(message = "*Please provide rate per day") Double ratePerDay, List<Vehicle> vehicles) {
         this.categoryName = categoryName;
         this.seats = seats;
         this.doors = doors;
@@ -102,11 +102,11 @@ public class Catagory {
         this.fuelEconomy = fuelEconomy;
     }
 
-    public Float getRatePerDay() {
+    public Double getRatePerDay() {
         return ratePerDay;
     }
 
-    public void setRatePerDay(Float ratePerDay) {
+    public void setRatePerDay(Double ratePerDay) {
         this.ratePerDay = ratePerDay;
     }
 
