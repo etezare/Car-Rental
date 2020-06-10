@@ -3,42 +3,43 @@ package edu.miu.cs425.eCarRental.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.NotBlank;
+
 import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "Custemers")
 public class Customer {
 	
 	@Id
-	@Column(name = "user_id")
+	@Column(name = "Customer_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long userId;
+	private Long customerId;
 
 	@Column(name = "first_name")
-	@NotNull(message = "*Please provide user first name") 
+	@NotBlank(message = "*Please provide user first name")
     private String firstName;
 
 	@Column(name = "last_name")
-	@NotNull(message = "*Please provide user last name") 
+	@NotBlank(message = "*Please provide user last name")
     private String lastName;
 
 	@Column(name = "date_of_birth")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-	@NotNull(message = "*Please provide user date of birth") 
+	@NotBlank(message = "*Please provide user date of birth")
     private LocalDate dateOfBirth;
 
 	@Column(name = "license_number")
     private Long licenseNumber;
 	
-//	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+//	@OneToMany(mappedBy = "customer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 //	private List<Booking> bookings;
 
 	@ManyToMany
 	@JoinTable(
-            name="users_roles",
-            joinColumns={@JoinColumn(name="user_id", referencedColumnName="user_id")},
+            name="Customer_roles",
+            joinColumns={@JoinColumn(name="customer_id", referencedColumnName="customer_id")},
             inverseJoinColumns={@JoinColumn(name="role_id", referencedColumnName="role_id")})
 	private List<Role> roles;
 	
@@ -49,19 +50,19 @@ public class Customer {
     public Customer() {}
 
 	public Customer(Long userId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
-		this.userId = userId;
+		this.customerId = userId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.licenseNumber = licenseNumber;
 	}
 
-	public Long getUserId() {
-		return userId;
+	public Long getCustomerId() {
+		return customerId;
 	}
 
-	public void setUserId(Long userId) {
-		this.userId = userId;
+	public void setCustomerId(Long userId) {
+		this.customerId = userId;
 	}
 
 	public String getFirstName() {
