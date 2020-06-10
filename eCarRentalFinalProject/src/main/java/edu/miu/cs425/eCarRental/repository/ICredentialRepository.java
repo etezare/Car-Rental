@@ -1,4 +1,9 @@
 package edu.miu.cs425.eCarRental.repository;
 
-public interface ICredentialRepository {
+import edu.miu.cs425.eCarRental.model.Credential;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository("credentialRepository")
+public interface ICredentialRepository extends JpaRepository<Credential, Long> {
 }
