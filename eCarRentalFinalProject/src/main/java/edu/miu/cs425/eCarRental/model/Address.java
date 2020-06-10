@@ -24,8 +24,7 @@ public class Address {
 
     @Column(name = "street_line")
     @NotBlank(message = "Please provide street number!")
-    private String streetLine;
-    
+    private String street;
     @Column(name = "city")
     @NotBlank(message = "Please provide city name!")
     private String city;
