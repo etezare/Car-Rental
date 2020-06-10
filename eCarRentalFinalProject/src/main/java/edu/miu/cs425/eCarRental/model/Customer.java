@@ -65,9 +65,9 @@ public class Customer {
 
 	}
 
-	public Customer(@NotBlank(message = "Please provide user first name") String firstName,
-					@NotBlank(message = "Please provide user last name") String lastName,
-					@NotBlank(message = "Please provide user date of birth") LocalDate dateOfBirth, String licenseNumber,
+	public Customer( String firstName,
+					String lastName,
+					 LocalDate dateOfBirth, String licenseNumber,
 					List<Booking> bookings, List<Staff> staffs, Credential credential) {
 		this.firstName = firstName;
 		this.lastName = lastName;

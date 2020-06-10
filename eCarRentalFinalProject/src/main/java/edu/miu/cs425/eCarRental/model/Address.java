@@ -3,6 +3,7 @@ package edu.miu.cs425.eCarRental.model;
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "addresses")
@@ -27,7 +28,8 @@ public class Address {
 
     @Column(name = "zip_code")
    // @NotBlank(message = "Please provide zip/area code!")
-    @Digits(integer = "5",message = "Please provide valid zip code")
+    //@Digits(integer = 5,message = "Please provide valid zip code")
+    @Digits(fraction = 0,integer = 5,message = "Please provide valid zip code")
     private Integer zipCode;
 
     @Column(name = "country")
@@ -64,15 +66,6 @@ public class Address {
     public void setAddressId(Long addressId) {
         this.addressId = addressId;
     }
-
-    public String getstreet() {
-        return street;
-    }
-
-    public void setstreet(String street) {
-        this.street = street;
-    }
-    
 
     public String getCity() {
         return city;
