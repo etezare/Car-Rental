@@ -49,8 +49,8 @@ public class Customer {
 
     public Customer() {}
 
-	public Customer(Long userId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
-		this.customerId = userId;
+	public Customer(Long customerId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
+		this.customerId = customerId;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
