@@ -47,7 +47,9 @@ public class Customer {
 	@JoinColumn(name="credential_id", nullable = true, unique = true)
 	private Credential credential;
 
-    public Customer() {}
+    public Customer() {
+
+	}
 
 	public Customer(Long customerId, String firstName, String lastName, LocalDate dateOfBirth, Long licenseNumber) {
 		this.customerId = customerId;
