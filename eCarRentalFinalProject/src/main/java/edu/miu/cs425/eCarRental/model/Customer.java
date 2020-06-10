@@ -54,6 +54,7 @@ public class Customer {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.licenseNumber = licenseNumber;
+
 	}
 
 	public Long getUserId() {
