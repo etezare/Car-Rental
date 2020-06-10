@@ -1,16 +1,6 @@
 package edu.miu.cs425.eCarRental.model;
 
-import com.sun.istack.NotNull;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 
 @Entity
@@ -24,7 +14,8 @@ public class Address {
 
     @Column(name = "street_line")
     @NotBlank(message = "Please provide street number!")
-    private String street;
+    private String streetLine;
+
     @Column(name = "city")
     @NotBlank(message = "Please provide city name!")
     private String city;
