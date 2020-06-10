@@ -34,6 +34,13 @@ import javax.validation.constraints.NotNull;
             this.customer = customer;
         }
 
+        public Credential(@NotBlank(message = "*Please provide user name") String userName,
+                          @NotBlank(message = "*Please provide password") String password, Customer customer) {
+            this.userName = userName;
+            this.password = password;
+            this.customer = customer;
+        }
+
         public Long getCredentialId() {
             return credentialId;
         }
@@ -66,6 +73,13 @@ import javax.validation.constraints.NotNull;
             this.customer = customer;
         }
 
-
-
+        @Override
+        public String toString() {
+            return "Credential{" +
+                    "credentialId=" + credentialId +
+                    ", userName='" + userName + '\'' +
+                    ", password='" + password + '\'' +
+                    ", customer=" + customer +
+                    '}';
+        }
     }

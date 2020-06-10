@@ -52,20 +52,6 @@ public class Address {
         this.country = country;
 
     }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "addressId=" + addressId +
-                ", streetLine='" + streetLine + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", zipCode=" + zipCode +
-                ", country='" + country + '\'' +
-
-                '}';
-    }
-
     public Address() {}
 
     public Long getAddressId() {
@@ -116,5 +102,19 @@ public class Address {
     public void setCountry(String country) {
         this.country = country;
     }
+
+    @Override
+    public String toString() {
+        return "Address{" +
+                "addressId=" + addressId +
+                ", streetLine='" + streetLine + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", zipCode=" + zipCode +
+                ", country='" + country + '\'' +
+
+                '}';
+    }
+
 
 }

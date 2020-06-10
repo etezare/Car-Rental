@@ -58,4 +58,11 @@ public class Staff {
         this.customers = customers;
     }
 
+    @Override
+    public String toString() {
+        return "Staff{" +
+                "staffId=" + staffId +
+                ", staffName='" + staffName + '\'' +
+                '}';
+    }
 }

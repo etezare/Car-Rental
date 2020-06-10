@@ -117,6 +117,18 @@ public class Category {
     public void setVehicles(List<Vehicle> vehicles) {
         this.vehicles = vehicles;
     }
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                ", seats=" + seats +
+                ", doors=" + doors +
+                ", fuelEconomy=" + fuelEconomy +
+                ", ratePerDay=" + ratePerDay +
+                '}';
+    }
 }
 
 

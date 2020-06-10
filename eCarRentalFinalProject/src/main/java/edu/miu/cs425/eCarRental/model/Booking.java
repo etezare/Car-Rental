@@ -215,5 +215,23 @@ public class Booking {
         this.payment = payment;
     }
 
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingId=" + bookingId +
+                ", referenceNumber='" + referenceNumber + '\'' +
+                ", bookingDate=" + bookingDate +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", totalPrice=" + totalPrice +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dateOfBirth=" + dateOfBirth +
+                ", licenseNumber=" + licenseNumber +
+                ", email='" + email + '\'' +
+                ", vehicle=" + vehicle +
+                ", payment=" + payment +
+                '}';
+    }
 }
 

@@ -60,6 +60,19 @@ public class Customer {
 
 	}
 
+	public Customer(@NotBlank(message = "*Please provide user first name") String firstName,
+					@NotBlank(message = "*Please provide user last name") String lastName,
+					@NotBlank(message = "*Please provide user date of birth") LocalDate dateOfBirth, Long licenseNumber,
+					List<Booking> bookings, List<Staff> staffes, Credential credential) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dateOfBirth = dateOfBirth;
+		this.licenseNumber = licenseNumber;
+		this.bookings = bookings;
+		this.staffes = staffes;
+		this.credential = credential;
+	}
+
 	public Long getCustomerId() {
 		return customerId;
 	}
@@ -123,5 +136,16 @@ public class Customer {
 	public void setCredential(Credential credential) {
 		this.credential = credential;
 	}
-    
+
+	@Override
+	public String toString() {
+		return "Customer{" +
+				"customerId=" + customerId +
+				", firstName='" + firstName + '\'' +
+				", lastName='" + lastName + '\'' +
+				", dateOfBirth=" + dateOfBirth +
+				", licenseNumber=" + licenseNumber +
+				", credential=" + credential +
+				'}';
+	}
 }

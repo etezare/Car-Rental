@@ -54,6 +54,19 @@ public class Vehicle {
 		this.year = year;
 	}
 
+	public Vehicle(@NotBlank(message = "*Please provide vehicle number") String vehicleNumber, Integer plateNumber,
+				   @NotBlank(message = "*Please provide make") String make,
+				   @NotBlank(message = "*Please provide model") String model, @NotBlank(message = "*Please provide year") Integer year,
+				   @NotBlank(message = "*Please select category") Category category, List<Booking> bookings) {
+		this.vehicleNumber = vehicleNumber;
+		this.plateNumber = plateNumber;
+		this.make = make;
+		this.model = model;
+		this.year = year;
+		this.category = category;
+		this.bookings = bookings;
+	}
+
 	public Long getVehicleId() {
 		return vehicleId;
 	}
@@ -117,5 +130,17 @@ public class Vehicle {
 	public void setBookings(List<Booking> bookings) {
 		this.bookings = bookings;
 	}
-	
+
+	@Override
+	public String toString() {
+		return "Vehicle{" +
+				"vehicleId=" + vehicleId +
+				", vehicleNumber='" + vehicleNumber + '\'' +
+				", plateNumber=" + plateNumber +
+				", make='" + make + '\'' +
+				", model='" + model + '\'' +
+				", year=" + year +
+				", category=" + category +
+				'}';
+	}
 }

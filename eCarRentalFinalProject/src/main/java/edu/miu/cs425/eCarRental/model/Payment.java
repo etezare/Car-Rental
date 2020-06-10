@@ -58,6 +58,18 @@ public class Payment {
         this.booking = booking;
     }
 
+    public Payment(LocalDate paymentDate, String paymentType, Long cardNumber, Integer cardCVV,
+                   Double totalPrice, String paymentStatus, Booking booking, Address billingAddress) {
+        this.paymentDate = paymentDate;
+        this.paymentType = paymentType;
+        this.cardNumber = cardNumber;
+        this.cardCVV = cardCVV;
+        this.totalPrice = totalPrice;
+        this.paymentStatus = paymentStatus;
+        this.booking = booking;
+        this.billingAddress = billingAddress;
+    }
+
     public Long getPaymentId() {
         return paymentId;
     }
@@ -130,4 +142,18 @@ public class Payment {
         this.booking = booking;
     }
 
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "paymentId=" + paymentId +
+                ", paymentDate=" + paymentDate +
+                ", paymentType='" + paymentType + '\'' +
+                ", cardNumber=" + cardNumber +
+                ", cardCVV=" + cardCVV +
+                ", totalPrice=" + totalPrice +
+                ", paymentStatus='" + paymentStatus + '\'' +
+                ", booking=" + booking +
+                ", billingAddress=" + billingAddress +
+                '}';
+    }
 }
