@@ -10,10 +10,10 @@ import java.util.List;
 
 @Service("userService")
 public class UserServiceImp implements UserService {
-	
+	@Autowired
 	private IUserRepository userRepository;
 	
-	@Autowired
+
 	public UserServiceImp(IUserRepository userRepository) {
 		this.userRepository = userRepository;
 	}
