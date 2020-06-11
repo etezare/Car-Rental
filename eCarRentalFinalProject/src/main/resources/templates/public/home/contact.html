@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html layout:decorator="public/shared/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<div class="col-xs-4 text-left">
+			<h1>CONTACT INFORMATION</h1>	
+		</div><br></br>
+	</th:block>
+    <th:block layout:fragment="content">
+    	
+    	<div class="col-xs-4 text-left">
+    		<h3>This page contains contact information about a specific car rental company that is going to be using the eCarRent Software System.</h3>
+    	</div>
+   
+		<!--  <form id="searchForm" method="get" th:action="@{/company/search}">
+            <fieldset>
+                <div class="container" style="margin-top: 1em;">
+                
+                </div>                        
+            </fieldset>
+        </form> -->
+        
+    </th:block>
+    <th:block layout:fragment="footer"></th:block>
+</body>
+</html>
