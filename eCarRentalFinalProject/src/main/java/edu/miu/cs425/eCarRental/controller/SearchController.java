@@ -3,6 +3,7 @@ package edu.miu.cs425.eCarRental.controller;
 import edu.miu.cs425.eCarRental.model.Category;
 import edu.miu.cs425.eCarRental.service.CategoryService;
 import edu.miu.cs425.eCarRental.service.SearchService;
+import edu.miu.cs425.eCarRental.utility.PeriodRequested;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,14 +21,14 @@ public class SearchController {
     @Autowired
     private CategoryService categoryService;
 
-    private RequestPeriod temp = new RequestPeriod();
+    private PeriodRequested periodRequested = new PeriodRequested();
 
-    public RequestPeriod getTemp() {
-        return temp;
+    public PeriodRequested getTemp() {
+        return periodRequested;
     }
 
-    public void setTemp(RequestPeriod temp) {
-        this.temp = temp;
+    public void setTemp(PeriodRequested periodRequested) {
+        this.periodRequested = periodRequested;
     }
 
     @GetMapping(value = "/company/search")
@@ -38,7 +39,7 @@ public class SearchController {
         List<Category> availableCategories = searchService.findAvailableCategories(start, end);
         modelAndView.addObject("availableCategories", availableCategories);
         modelAndView.setViewName("public/search/results");
-        temp.setStart(start);
-        temp.setEnd(end);
+        periodRequested.setStart(start);
+        periodRequested.setEnd(end);
         return modelAndView;
 }

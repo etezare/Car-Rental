@@ -17,36 +17,6 @@ import java.util.List;
 
 public class BookingConroller {
 
-    package mum.edu.cs.cs425.project.ecarrent.controller;
-
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
-import java.util.List;
-import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
-import mum.edu.cs.cs425.project.ecarrent.model.Booking;
-import mum.edu.cs.cs425.project.ecarrent.model.Category;
-import mum.edu.cs.cs425.project.ecarrent.model.Payment;
-import mum.edu.cs.cs425.project.ecarrent.model.User;
-import mum.edu.cs.cs425.project.ecarrent.model.Vehicle;
-import mum.edu.cs.cs425.project.ecarrent.services.IBookingService;
-import mum.edu.cs.cs425.project.ecarrent.services.IPaymentService;
-import mum.edu.cs.cs425.project.ecarrent.services.IUserService;
-import mum.edu.cs.cs425.project.ecarrent.services.IVehicleService;
-import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
-
     @Controller
     public class BookingController {
 
@@ -68,7 +38,7 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
         @Autowired
         private SearchService searchService;
 
-        @RequestMapping(value = "/company/admin/bookings", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/admin/bookings", method = RequestMethod.GET)
         public ModelAndView bookingsList() {
             List<Booking> bookings = bookingService.findAll();
             ModelAndView modelAndView = new ModelAndView();
@@ -77,7 +47,7 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
             return modelAndView;
         }
 
-        @RequestMapping(value = "/company/admin/bookings/addnew", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/admin/bookings/addnewbooking", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
@@ -91,18 +61,18 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
             return "admin/bookings/bookingform";
         }
 
-        @PostMapping(value = "/company/admin/bookings/addnew/save")
+        @PostMapping(value = "/ecarrental/admin/bookings/addnewbooking/save")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
-            if(bindingResult.hasErrors()) {
+            if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
                 return "admin/bookings/bookingform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/company/admin/bookings/bookings";
+            return "redirect:/ecarrental/admin/bookings/bookings";
         }
 
-        @GetMapping(value = "/company/admin/bookings/edit/{bookingId}")
+        @GetMapping(value = "/ecarrental/admin/bookings/edit/{bookingId}")
         public String editBookingForm(@PathVariable("bookingId") Long bookingId, Model model) {
             Booking booking = bookingService.findById(bookingId);
             if (booking != null) {
@@ -112,7 +82,7 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
             return "admin/bookings/bookings";
         }
 
-        @PostMapping(value = "/company/admin/bookings/edit/save")
+        @PostMapping(value = "/ecarrental/admin/bookings/edit/save")
         public String updateBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
@@ -120,16 +90,16 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
                 return "admin/bookings/bookingeditform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/company/admin/bookings";
+            return "redirect:/ecarrental/admin/bookings";
         }
 
-        @GetMapping(value="/company/admin/bookings/delete/{bookingId}")
-        public String deleteBooking(@PathVariable("bookingId") Long id){
+        @GetMapping(value = "/ecarrental/admin/bookings/delete/{bookingId}")
+        public String deleteBooking(@PathVariable("bookingId") Long id) {
             bookingService.delete(id);
-            return "redirect:/company/admin/bookings";
+            return "redirect:/ecarrental/admin/bookings";
         }
 
-        @RequestMapping(value = "/company/public/bookings/addnew/{category}", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/public/bookings/addnewbooking/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();
@@ -137,9 +107,9 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
             paymentService.save(newPayment);
             LocalDate start = searchController.getTemp().getStart();
             LocalDate end = searchController.getTemp().getEnd();
-            Long dateDifference = (Long)(ChronoUnit.DAYS.between(start, end));
-            Float unitPrice = category.getRatePerDay();
-            Double totalPrice = (double) (dateDifference*unitPrice);
+            Long dateDifference = (Long) (ChronoUnit.DAYS.between(start, end));
+            Double unitPrice = category.getRatePerDay();
+            Double totalPrice = (double) (dateDifference * unitPrice);
             newBooking.setTotalPrice(totalPrice);
             newBooking.setStartDate(start);
             newBooking.setEndDate(end);
@@ -155,19 +125,19 @@ import mum.edu.cs.cs425.project.ecarrent.services.implementations.SearchService;
             return "public/book/bookingform";
         }
 
-        @PostMapping(value = "/company/public/bookings/addnew/save")
+        @PostMapping(value = "/ecarrental/public/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String addNewBookingPublic(@Valid @ModelAttribute("booking") Booking booking,
                                           BindingResult bindingResult, Model model) {
-            if(bindingResult.hasErrors()) {
+            if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
                 return "public/book/bookingform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/company/public/bookings/success";
+            return "redirect:/ecarrental/public/bookings/success";
         }
 
-        @GetMapping(value = "/company/public/bookings/success")
+        @GetMapping(value = "/ecarrental/public/bookings/success")
         public String homePage() {
             return "public/book/confirmation";
         }
