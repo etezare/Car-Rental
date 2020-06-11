@@ -23,7 +23,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping(value = "/company/user/users")
+    @GetMapping(value = "/ecarrental/user/users")
     public ModelAndView manageCategories() {
         ModelAndView modelAndView = new ModelAndView();
         List<User> users = userService.findAll();
@@ -32,7 +32,7 @@ public class UserController {
         return modelAndView;
     }
 
-    @PostMapping(value = "/company/user/users/add/save")
+    @PostMapping(value = "/ecarrental/user/users/add/save")
     public String addNewUser(@Valid @ModelAttribute("user") User user,
                              BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -40,10 +40,10 @@ public class UserController {
             return "user/users/newcategoryform";
         }
         user = userService.save(user);
-        return "redirect:/company/user/users";
+        return "redirect:/ecarrental/user/users";
     }
 
-    @GetMapping(value = "/company/user/users/edit/{userId}")
+    @GetMapping(value = "/ecarrental/user/users/edit/{userId}")
     public String editUserForm(@PathVariable("userId") Long userId, Model model) {
         User user = userService.findById(userId);
         if (user != null) {
@@ -53,9 +53,9 @@ public class UserController {
         return "user/users/users";
     }
 
-    @GetMapping(value="/company/user/users/delete/{userId}")
+    @GetMapping(value="/ecarrental/user/users/delete/{userId}")
     public String deleteUser(@PathVariable("userId") Long id, Model model){
         userService.delete(id);
-        return "redirect:/company/user/users";
+        return "redirect:/ecarrental/user/users";
     }
 }

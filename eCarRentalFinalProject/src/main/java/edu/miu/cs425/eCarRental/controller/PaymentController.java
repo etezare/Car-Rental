@@ -25,7 +25,7 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping(value = "/company/user/payments")
+    @GetMapping(value = "/ecarrental/user/payments")
     public ModelAndView managePayments() {
         ModelAndView modelAndView = new ModelAndView();
         List<Payment> payments = paymentService.findAll();
@@ -34,7 +34,7 @@ public class PaymentController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/company/user/payments/add")
+    @GetMapping(value = "/ecarrental/user/payments/add")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public String newPaymentForm(Model model) {
         Payment newPayment = new Payment();
@@ -43,7 +43,7 @@ public class PaymentController {
     }
 
 
-    @PostMapping(value = "/company/user/payments/add/save")
+    @PostMapping(value = "/ecarrental/user/payments/add/save")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public String addNewPayment(@Valid @ModelAttribute("payment") Payment payment,
                                 BindingResult bindingResult, Model model) {
@@ -59,7 +59,7 @@ public class PaymentController {
 
 
 
-    @GetMapping(value = "/company/user/payments/edit/{paymentId}")
+    @GetMapping(value = "/ecarrental/user/payments/edit/{paymentId}")
     public String editPaymentForm(@PathVariable("paymentId") Long paymentId, Model model) {
         Payment payment = paymentService.findById(paymentId);
         if (payment != null) {
@@ -68,10 +68,10 @@ public class PaymentController {
         }
         return "user/payments/payments";
     }
-    @GetMapping(value="/company/user/payment/delete/{paymentId}")
+    @GetMapping(value="/ecarrental/user/payment/delete/{paymentId}")
     public String deletePayment(@PathVariable("paymentId") Long id, Model model){
         paymentService.delete(id);
-        return "redirect:/company/user/payments";
+        return "redirect:/ecarrental/user/payments";
     }
 
 
