@@ -5,6 +5,7 @@ import edu.miu.cs425.eCarRental.model.Payment;
 import java.util.List;
 
 public interface PaymentService {
+
     List<Payment> findAll();
     Payment save(Payment payment);
     Payment findById(Long pId);

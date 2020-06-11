@@ -9,5 +9,4 @@ public interface CredentialService {
     Credential save(Credential credential);
     Credential findById(Long cId);
     void delete(Long cId);
-
 }
