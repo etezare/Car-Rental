@@ -2,7 +2,6 @@ package edu.miu.cs425.eCarRental.controller;
 
 import java.util.List;
 import javax.validation.Valid;
-
 import edu.miu.cs425.eCarRental.model.Address;
 import edu.miu.cs425.eCarRental.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +44,7 @@ public class AddressController {
             return "user/addresses/addressform";
         }
         address = addressService.save(address);
-        return "redirect:/user/addresses/addresses";
+        return "redirect:/user/addresses/addresslist";
     }
 
     @GetMapping(value = "/ecarrental/user/addresses/edit/{addressId}")
@@ -55,10 +54,10 @@ public class AddressController {
             model.addAttribute("address", address);
             return "user/addresses/addressform";
         }
-        return "redirect:/user/addresses/addresses";
+        return "redirect:/user/addresses/addresslist";
     }
 
-    @PostMapping(value = "/ecarrental/admin/addresses/edit/save")
+    @PostMapping(value = "/ecarrental/admin/addresses/edit")
     public String updateAddress(@Valid @ModelAttribute("address") Address address,
                                 BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {

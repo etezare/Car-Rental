@@ -43,7 +43,7 @@ public class BookingConroller {
             List<Booking> bookings = bookingService.findAll();
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("bookings", bookings);
-            modelAndView.setViewName("admin/bookings/bookings");
+            modelAndView.setViewName("admin/bookings/bookinglist");
             return modelAndView;
         }
 
