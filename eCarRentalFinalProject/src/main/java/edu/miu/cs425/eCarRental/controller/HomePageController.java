@@ -20,6 +20,12 @@ public class HomePageController {
         return "public/home/about";
     }
 
+
+    @GetMapping(value = {"/public/about","/ecarrental/public/contact"})
+    public String contact() {
+        return "public/home/contact";
+    }
+
 //    @GetMapping(value = {"/public/virtualtour","/ecarrental/public/virtualtour"})
 //    public String virtualtour() {
 //        return "public/virtualtour";
