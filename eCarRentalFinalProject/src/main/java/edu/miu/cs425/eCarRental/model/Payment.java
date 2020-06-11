@@ -40,7 +40,7 @@ public class Payment {
     private Booking booking;
 
     @OneToOne
-    @JoinColumn(name="address_id", nullable = true, unique = true)
+    @JoinColumn(name="address_id", nullable = true)
     private Address billingAddress;
 
     public Payment() {}

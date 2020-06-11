@@ -26,6 +26,21 @@ public class HomePageController {
         return "public/home/contact";
     }
 
+    @GetMapping(value = {"/public/services","/ecarrental/public/services"})
+    public String service() {
+        return "public/home/services";
+    }
+
+    @GetMapping(value = {"/public/contact","/ecarrental/public/contact"})
+    public String contact() {
+        return "public/home/contact";
+    }
+
+//    @GetMapping(value = {"/public/logout","/ecarrental/public/logout"})
+//    public String logOut() {
+//        return "login/login";
+//    }
+
 //    @GetMapping(value = {"/public/virtualtour","/ecarrental/public/virtualtour"})
 //    public String virtualtour() {
 //        return "public/virtualtour";

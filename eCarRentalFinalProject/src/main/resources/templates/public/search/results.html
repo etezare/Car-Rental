@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html layout:decorator="public/shared/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<div class="col-xs-4 text-center">
+			<h1>Select Your Car</h1>	
+		</div>
+	</th:block>
+    <th:block layout:fragment="content">
+    	<table class="table table-white">
+			<thead>
+				
+			</thead>
+			<tbody>
+				<tr th:each="category : ${availableCategories}">
+					<td th:text="${category.categoryName}"></td>
+					<td>
+						<div th:switch="${category.categoryName}">
+						  	<p th:case="'Compact'">
+						  		<img src="/static/images/compact.jpg" th:src="@{/images/compact.jpg}" style="width:213px; height:119px">
+							</p>
+						  	<p th:case="'Standard'">
+						  		<img src="/static/images/standard.jpg" th:src="@{/images/standard.jpg}" style="width:213px; height:119px">
+							</p>
+							<p th:case="'Crossover'">
+						  		<img src="/static/images/crossover.jpg" th:src="@{/images/crossover.jpg}" style="width:213px; height:119px">
+							</p>
+							<p th:case="'SUV'">
+						  		<img src="/static/images/suv.jpg" th:src="@{/images/suv.jpg}" style="width:213px; height:119px">
+							</p>	
+						</div>
+					</td>
+					<td th:text="${category.seats} + ' ' +seats"></td>
+					<td th:text="${category.doors} + ' ' + doors"></td>
+					<td th:text="${category.fuelEconomy} + mpg"></td>
+					<td th:text="${category.ratePerDay} + ' USD / Day'"></td>
+					<td>
+						<a th:href="@{'/company/public/bookings/addnew/' + ${category.categoryId}}" class="btn btn-outline-success">BOOK</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </th:block>
+    <th:block layout:fragment="footer"></th:block>
+</body>
+</html>

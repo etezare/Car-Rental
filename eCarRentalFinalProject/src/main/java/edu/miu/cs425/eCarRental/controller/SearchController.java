@@ -31,7 +31,7 @@ public class SearchController {
         this.periodRequested = periodRequested;
     }
 
-    @GetMapping(value = "/company/search")
+    @GetMapping(value = "/ecarrental/search")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public ModelAndView searchVehicles(@RequestParam("start") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate start,
                                        @RequestParam("end") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate end) {
