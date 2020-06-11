@@ -26,7 +26,7 @@ public class VehicleController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping(value = "/company/admin/vehicles")
+    @GetMapping(value = "/ecarrental/admin/vehicles")
     public ModelAndView manageVehicles() {
         ModelAndView modelAndView = new ModelAndView();
         List<Vehicle> vehicles = vehicleService.findAll();
@@ -35,7 +35,7 @@ public class VehicleController {
         return modelAndView;
     }
 
-    @GetMapping(value = "/company/admin/vehicles/add")
+    @GetMapping(value = "/ecarrental/admin/vehicles/add")
     public String newVehicleForm(Model model) {
         Vehicle newVehicle = new Vehicle();
         newVehicle.setVehicleNumber(vehicleService.assignVehicleNumber());
@@ -45,7 +45,7 @@ public class VehicleController {
         return "admin/vehicles/newvehicleform";
     }
 
-    @PostMapping(value = "/company/admin/vehicles/add/save")
+    @PostMapping(value = "/ecarrental/admin/vehicles/add/save")
     public String addNewVehicle(@Valid @ModelAttribute("vehicle") Vehicle vehicle,
                                 BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
@@ -53,10 +53,10 @@ public class VehicleController {
             return "admin/vehicles/newvehicleform";
         }
         vehicle = vehicleService.save(vehicle);
-        return "redirect:/company/admin/vehicles";
+        return "redirect:/ecarrental/admin/vehicles";
     }
 
-    @GetMapping(value = "/company/admin/vehicles/edit/{vehicleId}")
+    @GetMapping(value = "/ecarrental/admin/vehicles/edit/{vehicleId}")
     public String editVehicleForm(@PathVariable("vehicleId") Long vehicleId, Model model) {
         Vehicle vehicle = vehicleService.findById(vehicleId);
         List<Category> categories = categoryService.findAll();
@@ -68,10 +68,10 @@ public class VehicleController {
         return "admin/vehicles/vehicles";
     }
 
-    @GetMapping(value="/company/admin/vehicles/delete/{vehicleId}")
+    @GetMapping(value="/ecarrental/admin/vehicles/delete/{vehicleId}")
     public String deleteVehicle(@PathVariable("vehicleId") Long id, Model model){
         vehicleService.delete(id);
-        return "redirect:/company/admin/vehicles";
+        return "redirect:/ecarrental/admin/vehicles";
     }
 
 }

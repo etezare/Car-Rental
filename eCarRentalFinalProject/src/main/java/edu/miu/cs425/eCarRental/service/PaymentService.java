@@ -8,8 +8,8 @@ public interface PaymentService {
 
     List<Payment> findAll();
     Payment save(Payment payment);
-    Payment findById(Long pId);
-    void delete(Long pId);
+    Payment findById(Long paymentId);
+    void delete(Long paymentId);
     String count();
     Double getTotalPrice(Payment payment);
 }

@@ -29,8 +29,8 @@ public class PaymentServiceImp implements PaymentService {
 	}
 
 	@Override
-	public Payment findById(Long pId) {
-		return paymentRepository.findById(pId).orElse(null);
+	public Payment findById(Long paymentId) {
+		return paymentRepository.findById(paymentId).orElse(null);
 	}
 
 	@Override
