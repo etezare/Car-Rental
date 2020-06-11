@@ -6,6 +6,7 @@ import edu.miu.cs425.eCarRental.model.Category;
 import edu.miu.cs425.eCarRental.model.Vehicle;
 import edu.miu.cs425.eCarRental.repository.IBookingRepository;
 import edu.miu.cs425.eCarRental.repository.IVehicleRepository;
+import edu.miu.cs425.eCarRental.service.SearchService;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;

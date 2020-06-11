@@ -1,15 +1,15 @@
 package edu.miu.cs425.eCarRental.service.serviceimplementation;
 
-import mum.edu.cs.cs425.project.ecarrent.model.Credential;
-import mum.edu.cs.cs425.project.ecarrent.repository.ICredentialRepository;
-import mum.edu.cs.cs425.project.ecarrent.services.ICredentialService;
+import edu.miu.cs425.eCarRental.model.Credential;
+import edu.miu.cs425.eCarRental.repository.ICredentialRepository;
+import edu.miu.cs425.eCarRental.service.CredentialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("credentialService")
-public class CredentialServiceImp implements ICredentialService{
+public class CredentialServiceImp implements CredentialService {
 	
 	private ICredentialRepository credentialRepository;
 	
