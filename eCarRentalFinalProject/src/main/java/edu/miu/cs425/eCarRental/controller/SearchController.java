@@ -29,10 +29,6 @@ public class SearchController {
         return periodRequested;
     }
 
-    public void setTemp(PeriodRequested periodRequested) {
-        this.periodRequested = periodRequested;
-    }
-
     @GetMapping(value = "/ecarrental/search")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public ModelAndView searchVehicles(@RequestParam("start") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate start,
