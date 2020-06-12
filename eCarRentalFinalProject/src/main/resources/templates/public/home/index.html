@@ -1,44 +1,57 @@
 <!DOCTYPE html>
 <html layout:decorator="layout/masterlayout"
-	xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+
 <body>
-	<th:block layout:fragment="header">
-		<div class="col-xs-4 text-center">
-			<h1>W E L C O M E</h1>	
-		</div>
-	</th:block>
-    <th:block layout:fragment="content">
-    	<div class="col-xs-4 text-center">
-    		<img src="/static/images/homecar.jpg" th:src="@{/images/homecar.jpg}" style="width:304px; height:150px">	
-    	</div>
-    	<div class="col-xs-4 text-center">fab
-    		<h1>Book Your Car Now</h1>
-    	</div>
-    	 <!-- ? start=start & end=end -->
-        <form id="searchForm" method="get" th:action="@{/company/search}">
-            <fieldset>
-                <div class="container" style="margin-top: 1em;">
-                   	<div class="row">
-		                <div class="col-md-6">
-			                <div class="form-group">               
-								<label for="start">Pickup Date</label>
-			                    <input id="start" name="start" type="date" class="form-control">            
-			                </div>            
-		                </div>
-			            <div class="col-md-6">   
-			                <div class="form-group">               
-								<label for="end">Return Date</label>			                    
-			                    <input id="end" name="end" type="date" class="form-control">              
-			                </div>
-		                </div>
-	                </div>
-                </div>
-                <div class="col-xs-4 text-center">
-      				<button th:align = center id="btnSubmit" type="submit" class="btn btn-outline-success">Find My Car</button>
-    			</div>                         
-            </fieldset>
-        </form>
-    </th:block>
-    <th:block layout:fragment="footer"></th:block>
+<!--	<th:block layout:fragment="header">-->
+<!--		<div class="col-xs-4 text-center">-->
+<!--			<h1>W E L C O M E</h1>-->
+<!--		</div>-->
+<!--	</th:block>-->
+<th:block layout:fragment="content">
+   <img src="/static/images/homepage.png" th:src="@{/images/homepage.png}" style=" background-repeat: no-repeat;
+           background-attachment:fixed;background-size: cover;">
+    <!--    <div class="col-xs-4 text-center">-->
+<!--        <style>-->
+<!--        body {-->
+<!--            background-image: url('images/homepage.png');-->
+<!--            background-repeat: no-repeat;-->
+<!--            background-attachment: fixed;-->
+<!--            background-size: cover;-->
+<!--        }-->
+<!--    </style>-->
+<!--        <img src="/static/images/homepage.png"-->
+<!--             style="background-repeat:no-repeat;background-attachment: fixed;background-size: cover">-->
+<!--    </div>-->
+    <div class="col-xs-4 text-center">fab
+        <h1>Book Your Car Now</h1>
+    </div>
+    <!-- ? start=start & end=end -->
+    <form id="searchForm" method="get" th:action="@{/ecarrental/search}">
+        <fieldset>
+<!--            <div class="container" style="margin-top: 1em;">-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="start">Pickup Date</label>
+                            <input id="start" name="start" type="date" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="end">Return Date</label>
+                            <input id="end" name="end" type="date" class="form-control">
+                        </div>
+                    </div>
+<!--                </div>-->
+            </div>
+            <div class="col-xs-4 text-center">
+                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success">Find My Car
+                </button>
+            </div>
+        </fieldset>
+    </form>
+</th:block>
+<th:block layout:fragment="footer"></th:block>
 </body>
 </html>

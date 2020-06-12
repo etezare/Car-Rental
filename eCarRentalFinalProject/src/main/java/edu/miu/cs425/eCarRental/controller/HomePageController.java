@@ -31,10 +31,7 @@ public class HomePageController {
         return "public/home/services";
     }
 
-    @GetMapping(value = {"/public/contact","/ecarrental/public/contact"})
-    public String contact() {
-        return "public/home/contact";
-    }
+
 
 //    @GetMapping(value = {"/public/logout","/ecarrental/public/logout"})
 //    public String logOut() {
