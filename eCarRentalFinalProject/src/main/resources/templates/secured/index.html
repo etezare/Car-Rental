@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      layout:decorate="~{layouts/master-layout}">
+<head>
+    <title>The eLibrary - a Spring Security Demo webapp - Home</title>
+</head>
+<body>
+    <div layout:fragment="content" style="padding-top:1em;" class="container">
+        <h3>Welcome to the eLibrary<sup>&reg;</sup></h3>
+        <hr/>
+        <div style="font-size: 1em">
+            <img th:src="@{/images/banner1.png}"/><br/><br/>
+            <p>We are a top-flight, fully-digitized library.
+                Find out more <a href="/elibrary/public/about">about us</a> and
+                and learn how we can serve you with a widest variety of books and lots of other
+                digital content, all for your education as well as your entertainment.
+                You can also <a href="/elibrary/public/virtualtour">take a virtual tour</a>,
+                of our world-class facilities and be amazed at all what we have in stock
+                for you, your family and friends.</p>
+
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry. Lorem Ipsum has been the industry's standard dummy text
+                ever since the 1500s, when an unknown printer took a galley of type
+                and scrambled it to make a type specimen book. It has survived not
+                only five centuries, but also the leap into electronic typesetting,
+                remaining essentially unchanged. It was popularised in the 1960s with
+                the release of Letraset sheets containing Lorem Ipsum passages, and
+                more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+
+            <p sec:authorize="isAnonymous()">Already have access as a Member, Librarian or System Administrator? Then, simply <a href="/elibrary/public/login">Sign-In.</a>
+                to access the full range of services available to you, based on your role and access rights.</p>
+        </div>
+    </div>
+
+    <th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
