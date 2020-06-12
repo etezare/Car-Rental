@@ -1,10 +1,8 @@
 package edu.miu.cs425.eCarRental.service.serviceimplementation;
 
-
 import edu.miu.cs425.eCarRental.model.Credential;
 import edu.miu.cs425.eCarRental.repository.ICredentialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +15,7 @@ import java.util.Collection;
 
 @Service
 @Transactional
-public class CarRentalAppUserDetailsServiceImp implements UserDetailsService {
+public class CarRentalUserDetailsService implements UserDetailsService {
 
     @Autowired
     private ICredentialRepository credentialRepository;

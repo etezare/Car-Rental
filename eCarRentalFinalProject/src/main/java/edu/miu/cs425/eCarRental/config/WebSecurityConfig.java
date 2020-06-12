@@ -1,5 +1,5 @@
 package edu.miu.cs425.eCarRental.config;
-import edu.miu.cs425.eCarRental.service.CarRentalUserDetailsService;
+import edu.miu.cs425.eCarRental.service.serviceimplementation.CarRentalUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
