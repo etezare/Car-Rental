@@ -48,7 +48,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/ecarrental/secured/admin/**", "/resources/secured/admin/**", "/ecarrental/admin/**", "/admin/**").hasRole("ADMIN")
                 .antMatchers("/ecarrental/secured/staff/**", "/resources/secured/staff/**","/staff/**").hasRole("STAFF")
                 .antMatchers("/ecarrental/secured/customer/**", "/resources/secured/staff/**").hasRole("CUSTOMER")
-                .anyRequest().authenticated()
+//                .antMatchers("/ecarrental/search/result/**").hasRole("CUSTOMER")
+//                .anyRequest().authenticated()
+
                 .and()
                 .formLogin()
                 .loginPage("/ecarrental/public/home/login")
