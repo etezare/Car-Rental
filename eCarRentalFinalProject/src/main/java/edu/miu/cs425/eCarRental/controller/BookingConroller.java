@@ -44,6 +44,7 @@ public class BookingConroller {
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("bookings", bookings);
             modelAndView.setViewName("admin/bookings/bookinglist");
+
             return modelAndView;
         }
 
