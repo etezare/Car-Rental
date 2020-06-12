@@ -62,12 +62,12 @@ public class BookingConroller {
             return "admin/bookings/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/admin/bookings/addnewbooking/save")
+        @PostMapping(value = "/ecarrental/user/users/newuserform")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "admin/bookings/bookingform";
+                return "user/users/newuserform";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/admin/bookings/bookings";
