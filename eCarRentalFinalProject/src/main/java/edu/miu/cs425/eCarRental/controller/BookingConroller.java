@@ -38,7 +38,7 @@ public class BookingConroller {
         @Autowired
         private SearchService searchService;
 
-        @RequestMapping(value = "/ecarrental/admin/bookings", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/customer/customers/bookings", method = RequestMethod.GET)
         public ModelAndView bookingsList() {
             List<Booking> bookings = bookingService.findAll();
             ModelAndView modelAndView = new ModelAndView();
@@ -62,15 +62,15 @@ public class BookingConroller {
             return "admin/bookings/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/user/users/newuserform")
+        @PostMapping(value = "/ecarrental/customer/customers/newuserform")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "user/users/newuserform";
+                return "customer/customers/newuserform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/ecarrental/admin/bookings/bookings";
+            return "redirect:/ecarrental/customer/customers/bookings";
         }
 
         @GetMapping(value = "/ecarrental/admin/bookings/edit/{bookingId}")
