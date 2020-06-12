@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      layout:decorate="~{layouts/master-layout}">
+      data-layout-decorator="~{layout/masterlayout}">
 <head>
     <title>The eLibrary - a Spring Security Demo webapp - Home</title>
 </head>
@@ -13,7 +13,7 @@
         <div style="font-size: 1em">
             <img th:src="@{/images/banner1.png}"/><br/><br/>
             <p>We are a top-flight, fully-digitized library.
-                Find out more <a href="/elibrary/public/about">about us</a> and
+                Find out more <a href="/elibrary/public/home/about">about us</a> and
                 and learn how we can serve you with a widest variety of books and lots of other
                 digital content, all for your education as well as your entertainment.
                 You can also <a href="/elibrary/public/virtualtour">take a virtual tour</a>,

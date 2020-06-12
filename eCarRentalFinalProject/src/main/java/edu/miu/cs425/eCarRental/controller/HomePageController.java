@@ -15,6 +15,11 @@ public class HomePageController {
         return "public/home/index";
     }
 
+    @GetMapping(value = {"/secured/home","/ecarrental/secured/home"})
+    public String home2() {
+        return "secured/index";
+    }
+
     @GetMapping(value = {"/public/home/about","/ecarrental/public/home/about"})
     public String about() {
         return "public/home/about";
