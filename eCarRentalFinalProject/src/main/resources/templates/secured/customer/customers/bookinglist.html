@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html layout:decorator="admin/shared/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<span style="float:right;" class="text-muted">Logged in as: testmail@company.com</span>
+		<br>
+		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">LOG OUT</a>
+		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">Manage Your Account</a>
+		<a class="btn btn-outline-success" style="float:left" href="/company/admin/home">ADMIN HOME</a>
+		<br/><br/>
+		<hr style = "background:green">
+	</th:block>
+    <th:block layout:fragment="content">
+    	<a>BOOKINGS</a>
+		<a style="float:right;" href="/company/admin/bookings/addnew">ADD NEW BOOKING</a>
+		<br></br>
+    	<table class="table table-striped">
+			<thead>
+				<th scope="col">No.</th>
+				<th>Reference Number</th>
+				<th>Booking Date</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<!-- <th>Vehicle</th> -->
+				<th>User</th>
+				<!-- <th>Payments</th> -->
+				<th>Actions</th>
+			</thead>
+			<tbody>
+				<tr th:each="booking, rowNumbering : ${bookings}">
+					<td scope="row" th:text="${rowNumbering.count}+'.'"></td>
+					<td th:text="${booking.referenceNumber}"></td>
+					<td th:text="${booking.bookingDate}"></td>
+					<td th:text="${booking.startDate}"></td>
+					<td th:text="${booking.endDate}"></td>
+					<!-- <td th:text="${booking.vehicle.vehicleId}"></td> -->
+					<td th:text="${booking.firstName}"></td>
+					<!-- <td th:text="${booking.payment.paymentId}"></td> -->
+					<td>
+						<a th:href="@{'/company/admin/bookings/edit/' + ${booking.bookingId}}" class="btn btn-outline-success">Edit</a>
+						<a th:href="@{'/company/admin/bookings/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </th:block>
+    <th:block layout:fragment="footer"></th:block>
+</body>
+</html>
