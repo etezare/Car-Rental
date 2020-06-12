@@ -40,7 +40,7 @@ public class HomePageController {
 
     @GetMapping(value = {"/public/home/logout","/ecarrental/public/home/logout"})
     public String logOut() {
-        return "login/login";
+        return "public/home/login";
     }
 
 //    @GetMapping(value = {"/public/virtualtour","/ecarrental/public/virtualtour"})
