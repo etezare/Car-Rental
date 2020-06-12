@@ -52,7 +52,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/ecarrental/public/home/login")
-                .defaultSuccessUrl("/ecarrental/secured/home")
+                .defaultSuccessUrl("/ecarrental/secured/index")
                 .failureUrl("/ecarrental/public/login?error")
                 .permitAll()
                 .and()
