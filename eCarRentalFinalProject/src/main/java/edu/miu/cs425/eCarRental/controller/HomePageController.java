@@ -21,7 +21,7 @@ public class HomePageController {
     }
 
 
-    @GetMapping(value = {"/public/home/contact","/ecarrental/public/contact"})
+    @GetMapping(value = {"/public/home/contact","/ecarrental/public/home/contact"})
     public String contact() {
         return "public/home/contact";
     }
