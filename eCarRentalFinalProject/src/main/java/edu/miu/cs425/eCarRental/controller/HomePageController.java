@@ -15,6 +15,11 @@ public class HomePageController {
         return "public/home/index";
     }
 
+    @GetMapping(value = {"/secured/service","/ecarrental/secured/service"})
+    public String service() {
+        return "secured/services";
+    }
+
     @GetMapping(value = {"/secured/home","/ecarrental/secured/home"})
     public String home2() {
         return "secured/index";
@@ -31,17 +36,13 @@ public class HomePageController {
         return "public/home/contact";
     }
 
-    @GetMapping(value = {"/public/services","/ecarrental/public/home/services"})
-    public String service() {
-        return "public/home/services";
-    }
 
 
 
-    @GetMapping(value = {"/public/home/logout","/ecarrental/public/home/logout"})
-    public String logOut() {
-        return "public/home/login";
-    }
+//    @GetMapping(value = {"/public/home/logout","/ecarrental/public/home/logout"})
+//    public String logOut() {
+//        return "public/home/login";
+//    }
 
 //    @GetMapping(value = {"/public/virtualtour","/ecarrental/public/virtualtour"})
 //    public String virtualtour() {

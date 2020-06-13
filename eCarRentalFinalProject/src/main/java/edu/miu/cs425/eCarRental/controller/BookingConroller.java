@@ -48,7 +48,7 @@ public class BookingConroller {
             return modelAndView;
         }
 
-        @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/secured/customer/customers/bookingform", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
@@ -62,12 +62,12 @@ public class BookingConroller {
             return "secured/customer/customers/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/secured/customer/customers/bookingform")
+        @PostMapping(value = "/ecarrental/secured/customer/customers/booking/save")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "secured/customer/customers/bookingform";
+                return "customer/customers/bookinglist";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/secured/customer/customers/bookinglist";
@@ -100,7 +100,7 @@ public class BookingConroller {
             return "redirect:/ecarrental/admin/bookings";
         }
 
-        @RequestMapping(value = "/ecarrental/public/bookings/addnewbooking/{category}", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/secured/customer/customers/addbookingform/{categoryId}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();
@@ -123,7 +123,7 @@ public class BookingConroller {
                     .findFirst()
                     .orElse(null));
             model.addAttribute("booking", newBooking);
-            return "public/book/bookingform";
+            return "secured/customer/customers/bookingform";
         }
 
         @PostMapping(value = "/ecarrental/public/bookings/addnewbooking/save")

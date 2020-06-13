@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--	<th:block layout:fragment="header">-->
+<!--		<span style="float:right;" class="text-muted">Logged in as: testmail@company.com</span>-->
+<!--		<br>-->
+<!--		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">LOG OUT</a>-->
+<!--		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">Manage Your Account</a>-->
+<!--		<a class="btn btn-outline-success" style="float:left" href="/company/admin/home">ADMIN HOME</a>-->
+<!--		<br/><br/>-->
+<!--		<hr style = "background:green">-->
+<!--	</th:block>-->
+    <th:block layout:fragment="content">
+		<a>C A T E G O R I E S</a>
+		<a style="float:right;" href="/ecarrental/admin/categories/add">ADD NEW CATEGORY</a>
+		<a style="float:right; padding-right: 2em;" href="/ecarrental/admin/vehicleslist">MANAGE VEHICLES</a>
+		<br></br>
+    	<table class="table table-striped">
+			<thead>
+				<th scope="col">No.</th>
+				<th>Category Name</th>
+				<th>Number of Seats</th>
+				<th>Number of Doors</th>
+				<th>Daily Rate</th>
+				<th>Actions</th>
+			</thead>
+			<tbody>
+				<tr th:each="category, rowNumbering : ${categories}">
+					<td scope="row" th:text="${rowNumbering.count}+'.'"></td>
+					<td th:text="${category.categoryName}"></td>
+					<td th:text="${category.seats}"></td>
+					<td th:text="${category.doors}"></td>
+					<td th:text="${category.ratePerDay}"></td>
+					<td>
+						<a th:href="@{'/ecarrental/admin/categories/edit/' + ${category.categoryId}}" class="btn btn-outline-success">Edit</a>
+						<a th:href="@{'/ecarrental/admin/categories/delete/' + ${category.categoryId}}" class="btn btn-outline-warning">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </th:block>
+</body>
+</html>

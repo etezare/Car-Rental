@@ -36,7 +36,7 @@
 			<td th:text="${category.getCategoryName()} + mpg"></td>
 			<td th:text="${category.ratePerDay} + ' USD / Day'"></td>
 			<td>
-				<a th:href="@{'/ecarrental/secured/customer/customers/newbookingform' + ${category.categoryId}}" class="btn btn-outline-success">BOOK</a>
+					<a th:href="@{'/ecarrental/secured/customer/customers/addbookingform/{categoryId}'(categoryId=${category.categoryId})}" class="btn btn-outline-success">BOOK</a>
 			</td>
 		</tr>
 		</tbody>

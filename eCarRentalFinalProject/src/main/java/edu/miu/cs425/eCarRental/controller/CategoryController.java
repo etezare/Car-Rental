@@ -25,14 +25,14 @@ public class CategoryController {
         ModelAndView modelAndView = new ModelAndView();
         List<Category> categories = categoryService.findAll();
         modelAndView.addObject("categories", categories);
-        modelAndView.setViewName("admin/categories/categories");
+        modelAndView.setViewName("secured/admin/categories/categorieslist");
         return modelAndView;
     }
 
     @GetMapping(value = "/ecarrental/admin/categories/add")
     public String newCategoryForm(Model model) {
         model.addAttribute("category", new Category());
-        return "admin/categories/newcategoryform";
+        return "secured/admin/categories/newcategoryform";
     }
 
     @PostMapping(value = "/ecarrental/admin/categories/add/save")
@@ -40,7 +40,7 @@ public class CategoryController {
                                  BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "admin/categories/newcategoryform";
+            return "secured/admin/categories/newcategoryform";
         }
         category = categoryService.save(category);
         return "redirect:/ecarrental/admin/categories";
@@ -51,9 +51,9 @@ public class CategoryController {
         Category category = categoryService.findById(categoryId);
         if (category != null) {
             model.addAttribute("category", category);
-            return "admin/categories/editcategoryform";
+            return "secured/admin/categories/editcategoryform";
         }
-        return "admin/categories/categories";
+        return "secured/admin/categories/categorieslist";
     }
 
     @GetMapping(value="/ecarrental/admin/categories/delete/{categoryId}")

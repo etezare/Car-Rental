@@ -26,12 +26,12 @@ public class VehicleController {
     @Autowired
     private CategoryService categoryService;
 
-    @GetMapping(value = "/ecarrental/admin/vehicles")
+    @GetMapping(value = "/ecarrental/admin/vehicleslist")
     public ModelAndView manageVehicles() {
         ModelAndView modelAndView = new ModelAndView();
         List<Vehicle> vehicles = vehicleService.findAll();
         modelAndView.addObject("vehicles", vehicles);
-        modelAndView.setViewName("admin/vehicles/vehicles");
+        modelAndView.setViewName("secured/admin/vehicles/vehicleslist");
         return modelAndView;
     }
 
@@ -42,7 +42,7 @@ public class VehicleController {
         List<Category> categories = categoryService.findAll();
         model.addAttribute("vehicle", newVehicle);
         model.addAttribute("categories", categories);
-        return "admin/vehicles/newvehicleform";
+        return "secured/admin/vehicles/newvehicle";
     }
 
     @PostMapping(value = "/ecarrental/admin/vehicles/add/save")
@@ -50,10 +50,10 @@ public class VehicleController {
                                 BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "admin/vehicles/newvehicleform";
+            return "secured/admin/vehicles/newvehicle";
         }
         vehicle = vehicleService.save(vehicle);
-        return "redirect:/ecarrental/admin/vehicles";
+        return "redirect:/ecarrental/admin/vehicleslist";
     }
 
     @GetMapping(value = "/ecarrental/admin/vehicles/edit/{vehicleId}")
@@ -63,15 +63,15 @@ public class VehicleController {
         if (vehicle != null) {
             model.addAttribute("vehicle", vehicle);
             model.addAttribute("categories", categories);
-            return "admin/vehicles/editvehicleform";
+            return "secured/admin/vehicles/editvehicle";
         }
-        return "admin/vehicles/vehicles";
+        return "secured/admin/vehicles/vehicleslist";
     }
 
     @GetMapping(value="/ecarrental/admin/vehicles/delete/{vehicleId}")
     public String deleteVehicle(@PathVariable("vehicleId") Long id, Model model){
         vehicleService.delete(id);
-        return "redirect:/ecarrental/admin/vehicles";
+        return "redirect:/ecarrental/admin/vehicleslist";
     }
 
 }

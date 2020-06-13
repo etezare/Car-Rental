@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
-      data-layout-decorator="~{layouts/master-layout}">
+      data-layout-decorator="layout/masterlayout">
 <head>
     <title>The eLibrary - a Spring Security Demo webapp - Services</title>
 </head>
@@ -14,61 +14,60 @@
             <p>Select the service you want from the option(s) presented below.</p>
             <br/>
             <div class="row">
-                <div sec:authorize="hasRole('ROLE_CUSTOMER')" class="col-md-4">
-                    <div style="font-size: 1em;">
-                        <div class="card border-primary mb-3" style="max-width: 20rem;">
-                            <a style="text-decoration: inherit;" href="/ecarrental/secured/services/vehicles/list">
-                                <div style="color: #1a1a1a;" class="card-header">Books</div>
-                                <div class="card-body">
-                                    <h4 class="card-title">Our Collection of Books</h4>
-                                    <p class="card-text">
-                                        Browse our large collection of books, and make your selection from
-                                        many popular titles, covering a wide variety of subjects.
-                                        <br/><br/>
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!--                <div sec:authorize="hasRole('ROLE_CUSTOMER')" class="col-md-4">-->
+<!--                    <div style="font-size: 1em;">-->
+<!--                        <div class="card border-primary mb-3" style="max-width: 20rem;">-->
+<!--                            <a style="text-decoration: inherit;" href="/ecarrental/secured/services/vehicles/list">-->
+<!--                                <div style="color: #1a1a1a;" class="card-header">Books</div>-->
+<!--                                <div class="card-body">-->
+<!--                                    <h4 class="card-title">Our Collection of Books</h4>-->
+<!--                                    <p class="card-text">-->
+<!--                                        Browse our large collection of books, and make your selection from-->
+<!--                                        many popular titles, covering a wide variety of subjects.-->
+<!--                                        <br/><br/>-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <div sec:authorize="hasRole('ROLE_STAFF')" class="col-md-4">
-                    <div style="font-size: 1em;">
-                        <div class="card border-primary mb-3" style="max-width: 20rem;">
-                            <a style="text-decoration: inherit;" href="/ecarrental/secured/services/checkout">
-                                <div style="color: #1a1a1a;" class="card-header">Check-In / Check-Out</div>
-                                <div class="card-body">
-                                    <h4 class="card-title">Check-in and check-out services</h4>
-                                    <p class="card-text">
-                                        Perform a check-out to lend a book out to a Library member.
-                                        Or perform a check-in to receive book(s) returned.
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!--                <div sec:authorize="hasRole('ROLE_STAFF')" class="col-md-4">-->
+<!--                    <div style="font-size: 1em;">-->
+<!--                        <div class="card border-primary mb-3" style="max-width: 20rem;">-->
+<!--                            <a style="text-decoration: inherit;" href="/ecarrental/secured/services/checkout">-->
+<!--                                <div style="color: #1a1a1a;" class="card-header">Check-In / Check-Out</div>-->
+<!--                                <div class="card-body">-->
+<!--                                    <h4 class="card-title">Check-in and check-out services</h4>-->
+<!--                                    <p class="card-text">-->
+<!--                                        Perform a check-out to lend a book out to a Library member.-->
+<!--                                        Or perform a check-in to receive book(s) returned.-->
+<!--                                    </p>-->
+<!--                                </div>-->
+<!--                            </a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
 
-                <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-4">
+<!--                <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-4">-->
                     <div style="font-size: 1em;">
                         <div class="card border-primary mb-3" style="max-width: 20rem;">
                             <div class="card-header">System Administration</div>
                             <div class="card-body">
                                 <h4 class="card-title">Admin Tools</h4>
                                 <p class="card-text">
-                                    <a href="/ecarrental/secured/services/admin/usrmgmt/list">
-                                        Manage Users and Membership
+                                    <a href="/ecarrental/admin/vehicleslist">
+                                        Manage Vehicles
                                     </a>
                                 </p>
                                 <p class="card-text">
-                                    <!-- <a href="/elibrary/secured/services/admin/versioninfo">-->
-                                    <a href="#">
-                                        Version Information
+                                     <a href="/ecarrental/admin/categories">
+                                        Manage categories
                                     </a>
                                 </p>
                                 <p class="card-text">
                                     <a href="#">
-                                        Miscellaneous services
+                                        Manage staff memeber
                                     </a>
                                 </p>
                             </div>
@@ -80,8 +79,5 @@
 
         </div>
     </div>
-
-    <th:block layout:fragment="footer"></th:block>
-
 </body>
 </html>
