@@ -2,111 +2,111 @@
 <html data-layout-decorator="layout/masterlayout"
 	  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 <body>
+	<th:block layout:fragment="header"></th:block>
     <th:block layout:fragment="content">
     			<h3>NEW BOOKING FORM</h3>
-    	<form id="bookingForm" method="post" action="/ecarrental/secured/customer/customers/booking/save" th:object="${booking}">
-
+    	<form id="bookingForm" method="post" action="/ecarrental/customer/customers/bookingform" th:object="${booking}">
             <fieldset>
                 <input type="hidden" name="bookingId" th:value="${booking.bookingId}" />
                 <div style="float:right;">
-                    <a href="/ecarrental/secured/customer/customers/bookinglist" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <a href="/ecarrental/public/search/results" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
                     <button id="btnSubmit" type="submit" class="btn btn-outline-success">Add Booking</button>
                 </div>
                 <br></br>
                 <div class="container" style="margin-top: 1em;">
-
                    	<div class="row">
-		                <div class="col-md-3">
-			                <div class="form-group">
+		                <div class="col-md-3"> 		                            
+			                <div class="form-group">               
 								<label for="referenceNumber">Reference Number</label>
 			                    <span th:if="${#fields.hasErrors('referenceNumber')}" th:errors="*{referenceNumber}" class="alert alert-danger"></span>
-			                    <input id="referenceNumber" name="referenceNumber" type="text" class="form-control" th:value="${booking.referenceNumber}" readonly>
+			                    <input id="referenceNumber" name="referenceNumber" type="text" class="form-control" th:value="${booking.referenceNumber}" readonly>              
 			                </div>
 			           	</div>
-			           	<div class="col-md-3">
-			                <div class="form-group">
+			           	<div class="col-md-3">     
+			                <div class="form-group">               
 								<label for="bookingDate">Booking Date</label>
 			                    <span th:if="${#fields.hasErrors('bookingDate')}" th:errors="*{bookingDate}" class="alert alert-danger"></span>
-			                    <input id="bookingDate" name="bookingDate" type="date" class="form-control" aria-describedby="bookingDatehHelp" th:value="${booking.bookingDate}">
+			                    <input id="bookingDate" name="bookingDate" type="date" class="form-control" aria-describedby="bookingDatehHelp" th:value="${booking.bookingDate}">             
 			               		<small id="bookingDateHelp" class="form-text text-muted">Enter a valid Date.</small>
 			                </div>
                 		</div>
                 		<div class="col-md-3">
-                			<div class="form-group">
+                			<div class="form-group">               
 								<label for="startDate">Start Date</label>
 			                    <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="alert alert-danger"></span>
-			                    <input id="startDate" name="startDate" type="date" class="form-control" aria-describedby="startDatehHelp" th:value="${booking.startDate}">
+			                    <input id="startDate" name="startDate" type="date" class="form-control" aria-describedby="startDatehHelp" th:value="${booking.startDate}">             
 			               		<small id="startDateHelp" class="form-text text-muted">Enter a valid Date.</small>
 			                </div>
 			             </div>
-			             <div class="col-md-3">
-			                <div class="form-group">
+			             <div class="col-md-3">   
+			                <div class="form-group">               
 								<label for="endDate">End Date</label>
 			                    <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}" class="alert alert-danger"></span>
-			                    <input id="endDate" name="endDate" type="date" class="form-control" aria-describedby="endDatehHelp" th:value="${booking.endDate}">
+			                    <input id="endDate" name="endDate" type="date" class="form-control" aria-describedby="endDatehHelp" th:value="${booking.endDate}">             
 			               		<small id="endDateHelp" class="form-text text-muted">Enter a valid Date.</small>
 			                </div>
-			            </div>
-			         	<div class="col-md-3">
-			         		<div class="form-group">
+			            </div>			                			    			         	
+			         	<div class="col-md-3">			         	
+			         		<div class="form-group">               
 								<label for="vehicle">Vehicle</label>
 			                    <span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="alert alert-danger"></span>
 			                    <select name="vehicle" id="vehicle" class="form-control" required="required">
 			                         	<option value="vehicleNumber">Select a Vehicle Number</option>
 			                           	<option th:each="vehicle : ${vehicles}" th:value="${vehicle.vehicleNumber}" th:text="${vehicle.vehicleNumber}"></option>
-			                    </select>
+			                    </select>              
 		                	</div>
-		                </div>
+		                </div>	
 	                	<div class="col-md-3">
-			                <div class="form-group">
+			                <div class="form-group">               
 								<label for="firstName">Customer First Name</label>
 			                    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="alert alert-danger"></span>
-			                    <input id="firstName" name="firstName" type="text" class="form-control" th:value="${booking.firstName}">
+			                    <input id="firstName" name="firstName" type="text" class="form-control" th:value="${booking.firstName}">             			        
 			                </div>
 			             </div>
-			             <div class="col-md-3">
-			                <div class="form-group">
+			             <div class="col-md-3">   
+			                <div class="form-group">               
 								<label for="lastName">Customer Last Name</label>
 			                    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="alert alert-danger"></span>
-			                    <input id="lastName" name="lastName" type="text" class="form-control" th:value="${booking.lastName}">
+			                    <input id="lastName" name="lastName" type="text" class="form-control" th:value="${booking.lastName}">             			        
 			                </div>
 			           	</div>
-			           	<div class="col-md-3">
-			                <div class="form-group">
+			           	<div class="col-md-3">  
+			                <div class="form-group">               
 								<label for="dateOfBirth">Customer's Date of Birth</label>
 			                    <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="alert alert-danger"></span>
-			                    <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control" aria-describedby="dateOfBirthHelp" th:value="${booking.dateOfBirth}">
+			                    <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control" aria-describedby="dateOfBirthHelp" th:value="${booking.dateOfBirth}">             
 			               		<small id="dateOfBirthHelp" class="form-text text-muted">Enter a valid Date.</small>
 			                </div>
 			            </div>
-			          	<div class="col-md-3">
-			                <div class="form-group">
+			          	<div class="col-md-3">   
+			                <div class="form-group">               
 								<label for="licenseNumber">Customer License Name</label>
 			                    <span th:if="${#fields.hasErrors('licenseNumber')}" th:errors="*{licenseNumber}" class="alert alert-danger"></span>
-			                    <input id="licenseNumber" name="licenseNumber" type="text" class="form-control" th:value="${booking.licenseNumber}">
+			                    <input id="licenseNumber" name="licenseNumber" type="text" class="form-control" th:value="${booking.licenseNumber}">             			        
 			                </div>
 	                	</div>
-	                	<div class="col-md-3">
-			                <div class="form-group">
+	                	<div class="col-md-3">   
+			                <div class="form-group">               
 								<label for="email">Customer Email Address</label>
 			                    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></span>
-			                    <input id="email" name="email" type="email" class="form-control" th:value="${booking.email}">
+			                    <input id="email" name="email" type="email" class="form-control" th:value="${booking.email}">             			        
 			                </div>
 	                	</div>
 	                	<div class="col-md-3">
-			                <div class="form-group">
+			                <div class="form-group">               
 								<label for="payment">Payment</label>
 			                    <span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}" class="alert alert-danger"></span>
 			                    <select name="payment" id="payment" class="form-control" required="required">
 			                         	<option value="paymentId">Select a Payment Id</option>
 			                           	<option th:each="payment : ${payments}" th:value="${payment.paymentId}" th:text="${payment.paymentId}"></option>
-			                    </select>
-			                </div>
+			                    </select>               
+			                </div> 			   
 		              	</div>
 		        	</div>
-		     	</div>
+		     	</div>         
             </fieldset>
         </form>
     </th:block>
+    <th:block layout:fragment="footer"></th:block>
 </body>
 </html>

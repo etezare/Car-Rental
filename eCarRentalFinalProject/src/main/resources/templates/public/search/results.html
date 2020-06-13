@@ -35,9 +35,21 @@
 			<td th:text="${category.doors} + ' ' + doors"></td>
 			<td th:text="${category.getCategoryName()} + mpg"></td>
 			<td th:text="${category.ratePerDay} + ' USD / Day'"></td>
+
 			<td>
-					<a th:href="@{'/ecarrental/secured/customer/customers/addbookingform/{categoryId}'(categoryId=${category.categoryId})}" class="btn btn-outline-success">BOOK</a>
+				<a class="btn btn-outline-success"
+				   th:href="@{'/ecarrental/secured/customer/customers/newbookingform/' + ${category.categoryId}}">BOOK</a>
+
+
+<!--                    <a class="btn btn-outline-success" th:href="@{'/ecarrental/secured/customer/customers/newbookingform/'+ ${category.categoryId}}">BOOK</a>-->
+
 			</td>
+
+<!--			<td>-->
+<!--				<a th:href="@{'/ecarrental/secured/customer/customers/newbookingform/ + ${category.categoryId}}">BOOK</a>-->
+<!--				-->
+<!--			</td>-->
+
 		</tr>
 		</tbody>
 	</table>

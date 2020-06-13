@@ -15,7 +15,7 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
 
-public class BookingConroller {
+
 
     @Controller
     public class BookingController {
@@ -48,7 +48,7 @@ public class BookingConroller {
             return modelAndView;
         }
 
-        @RequestMapping(value = "/ecarrental/secured/customer/customers/bookingform", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/customer/customers/newbookingform", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
@@ -62,12 +62,12 @@ public class BookingConroller {
             return "secured/customer/customers/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/secured/customer/customers/booking/save")
+        @PostMapping(value = "/ecarrental/customer/customers/bookingform")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "customer/customers/bookinglist";
+                return "secured/customer/customers/bookingform";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/secured/customer/customers/bookinglist";
@@ -94,13 +94,13 @@ public class BookingConroller {
             return "redirect:/ecarrental/admin/bookings";
         }
 
-        @GetMapping(value = "/ecarrental/admin/bookings/delete/{bookingId}")
-        public String deleteBooking(@PathVariable("bookingId") Long id) {
-            bookingService.delete(id);
-            return "redirect:/ecarrental/admin/bookings";
-        }
+//        @GetMapping(value = "/ecarrental/admin/bookings/delete/{bookingId}")
+//        public String deleteBooking(@PathVariable("bookingId") Long id) {
+//            bookingService.delete(id);
+//            return "redirect:/ecarrental/admin/bookings";
+//        }
 
-        @RequestMapping(value = "/ecarrental/secured/customer/customers/addbookingform/{categoryId}", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();
@@ -145,4 +145,4 @@ public class BookingConroller {
 
     }
 
-}
+
