@@ -48,7 +48,7 @@ public class BookingConroller {
             return modelAndView;
         }
 
-        @RequestMapping(value = "/ecarrental/admin/bookings/addnewbooking", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
@@ -59,7 +59,7 @@ public class BookingConroller {
             model.addAttribute("vehicles", vehicles);
             model.addAttribute("users", users);
             model.addAttribute("payments", payments);
-            return "admin/bookings/bookingform";
+            return "secured/customer/customers/bookingform";
         }
 
         @PostMapping(value = "/ecarrental/secured/customer/customers/bookingform")
@@ -67,7 +67,7 @@ public class BookingConroller {
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "customer/customers/bookinglist";
+                return "secured/customer/customers/bookingform";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/secured/customer/customers/bookinglist";

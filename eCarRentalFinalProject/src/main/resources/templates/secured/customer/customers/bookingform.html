@@ -5,11 +5,11 @@
 	<th:block layout:fragment="header"></th:block>
     <th:block layout:fragment="content">
     			<h3>NEW BOOKING FORM</h3>
-    	<form id="bookingForm" method="post" action="/ecarrental/admin/bookings/addnewbooking/save" th:object="${booking}">
+    	<form id="bookingForm" method="post" action="/ecarrental/secured/customer/customers/bookingform" th:object="${booking}">
             <fieldset>
                 <input type="hidden" name="bookingId" th:value="${booking.bookingId}" />
                 <div style="float:right;">
-                    <a href="/ecarrental/admin/bookings" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <a href="/ecarrental/secured/customer/customers/bookinglist" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
                     <button id="btnSubmit" type="submit" class="btn btn-outline-success">Add Booking</button>
                 </div>
                 <br></br>
@@ -18,7 +18,7 @@
                    	<div class="row">
 		                <div class="col-md-3"> 		                            
 			                <div class="form-group">               
-								<label for="customerNumber">Reference Number</label>
+								<label for="referenceNumber">Reference Number</label>
 			                    <span th:if="${#fields.hasErrors('referenceNumber')}" th:errors="*{referenceNumber}" class="alert alert-danger"></span>
 			                    <input id="referenceNumber" name="referenceNumber" type="text" class="form-control" th:value="${booking.referenceNumber}" readonly>              
 			                </div>
@@ -49,7 +49,7 @@
 			            </div>			                			    			         	
 			         	<div class="col-md-3">			         	
 			         		<div class="form-group">               
-								<label for="state">Vehicle</label>
+								<label for="vehicle">Vehicle</label>
 			                    <span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="alert alert-danger"></span>
 			                    <select name="vehicle" id="vehicle" class="form-control" required="required">
 			                         	<option value="vehicleNumber">Select a Vehicle Number</option>
@@ -95,7 +95,7 @@
 	                	</div>
 	                	<div class="col-md-3">
 			                <div class="form-group">               
-								<label for="country">Payment</label>
+								<label for="payment">Payment</label>
 			                    <span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}" class="alert alert-danger"></span>
 			                    <select name="payment" id="payment" class="form-control" required="required">
 			                         	<option value="paymentId">Select a Payment Id</option>
