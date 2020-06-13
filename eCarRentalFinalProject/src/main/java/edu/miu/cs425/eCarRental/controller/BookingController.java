@@ -126,7 +126,7 @@ import java.util.List;
             return "secured/customer/customers/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/public/bookings/addnewbooking/save")
+        @PostMapping(value = "/ecarrental/customer/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String addNewBookingPublic(@Valid @ModelAttribute("booking") Booking booking,
                                           BindingResult bindingResult, Model model) {
@@ -135,12 +135,12 @@ import java.util.List;
                 return "public/book/bookingform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/ecarrental/public/bookings/success";
+            return "redirect:/ecarrental/customer/bookings/success";
         }
 
-        @GetMapping(value = "/ecarrental/public/bookings/success")
+        @GetMapping(value = "/ecarrental/customer/bookings/success")
         public String homePage() {
-            return "public/book/confirmation";
+            return "secured/customer/customers/confirmation";
         }
 
     }

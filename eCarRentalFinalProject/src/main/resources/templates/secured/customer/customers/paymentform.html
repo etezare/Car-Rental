@@ -2,14 +2,13 @@
 <html data-layout-decorator="layout/masterlayout"
 	xmlns:th="http://www.thymeleaf.org">
 <body>
-	<th:block layout:fragment="header"></th:block>
     <th:block layout:fragment="content">
 		<h3>NEW PAYMENT FORM</h3>
-    	<form id="paymentForm" method="post" action="/company/user/payments/add/save" th:object="${payment}">
+    	<form id="paymentForm" method="post" action="/ecarrental/user/payments/add/save" th:object="${payment}">
             <fieldset>
                 <input type="hidden" name="paymentId" th:value="${payment.paymentId}" />
                 <div style="float:right;">
-                    <a href="@{'/company/home'}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <a href="@{'/ecarrental/home'}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
                     <button id="btnSubmit" type="submit" class="btn btn-outline-success">Make Payment</button>
                 </div>
                 <br></br>
@@ -54,6 +53,5 @@
             </fieldset>
         </form>
     </th:block>
-    <th:block layout:fragment="footer"></th:block>
 </body>
 </html>

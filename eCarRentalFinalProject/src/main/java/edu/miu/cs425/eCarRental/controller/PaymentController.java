@@ -25,34 +25,34 @@ public class PaymentController {
     @Autowired
     private PaymentService paymentService;
 
-    @GetMapping(value = "/ecarrental/user/payments")
+    @GetMapping(value = "/ecarrental/customer/payments")
     public ModelAndView managePayments() {
         ModelAndView modelAndView = new ModelAndView();
         List<Payment> payments = paymentService.findAll();
         modelAndView.addObject("payments", payments);
-        modelAndView.setViewName("user/payments/payments");
+        modelAndView.setViewName("customer/payments/payments");
         return modelAndView;
     }
 
-    @GetMapping(value = "/ecarrental/user/payments/add")
+    @GetMapping(value = "/ecarrental/customer/payments/add")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public String newPaymentForm(Model model) {
         Payment newPayment = new Payment();
         model.addAttribute("payment", newPayment);
-        return "public/book/paymentform";
+        return "secured/customer/customers/paymentform";
     }
 
 
-    @PostMapping(value = "/ecarrental/user/payments/add/save")
+    @PostMapping(value = "/ecarrental/customer/payments/add/save")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public String addNewPayment(@Valid @ModelAttribute("payment") Payment payment,
                                 BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "public/book/paymentconfirmation";
+            return "secured/customer/customers/paymentform";
         }
         payment = paymentService.save(payment);
-        return "public/book/paymentconfirmation";
+        return "secured/customer/customers/paymentconfirmation";
     }
 
 
