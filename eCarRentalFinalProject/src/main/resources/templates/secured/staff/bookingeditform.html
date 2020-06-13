@@ -46,17 +46,24 @@
 			                    <input id="endDate" name="endDate" type="date" class="form-control" aria-describedby="endDatehHelp" th:value="${booking.endDate}">             
 			               		<small id="endDateHelp" class="form-text text-muted">Enter a valid Date.</small>
 			                </div>
-			            </div>			                			    			         	
-			         	<div class="col-md-3">			         	
-			         		<div class="form-group">               
-								<label for="vehicle">Vehicle</label>
-			                    <span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{getVehicle()}" class="alert alert-danger"></span>
-			                    <select name="vehicle" id="vehicle" class="form-control" required="required">
-			                         	<option value="vehicleNumber">Select a Vehicle Number</option>
-			                           	<option th:each="vehicle : ${booking.getVehicle()}" th:value="${booking.getVehicle().vehicleNumber}" th:text="${booking.getVehicle().vehicleNumber}"></option>
-			                    </select>              
-		                	</div>
-		                </div>	
+			            </div>
+<!--						<div class="col-md-3">-->
+<!--							<div class="form-group">-->
+<!--								<label for="vehicle">Vehicle Id</label>-->
+<!--								<span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="alert alert-danger"></span>-->
+<!--								<input id="vehicle" name="vehicle" type="text" class="form-control" th:value="${booking.vehicle.vehicleId}">-->
+<!--							</div>-->
+<!--						</div>-->
+<!--			         	<div class="col-md-3">			         	-->
+<!--			         		<div class="form-group">               -->
+<!--								<label for="vehicle">Vehicle</label>-->
+<!--			                    <span th:if="${#fields.hasErrors('vehicle')}" th:errors="*{getVehicle()}" class="alert alert-danger"></span>-->
+<!--			                    <select name="vehicle" id="vehicle" class="form-control" required="required">-->
+<!--			                         	<option value="vehicleNumber">Select a Vehicle Number</option>-->
+<!--			                           	<option th:each="vehicle : ${booking.getVehicle()}" th:value="${booking.getVehicle().vehicleNumber}" th:text="${booking.getVehicle().vehicleNumber}"></option>-->
+<!--			                    </select>              -->
+<!--		                	</div>-->
+<!--		                </div>	-->
 	                	<div class="col-md-3">
 			                <div class="form-group">               
 								<label for="firstName">Customer First Name</label>
@@ -88,9 +95,16 @@
 	                	</div>
 						<div class="col-md-3">
 							<div class="form-group">
-								<label for="payment">Customer Total Price</label>
-								<span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}" class="alert alert-danger"></span>
-								<input id="payment" name="payment" type="number" class="form-control" th:value="${booking.payment.getTotalPrice()}">
+								<label for="email">Customer email</label>
+								<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></span>
+								<input id="email" name="email" type="text" class="form-control" th:value="${booking.email}">
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="form-group">
+								<label for="totalPrice">Customer Total Price</label>
+								<span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}" class="alert alert-danger"></span>
+								<input id="totalPrice" name="totalPrice" type="number" class="form-control" th:value="${booking.totalPrice}">
 							</div>
 						</div>
 		        	</div>
