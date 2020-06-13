@@ -38,17 +38,17 @@ import java.util.List;
         @Autowired
         private SearchService searchService;
 
-        @RequestMapping(value = "/ecarrental/secured/customer/customers/bookinglist", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/staff/bookinglist", method = RequestMethod.GET)
         public ModelAndView bookingsList() {
             List<Booking> bookings = bookingService.findAll();
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("bookings", bookings);
-            modelAndView.setViewName("secured/customer/customers/bookinglist");
+            modelAndView.setViewName("secured/staff/bookinglist");
 
             return modelAndView;
         }
 
-        @RequestMapping(value = "/ecarrental/customer/customers/newbookingform", method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/staff/booking/addnew", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
@@ -59,46 +59,46 @@ import java.util.List;
             model.addAttribute("vehicles", vehicles);
             model.addAttribute("users", users);
             model.addAttribute("payments", payments);
-            return "secured/customer/customers/bookingform";
+            return "secured/staff/bookingform";
         }
 
-        @PostMapping(value = "/ecarrental/customer/customers/bookingform")
+        @PostMapping(value = "/ecarrental/staff/bookingform/save")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "secured/customer/customers/bookingform";
+                return "secured/staff/bookingform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/ecarrental/secured/customer/customers/bookinglist";
+            return "redirect:/ecarrental/staff/bookinglist";
         }
 
-        @GetMapping(value = "/ecarrental/admin/bookings/edit/{bookingId}")
+        @GetMapping(value = "/ecarrental/staff/booking/edit/{bookingId}")
         public String editBookingForm(@PathVariable("bookingId") Long bookingId, Model model) {
             Booking booking = bookingService.findById(bookingId);
             if (booking != null) {
                 model.addAttribute("booking", booking);
-                return "admin/bookings/bookingeditform";
+                return "secured/staff/bookingeditform";
             }
-            return "admin/bookings/bookings";
+            return "/ecarrental/staff/bookinglist";
         }
 
-        @PostMapping(value = "/ecarrental/admin/bookings/edit/save")
+        @PostMapping(value = "/ecarrental/staff/bookings/update")
         public String updateBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "admin/bookings/bookingeditform";
+                return "secured/staff/bookingeditform";
             }
             booking = bookingService.save(booking);
-            return "redirect:/ecarrental/admin/bookings";
+            return "redirect:/ecarrental/staff/bookinglist";
         }
 
-//        @GetMapping(value = "/ecarrental/admin/bookings/delete/{bookingId}")
-//        public String deleteBooking(@PathVariable("bookingId") Long id) {
-//            bookingService.delete(id);
-//            return "redirect:/ecarrental/admin/bookings";
-//        }
+        @GetMapping(value = "/ecarrental/staff/booking/delete/{bookingId}")
+        public String deleteBooking(@PathVariable("bookingId") Long id) {
+            bookingService.delete(id);
+            return "redirect:/ecarrental/staff/bookinglist  ";
+        }
 
         @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
@@ -128,7 +128,7 @@ import java.util.List;
 
         @PostMapping(value = "/ecarrental/customer/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
-        public String addNewBookingPublic(@Valid @ModelAttribute("booking") Booking booking,
+        public String addNewBookingCustomer(@Valid @ModelAttribute("booking") Booking booking,
                                           BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());

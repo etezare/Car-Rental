@@ -31,23 +31,33 @@
 <!--                        </div>-->
 <!--                    </div>-->
 <!--                </div>-->
+                <div sec:authorize="hasRole('ROLE_STAFF')" class="col-md-4">
+                    <div style="font-size: 1em;">
+                        <div class="card border-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">STAFF PAGE</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Staff Tools</h4>
+                                <p class="card-text">
+                                    <a href="/ecarrental/staff/bookinglist">
+                                        Manage Vehicles
+                                    </a>
+                                </p>
+                                <p class="card-text">
+                                    <a href="/ecarrental/admin/categories">
+                                        Manage categories
+                                    </a>
+                                </p>
+                                <p class="card-text">
+                                    <a href="#">
+                                        Manage staff memeber
+                                    </a>
+                                </p>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
 
-<!--                <div sec:authorize="hasRole('ROLE_STAFF')" class="col-md-4">-->
-<!--                    <div style="font-size: 1em;">-->
-<!--                        <div class="card border-primary mb-3" style="max-width: 20rem;">-->
-<!--                            <a style="text-decoration: inherit;" href="/ecarrental/secured/services/checkout">-->
-<!--                                <div style="color: #1a1a1a;" class="card-header">Check-In / Check-Out</div>-->
-<!--                                <div class="card-body">-->
-<!--                                    <h4 class="card-title">Check-in and check-out services</h4>-->
-<!--                                    <p class="card-text">-->
-<!--                                        Perform a check-out to lend a book out to a Library member.-->
-<!--                                        Or perform a check-in to receive book(s) returned.-->
-<!--                                    </p>-->
-<!--                                </div>-->
-<!--                            </a>-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                </div>-->
 
                 <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-4">
                     <div style="font-size: 1em;">
