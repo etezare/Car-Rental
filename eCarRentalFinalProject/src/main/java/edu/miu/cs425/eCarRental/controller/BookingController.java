@@ -100,7 +100,7 @@ import java.util.List;
             return "redirect:/ecarrental/staff/bookinglist  ";
         }
 
-        @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
+        @RequestMapping(value = {"/ecarrental/secured/customer/customers/newbookingform/{category}","/ecarrental/secured/customer/customers/newbookingform/update"}, method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();

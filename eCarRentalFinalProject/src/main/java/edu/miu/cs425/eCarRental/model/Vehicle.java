@@ -15,7 +15,7 @@ public class Vehicle {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long vehicleId;
 	
-	@Column(name = "vehicle_number",nullable=false)
+	@Column(name = "vehicle_number",nullable=true)
 	@NotBlank(message = "Please provide vehicle number")
 	private String vehicleNumber;
 	

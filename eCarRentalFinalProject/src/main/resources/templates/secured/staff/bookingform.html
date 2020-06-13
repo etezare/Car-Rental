@@ -4,7 +4,7 @@
 <body>
 <th:block layout:fragment="content">
     <h3>NEW BOOKING FORM</h3>
-    <form id="bookingForm" method="post" action="/ecarrental/staff/bookingform/save" th:object="${booking}">
+    <form id="bookingForm" method="post" action="/ecarrental/secured/customer/customers/newbookingform/update" th:object="${booking}">
         <fieldset>
             <input type="hidden" name="bookingId" th:value="${booking.bookingId}"/>
             <div style="float:right;">
