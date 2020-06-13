@@ -2,16 +2,17 @@ package edu.miu.cs425.eCarRental.utility;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 public class PeriodRequested {
 	
-	@NotNull
+	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate start;
 	
-	@NotNull
+	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate end;
 	

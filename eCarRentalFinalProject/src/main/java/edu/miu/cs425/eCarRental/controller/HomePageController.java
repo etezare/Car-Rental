@@ -36,13 +36,10 @@ public class HomePageController {
         return "public/home/contact";
     }
 
-
-
-
-//    @GetMapping(value = {"/public/home/logout","/ecarrental/public/home/logout"})
-//    public String logOut() {
-//        return "public/home/login";
-//    }
+    @GetMapping(value = {"/public/home/logout","/ecarrental/public/home/logout"})
+    public String logOut() {
+        return "public/home/login";
+    }
 
 //    @GetMapping(value = {"/public/virtualtour","/ecarrental/public/virtualtour"})
 //    public String virtualtour() {

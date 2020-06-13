@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header"></th:block>
+    <th:block layout:fragment="content">
+		<h3>NEW PAYMENT FORM</h3>
+    	<form id="paymentForm" method="post" action="/company/user/payments/add/save" th:object="${payment}">
+            <fieldset>
+                <input type="hidden" name="paymentId" th:value="${payment.paymentId}" />
+                <div style="float:right;">
+                    <a href="@{'/company/home'}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Make Payment</button>
+                </div>
+                <br></br>
+               <!--  <div class="form-group">               
+					<label for="paymentType">Payment Type</label>
+                    <span th:if="${#fields.hasErrors('paymentType')}" th:errors="*{paymentType}" class="alert alert-danger"></span>
+                    <input id="paymentType" name="paymentType" type="text" class="form-control" th:value="${payment.paymentType}">              
+                </div> -->
+                
+                <div class="form-group">               
+					<label for="cardNumber">Card Number</label>
+                    <span th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}" class="alert alert-danger"></span>
+                    <input id="cardNumber" name="cardNumber" type="text" class="form-control" th:value="${payment.cardNumber}">              
+                </div>
+                
+                <div class="form-group">
+                	<label for="cardCVV">Card CVV</label>
+                   	<span th:if="${#fields.hasErrors('cardCVV')}" th:errors="*{cardCVV}" class="alert alert-danger"></span>
+                    <input id="cardCVV" name="cardCVV" type="text" class="form-control" th:value="${payment.cardCVV}">
+                </div>
+                
+                <!-- <div class="form-group">
+                	<label for="totalPrice">Total Payment</label>
+                   	<span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}" class="alert alert-danger"></span>
+                    <input id="totalPricer" name="totalPrice" type="text" class="form-control" th:value="${payment.totalPrice}">
+                </div> -->
+                
+                <!-- <div class="form-group">
+                	<label for="paymentStatus">Payment Status</label>
+                   	<span th:if="${#fields.hasErrors('paymentStatus')}" th:errors="*{paymentStatus}" class="alert alert-danger"></span>
+                    <input id="paymentStatus" name="paymentStatus" type="text" class="form-control" th:value="${payment.paymentStatus}">
+                    
+                </div> -->
+                
+                <!-- <div class="form-group">
+                	<label for="paymentDate">Payment Date</label>
+                   	<span th:if="${#fields.hasErrors('paymentDate')}" th:errors="*{paymentDate}" class="alert alert-danger"></span>
+                    <input id="paymentDate" name="paymentDate" type="date" class="form-control" aria-describedby="paymentDateHelp" th:value="${payment.paymentDate}">
+                    <small id="paymentDatehHelp" class="form-text text-muted">Enter a valid Date.</small>
+                </div> -->
+                                
+            </fieldset>
+        </form>
+    </th:block>
+    <th:block layout:fragment="footer"></th:block>
+</body>
+</html>
