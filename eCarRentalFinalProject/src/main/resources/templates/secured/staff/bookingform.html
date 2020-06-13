@@ -4,7 +4,7 @@
 <body>
 <th:block layout:fragment="content">
     <h3>NEW BOOKING FORM</h3>
-    <form id="bookingForm" method="post" action="/ecarrental/secured/customer/customers/newbookingform/update" th:object="${booking}">
+    <form id="bookingForm" method="post" action="/ecarrental/staff/bookingform/save" th:object="${booking}">
         <fieldset>
             <input type="hidden" name="bookingId" th:value="${booking.bookingId}"/>
             <div style="float:right;">
@@ -112,15 +112,23 @@
                         </div>
                     </div>
                     <div class="col-md-3">
+<!--                        <div class="form-group">-->
+<!--                            <label for="payment">Payment</label>-->
+<!--                            <span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}"-->
+<!--                                  class="alert alert-danger"></span>-->
+<!--                            <select name="payment" id="payment" class="form-control" required="required">-->
+<!--                                <option value="payment">Select a Payment Id</option>-->
+<!--                                <option th:each="payment : ${payments}" th:value="${booking.totalPrice}"-->
+<!--                                        th:text="${payment.totalPrice}"></option>-->
+<!--                            </select>-->
+<!--                        </div>-->
+
                         <div class="form-group">
-                            <label for="payment">Payment</label>
-                            <span th:if="${#fields.hasErrors('payment')}" th:errors="*{payment}"
+                            <label for="totalPrice">Payment</label>
+                            <span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}"
                                   class="alert alert-danger"></span>
-                            <select name="payment" id="payment" class="form-control" required="required">
-                                <option value="paymentId">Select a Payment Id</option>
-                                <option th:each="payment : ${payments}" th:value="${payment.paymentId}"
-                                        th:text="${payment.totalPrice}"></option>
-                            </select>
+                            <input id="totalPrice" name="totalPrice" type="totalPrice" class="form-control"
+                                   th:value="${booking.totalPrice}">
                         </div>
                     </div>
                 </div>
