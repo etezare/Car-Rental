@@ -41,7 +41,7 @@ import java.util.List;
 
         @RequestMapping(value = "/ecarrental/staff/bookinglist", method = RequestMethod.GET)
         public ModelAndView bookingsList() {
-            List<Booking> bookings = bookingService.findAll();
+            List<Booking> bookings = bookingService.findAllOrderByDate();
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("bookings", bookings);
             modelAndView.setViewName("secured/staff/bookinglist");
@@ -138,7 +138,7 @@ import java.util.List;
                                           BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "public/book/bookingform";
+                return "/public/error/error";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/customer/bookings/success";
