@@ -13,8 +13,7 @@ public class HomePageController {
     }
 
     @GetMapping(value = {"/public/home","/ecarrental/public/home"})
-    public String home1(Model model) {
-        model.addAttribute("periodRequested",new PeriodRequested());
+    public String home1() {
         return "public/home/index";
     }
 
