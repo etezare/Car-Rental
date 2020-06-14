@@ -76,7 +76,7 @@ import java.util.List;
         @GetMapping(value = "/ecarrental/staff/booking/edit/{bookingId}")
         public String editBookingForm(@PathVariable("bookingId") Long bookingId, Model model) {
             Booking booking = bookingService.findById(bookingId);
-            if (booking != null) {
+                if (booking != null) {
                 model.addAttribute("booking", booking);
                 return "secured/staff/bookingeditform";
             }

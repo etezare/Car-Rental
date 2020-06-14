@@ -1,6 +1,7 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 
@@ -14,7 +15,7 @@ public class Payment {
     private Long paymentId;
 
     @Column(name = "payment_date",nullable=true)
-//	@NotBlank(message = "Please provide payment date")
+    @FutureOrPresent
     private LocalDate paymentDate;
 
     @Column(name = "payment_type",nullable=true)
