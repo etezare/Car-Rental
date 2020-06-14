@@ -22,7 +22,7 @@ public class Booking {
 
     @Column(name = "booking_date",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @NotBlank(message = "Please provide booking date")
+    @NotNull(message = "Please provide booking date")
     private LocalDate bookingDate;
 
     @Column(name = "start_date",nullable=false)

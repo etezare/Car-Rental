@@ -27,7 +27,7 @@ public class Payment {
     private Long cardNumber;
 
     @Column(name = "card_cvv",nullable=true)
-	@NotBlank(message = "Please provide payment card CVV")
+//	@NotBlank(message = "Please provide payment card CVV")
     private Integer cardCVV;
 
     @Column(name = "total_price",nullable=true)

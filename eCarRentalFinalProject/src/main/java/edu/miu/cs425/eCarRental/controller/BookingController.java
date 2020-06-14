@@ -138,7 +138,7 @@ import java.util.List;
                                           BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
                 model.addAttribute("errors", bindingResult.getAllErrors());
-                return "public/book/bookingform";
+                return "/public/error/error";
             }
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/customer/bookings/success";
