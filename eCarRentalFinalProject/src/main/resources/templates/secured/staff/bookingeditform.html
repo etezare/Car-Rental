@@ -3,16 +3,12 @@
 	xmlns:th="http://www.thymeleaf.org">
 <body>
     <th:block layout:fragment="content">
-		<h3>EDIT BOOKING FORM</h3>
+		<h3 style="text-align: center">EDIT BOOKING FORM</h3>
     	<form id="bookingForm" method="post" action="/ecarrental/staff/bookings/update" th:object="${booking}">
             <fieldset>
-            	<legend>Edit Booking : [[${booking.referenceNumber}]] - [[${booking.bookingDate}]]</legend>
+            	<legend style="text-align: center">Edit Booking : [[${booking.referenceNumber}]] - [[${booking.bookingDate}]]</legend>
                 <input type="hidden" name="bookingId" th:value="${booking.bookingId}" />
-                <div style="float:right;">
-                    <a href="/ecarrental/staff/bookinglist" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
-                    <a th:href="@{'/ecarrental/staff/booking/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Delete</a>&nbsp;&nbsp;&nbsp;
-                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Update</button>
-                </div>
+
                 <br></br>
                	<div class="container" style="margin-top: 1em;">
                    	<div class="row">
@@ -107,9 +103,20 @@
 								<input id="totalPrice" name="totalPrice" type="number" class="form-control" th:value="${booking.totalPrice}">
 							</div>
 						</div>
+
+
 		        	</div>
-		     	</div>         
-            </fieldset>
+
+					<div class="col-md-3" style="float:right">
+						<div style="float:right;">
+							<a href="/ecarrental/staff/bookinglist" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+							<a th:href="@{'/ecarrental/staff/booking/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Delete</a>&nbsp;&nbsp;&nbsp;
+							<button id="btnSubmit" type="submit" class="btn btn-outline-success">Update</button>
+						</div>
+					</div>
+
+				</div>
+			</fieldset>
         </form>
     </th:block>
 </body>

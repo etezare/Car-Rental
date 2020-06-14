@@ -13,14 +13,17 @@
                     <a class="nav-link" href="/ecarrental/public/home">HOME</a>
                 </li>
                 <li sec:authorize="isAuthenticated()" class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
-                    <a class="nav-link" href="/ecarrental/secured/service">Services</a>
+                    <a class="nav-link" href="/ecarrental/secured/service">SERVICES</a>
                 </li>
+
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
                     <a class="nav-link" href="/ecarrental/public/home/about">ABOUT</a>
                 </li>
                 <li class="nav-item" style="border-left: white 1px solid; padding-left: 2em; padding-right: 2em;">
                     <a class="nav-link" href="/ecarrental/public/home/contact">CONTACT</a>
                 </li>
+
+
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <span sec:authorize="isAnonymous()" style="color:#fff;padding-left: 2em; padding-right: 1em;">Welcome, Guest</span>

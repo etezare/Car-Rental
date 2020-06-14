@@ -36,6 +36,7 @@ public class SearchServiceImp implements SearchService {
 				  				.collect(Collectors.toList()); 
 	}
 
+
 	@Override
 	public List<Category> findAvailableCategories(LocalDate start, LocalDate end) {
 		return getAvailableVehicles(start, end).stream()

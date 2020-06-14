@@ -10,4 +10,5 @@ public interface SearchService {
 	
 	List<Category> findAvailableCategories(LocalDate start, LocalDate end);
 	List<Vehicle> getAvailableVehicles(LocalDate start, LocalDate end);
+
 }

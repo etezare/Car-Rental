@@ -9,7 +9,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-
 import javax.validation.Valid;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
@@ -64,6 +63,7 @@ import java.util.List;
             return "secured/staff/bookingform";
         }
 
+
         @PostMapping(value = "/ecarrental/staff/bookingform/save")
         public String addNewBooking(@Valid @ModelAttribute("booking") Booking booking,
                                     BindingResult bindingResult, Model model) {
@@ -103,7 +103,7 @@ import java.util.List;
             return "redirect:/ecarrental/staff/bookinglist  ";
         }
 
-        @RequestMapping(value = {"/ecarrental/secured/customer/customers/newbookingform/{category}","/ecarrental/secured/customer/customers/newbookingform/update"}, method = RequestMethod.GET)
+        @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();
@@ -133,6 +133,7 @@ import java.util.List;
 
         @PostMapping(value = "/ecarrental/customer/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
+
         public String addNewBookingCustomer(@Valid @ModelAttribute("booking") Booking booking,
                                           BindingResult bindingResult, Model model) {
             if (bindingResult.hasErrors()) {
