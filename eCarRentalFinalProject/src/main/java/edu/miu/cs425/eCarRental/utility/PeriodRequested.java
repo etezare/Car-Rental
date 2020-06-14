@@ -14,11 +14,13 @@ public class PeriodRequested {
 	
 	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull
 	private LocalDate start;
 
 
 	@FutureOrPresent
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@NotNull
 	private LocalDate end;
 
 	@ConsistentDateParameters

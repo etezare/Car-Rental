@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service("searchService")
@@ -35,6 +36,21 @@ public class SearchServiceImp implements SearchService {
 				  				.filter(v -> !bookedVehicles.contains(v))
 				  				.collect(Collectors.toList()); 
 	}
+
+//	@Override
+//	public List<Booking> findallByReferenceEquals(String referenceNumber) {
+//		return null;
+//	}
+
+//	@Override
+//	public Optional<Booking> getVehiclesById(String referenceNumber) {
+//		return Optional.empty();
+//	}
+
+//	@Override
+//	public List<Booking> findallByReferenceEquals(String referenceNumber) {
+//		return bookingRepository.findallByReferenceEquals(referenceNumber);
+//	}
 
 
 	@Override

@@ -18,11 +18,18 @@
                         <div class="form-group">
                             <label style="color: white" for="start">Pickup Date
                                 </label>
-                            <input id="start" name="start" type="date" onnkeyup="checkDate()" class="form-control">
+                            <input id="start" name="start" type="date" onnkeyup="checkDate()" class="form-control" required="required">
                             <div id="datewarn"></div>
                         </div>
                     </div>
 
+<!--                    <div class="col-md-6">-->
+<!--                        <div class="form-group">-->
+<!--                            <label style="color: white" for="categoryName">Choose Category</label>-->
+<!--&lt;!&ndash;                            <span th:if="${#fields.hasErrors('licenseNumber')}" th:errors="*{licenseNumber}" class="alert alert-danger"></span>&ndash;&gt;-->
+<!--                            <input id="categoryName" name="categoryName" type="text" class="form-control" required="required">-->
+<!--                        </div>-->
+<!--                    </div>-->
 <!--                    <input type="date" id="start" name="trip-start"-->
 <!--                           value="2018-07-22"-->
 <!--                           min="2018-01-01" max="2018-12-31">-->
@@ -30,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label style="color: white" for="end">Return Date</label>
-                            <input id="end" name="end" type="date" class="form-control">
+                            <input id="end" name="end" type="date" class="form-control" required="required">
                         </div>
                     </div>
                 </div>
