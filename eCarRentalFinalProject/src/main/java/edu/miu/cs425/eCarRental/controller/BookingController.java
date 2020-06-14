@@ -19,6 +19,8 @@ import java.util.List;
 
     @Controller
     public class BookingController {
+        @Autowired
+        private PaymentController paymentController;
 
         @Autowired
         private BookingService bookingService;
@@ -69,6 +71,7 @@ import java.util.List;
                 model.addAttribute("errors", bindingResult.getAllErrors());
                 return "secured/staff/bookingform";
             }
+
             booking = bookingService.save(booking);
             return "redirect:/ecarrental/staff/bookinglist";
         }
@@ -105,7 +108,7 @@ import java.util.List;
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
             Booking newBooking = new Booking();
             Payment newPayment = new Payment();
-            paymentService.save(newPayment);
+            newBooking.setPayment(newPayment);
             LocalDate start = searchController.getTemp().getStart();
             LocalDate end = searchController.getTemp().getEnd();
             Long dateDifference = (Long) (ChronoUnit.DAYS.between(start, end));
@@ -116,7 +119,9 @@ import java.util.List;
             newBooking.setEndDate(end);
             newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
             newBooking.setBookingDate(LocalDate.now());
-            newBooking.setPayment(newPayment);
+            paymentController.addNewPayment(newBooking);
+//            newBooking.getPayment().setTotalPrice(newBooking.getTotalPrice());
+            paymentService.save(newBooking.getPayment());
             newBooking.setVehicle(searchService.getAvailableVehicles(start, end)
                     .stream()
                     .filter(v -> v.getCategory() == category)
