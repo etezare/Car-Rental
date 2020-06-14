@@ -33,9 +33,6 @@ public class Payment {
     @Column(name = "total_price",nullable=true)
     private Double totalPrice;
 
-    @Column(name = "payment_status",nullable=true)
-//	@NotBlank
-    private String paymentStatus;
 
     @OneToOne(mappedBy = "payment", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Booking booking;
@@ -48,7 +45,7 @@ public class Payment {
 
     public Payment(Long paymentId, LocalDate paymentDate,
                    String paymentType, Long cardNumber, Integer cardCVV, Double totalPrice, Address billingAddress,
-                   String paymentStatus, Booking booking) {
+                  Booking booking) {
         this.paymentId = paymentId;
         this.paymentDate = paymentDate;
         this.paymentType = paymentType;
@@ -56,18 +53,16 @@ public class Payment {
         this.cardCVV = cardCVV;
         this.totalPrice = totalPrice;
         this.billingAddress = billingAddress;
-        this.paymentStatus = paymentStatus;
         this.booking = booking;
     }
 
     public Payment(LocalDate paymentDate, String paymentType, Long cardNumber, Integer cardCVV,
-                   Double totalPrice, String paymentStatus, Booking booking, Address billingAddress) {
+                   Double totalPrice,  Booking booking, Address billingAddress) {
         this.paymentDate = paymentDate;
         this.paymentType = paymentType;
         this.cardNumber = cardNumber;
         this.cardCVV = cardCVV;
         this.totalPrice = totalPrice;
-        this.paymentStatus = paymentStatus;
         this.booking = booking;
         this.billingAddress = billingAddress;
     }
@@ -128,13 +123,6 @@ public class Payment {
         this.billingAddress = billingAddress;
     }
 
-    public String getPaymentStatus() {
-        return paymentStatus;
-    }
-
-    public void setPaymentStatus(String paymentStatus) {
-        this.paymentStatus = paymentStatus;
-    }
 
     public Booking getBooking() {
         return booking;
@@ -153,7 +141,6 @@ public class Payment {
                 ", cardNumber=" + cardNumber +
                 ", cardCVV=" + cardCVV +
                 ", totalPrice=" + totalPrice +
-                ", paymentStatus='" + paymentStatus + '\'' +
                 ", booking=" + booking +
                 ", billingAddress=" + billingAddress +
                 '}';
