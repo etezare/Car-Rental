@@ -5,8 +5,10 @@ import java.util.List;
 import javax.validation.Valid;
 
 import edu.miu.cs425.eCarRental.model.Address;
+import edu.miu.cs425.eCarRental.model.Booking;
 import edu.miu.cs425.eCarRental.model.Payment;
 import edu.miu.cs425.eCarRental.service.AddressService;
+import edu.miu.cs425.eCarRental.service.BookingService;
 import edu.miu.cs425.eCarRental.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -29,6 +31,8 @@ public class PaymentController {
 
     @Autowired
     private AddressService addressService;
+
+    private Booking booking;
 
     @GetMapping(value = "/ecarrental/customer/payments")
     public ModelAndView managePayments() {
@@ -57,7 +61,6 @@ public class PaymentController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "secured/customer/customers/paymentform";
         }
-//        System.out.println("New Publisher1 address = " + publisher.getAddress());
         if(payment.getBillingAddress().getStreet().trim().isEmpty()
                 && payment.getBillingAddress().getCity().trim().isEmpty()
                 && payment.getBillingAddress().getState().trim().isEmpty()
@@ -65,7 +68,11 @@ public class PaymentController {
                 && payment.getBillingAddress().getZipCode() == null) {
             payment.setBillingAddress(null);
         }
+
         addressService.save(payment.getBillingAddress());
+        payment.setPaymentDate(booking.getBookingDate());
+        payment.setTotalPrice(booking.getTotalPrice());
+//         payment.setBooking(booking);
         paymentService.save(payment);
 
         return "secured/customer/customers/paymentconfirmation";
@@ -89,4 +96,7 @@ public class PaymentController {
     }
 
 
+    public void addNewPayment(Booking newBooking) {
+       booking=newBooking;
+    }
 }
