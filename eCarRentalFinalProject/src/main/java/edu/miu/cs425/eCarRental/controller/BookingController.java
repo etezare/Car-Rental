@@ -41,7 +41,7 @@ import java.util.List;
 
         @RequestMapping(value = "/ecarrental/staff/bookinglist", method = RequestMethod.GET)
         public ModelAndView bookingsList() {
-            List<Booking> bookings = bookingService.findAll();
+            List<Booking> bookings = bookingService.findAllOrderByDate();
             ModelAndView modelAndView = new ModelAndView();
             modelAndView.addObject("bookings", bookings);
             modelAndView.setViewName("secured/staff/bookinglist");

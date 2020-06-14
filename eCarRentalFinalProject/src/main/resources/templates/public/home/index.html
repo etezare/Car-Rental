@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  data-layout-decorator="layout/masterlayout"
+<html data-layout-decorator="layout/masterlayout"
       xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
 
 <body>
@@ -8,38 +8,76 @@
     <body style="background: url(/images/homepage.png) no-repeat center center fixed">
     <div style="color: white" class="col-xs-4 text-center">
         <h1>Book Your Car Now</h1>
-    </div>
-    <!-- ? start=start & end=end -->
-    <form id="searchForm" method="get" th:action="@{/ecarrental/search}">
-        <fieldset>
-            <div class="container" style="margin-top: 1em;">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label style="color: white" for="start">Pickup Date
-                                </label>
-                            <input id="start" name="start" type="date" class="form-control">
-                        </div>
-                    </div>
-
-<!--                    <input type="date" id="start" name="trip-start"-->
-<!--                           value="2018-07-22"-->
-<!--                           min="2018-01-01" max="2018-12-31">-->
-
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label style="color: white" for="end">Return Date</label>
-                            <input id="end" name="end" type="date" class="form-control">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xs-4 text-center">
-                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success">Find My Car
-                </button>
-            </div>
+        <!--    </div>-->
+        <!--    <form id="searchForm" method="post"  action="/ecarrental/search2" th:object="${periodRequested}">-->
+        <!--        <fieldset>-->
+        <!--            <div class="row">-->
+        <!--                <div class="col-md-6">-->
+        <!--                    <div class="form-group">-->
+        <!--                        <label for="start">Date Enrollment</label>-->
+        <!--                        <span th:if="${#fields.hasErrors('start')}" th:errors="*{start}"-->
+        <!--                              class="alert alert-danger">-->
+        <!--                            </span>-->
+        <!--                        <input id="start" name="start" type="date" class="form-control"-->
+        <!--                               th:value="${periodRequested.start}">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="row">-->
+        <!--                <div class="col-md-6">-->
+        <!--                    <div class="form-group">-->
+        <!--                        <label for="end">Date Enrollment</label>-->
+        <!--                        <span th:if="${#fields.hasErrors('end')}" th:errors="*{end}"-->
+        <!--                              class="alert alert-danger">-->
+        <!--                            </span>-->
+        <!--                        <input id="end" name="start" type="date" class="form-control"-->
+        <!--                               th:value="${periodRequested.end}">-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="col-xs-4 text-center">&ndash;&gt;-->
+        <!--                                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success">Find My Car-->
+        <!--                                </button>-->
+        <!--                            </div>-->
+        <!--            <div style="float:right;">-->
+        <!--                <a href="/eregistrar/registrar/student/new" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;-->
+        <!--                <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save Student</button>-->
+        <!--            </div>-->
         </fieldset>
-    </form>
+        <!--     ? start=start & end=end -->
+        <form id="searchForm" method="post" th:action="@{/ecarrental/search}" th:object="${periodRequested}">
+            <fieldset>
+                <div class="container"style="right: auto">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="color: white" for="start">Pickup Date </label>
+
+<!--                                <input id="start" name="start" type="date" class="form-control">-->
+                                <span th:if="${#fields.hasErrors('start')}" th:errors="*{start}" class="alert alert-danger"></span>
+                                <input id="start" name="start" type="date" class="form-control" th:value="${periodRequested.start}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label style="color: white" for="start">Return Date </label>
+
+                                <!--                                <input id="start" name="start" type="date" class="form-control">-->
+                                <span th:if="${#fields.hasErrors('end')}" th:errors="*{start}" class="alert alert-danger"></span>
+                                <input id="end" name="end" type="date" class="form-control" th:value="${periodRequested.end}">
+                            </div>
+                        </div>
+                    </div>
+
+                <div class="col-xs-4 text-center">
+                    <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success">Search Car
+                    </button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
     </body>
 </th:block>
 </body>

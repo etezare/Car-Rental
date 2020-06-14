@@ -12,4 +12,5 @@ public interface BookingService {
     Booking findById(Long bId);
     void delete(Long bId);
     String assignReferenceNumber();
+    List<Booking> findAllOrderByDate();
 }

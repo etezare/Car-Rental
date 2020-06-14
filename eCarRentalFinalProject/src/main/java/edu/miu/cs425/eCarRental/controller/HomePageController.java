@@ -1,6 +1,8 @@
 package edu.miu.cs425.eCarRental.controller;
 
+import edu.miu.cs425.eCarRental.utility.PeriodRequested;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -11,7 +13,8 @@ public class HomePageController {
     }
 
     @GetMapping(value = {"/public/home","/ecarrental/public/home"})
-    public String home1() {
+    public String home1(Model model) {
+        model.addAttribute("periodRequested",new PeriodRequested());
         return "public/home/index";
     }
 

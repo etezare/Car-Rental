@@ -19,15 +19,15 @@ public class Payment {
     private LocalDate paymentDate;
 
     @Column(name = "payment_type",nullable=true)
-//	@NotBlank(message = "Please provide payment type")
+	@NotBlank(message = "Please provide payment type")
     private String paymentType;
 
     @Column(name = "card_number",nullable=true)
-//	@NotBlank(message = "Please provide payment card type")
+	@NotBlank(message = "Please provide payment card type")
     private Long cardNumber;
 
     @Column(name = "card_cvv",nullable=true)
-//	@NotBlank(message = "Please provide payment card CVV")
+	@NotBlank(message = "Please provide payment card CVV")
     private Integer cardCVV;
 
     @Column(name = "total_price",nullable=true)
