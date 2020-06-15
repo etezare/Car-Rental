@@ -16,6 +16,7 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
 
+
     @Column(name = "payment_date",nullable=true)
 //    @FutureOrPresent
     private LocalDate paymentDate;

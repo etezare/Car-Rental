@@ -14,6 +14,7 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long addressId;
 
+
     @Column(name = "street", nullable=false)
     @NotBlank(message = "Please provide street number!")
     private String street;

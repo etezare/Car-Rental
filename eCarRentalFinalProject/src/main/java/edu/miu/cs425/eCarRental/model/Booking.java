@@ -44,6 +44,7 @@ public class Booking {
     @NotBlank(message = "Please provide user first name")
     private String firstName;
 
+
     @Column(name = "last_name",nullable=false)
     @NotBlank(message = "Please provide user last name")
     private String lastName;
