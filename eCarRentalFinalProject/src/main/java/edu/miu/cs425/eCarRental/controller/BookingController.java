@@ -49,8 +49,6 @@ import java.util.List;
             return modelAndView;
         }
 
-
-
         @RequestMapping(value = "/ecarrental/staff/booking/addnew", method = RequestMethod.GET)
         public String newBookingForm(Model model) {
             Booking newBooking = new Booking();
@@ -105,12 +103,6 @@ import java.util.List;
             return "redirect:/ecarrental/staff/bookinglist  ";
         }
 
-//        @GetMapping(value = "/ecarrental/admin/vehicles/delete/{bookingId}")
-//        public String deleteAdminBooking(@PathVariable("bookingId") Long id) {
-//            bookingService.delete(id);
-//            return "redirect:/ecarrental/admin/vehicleslist  ";
-//        }
-
         @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
@@ -139,8 +131,6 @@ import java.util.List;
             return "secured/customer/customers/bookingform";
         }
 
-
-
         @PostMapping(value = "/ecarrental/customer/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
 
@@ -158,8 +148,6 @@ import java.util.List;
         public String homePage() {
             return "secured/customer/customers/confirmation";
         }
-
-
 
     }
 
