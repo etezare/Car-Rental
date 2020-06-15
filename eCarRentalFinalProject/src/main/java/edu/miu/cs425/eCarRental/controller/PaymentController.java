@@ -95,6 +95,10 @@ public class PaymentController {
         return "redirect:/ecarrental/user/payments";
     }
 
+//    @GetMapping(value = "/ecarrental/customer/customers/paymentconfirmation")
+//    public String homePage1() {
+//        return "secured/customer/customers/bookingform";
+//    }
 
     public void addNewPayment(Booking newBooking) {
        booking=newBooking;

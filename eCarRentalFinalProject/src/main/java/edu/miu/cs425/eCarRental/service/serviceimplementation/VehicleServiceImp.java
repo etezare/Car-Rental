@@ -34,8 +34,8 @@ public class VehicleServiceImp implements VehicleService {
 	}
 
 	@Override
-	public void delete(Long vId) {
-		vehicleRepository.deleteById(vId);
+	public void delete(Long vehicleId) {
+		vehicleRepository.deleteById(vehicleId);
 	}
 
 	@Override

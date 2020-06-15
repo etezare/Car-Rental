@@ -45,15 +45,15 @@ public class BookingServiceImp implements BookingService {
 		return  "BN" + (currentId + 1) ;
 	}
 
-	@Override
-	public List<Booking> findAllOrderByDate() {
-		return null;
-	}
-
 //	@Override
 //	public List<Booking> findAllOrderByDate() {
-//		return bookingRepository.findAllOrderByDate();
+//		return null;
 //	}
+
+	@Override
+	public List<Booking> findAllOrderByDate() {
+		return bookingRepository.findAllOrderByDate();
+	}
 
 }
 	

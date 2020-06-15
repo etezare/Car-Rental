@@ -18,7 +18,7 @@
                         <div class="form-group">
                             <label style="color: white" for="start">Pickup Date
                                 </label>
-                            <input id="start" name="start" type="date" onnkeyup="checkDate()" class="form-control" required="required">
+                            <input id="start" name="start" type="date" onnkeyup="checkDate()" min="2020-06-16" class="form-control" required="required">
                             <div id="datewarn"></div>
                         </div>
                     </div>
@@ -37,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label style="color: white" for="end">Return Date</label>
-                            <input id="end" name="end" type="date" class="form-control" required="required">
+                            <input id="end" name="end" type="date" min="today" class="form-control" required="required">
                         </div>
                     </div>
                 </div>
