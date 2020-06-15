@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html data-layout-decorator="layout/masterlayout"
-	  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+	  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+	  xmlns:id="http://www.w3.org/1999/xhtml">
 <body>
 <th:block layout:fragment="header">
 	<div class="col-xs-4 text-center">
@@ -17,8 +18,11 @@
 			<td th:text="${category.categoryName}"></td>
 			<td>
 				<div th:switch="${category.categoryName}">
+					<p th:case="'sportsCar'">
+						<img src="/static/images/sportsCar.jpg" th:src="@{/images/sportsCar.jpg}" style="width:213px; height:119px">
+					</p>
 					<p th:case="'Compact'">
-						<img src="/static/images/compact.jpg" th:src="@{/images/compact.jpg}" style="width:213px; height:119px">
+						<img src="/static/images/compact.jpeg" th:src="@{/images/compact.jpeg}" style="width:213px; height:119px">
 					</p>
 					<p th:case="'Standard'">
 						<img src="/static/images/standard.jpg" th:src="@{/images/standard.jpg}" style="width:213px; height:119px">
@@ -27,7 +31,7 @@
 						<img src="/static/images/crossover.jpeg" th:src="@{/images/crossover.jpeg}" style="width:213px; height:119px">
 					</p>
 					<p th:case="'SUV'">
-						<img src="/static/images/suv.jpg" th:src="@{/images/suv.jpg}" style="width:213px; height:119px">
+						<img src="/static/images/suv2.png" th:src="@{/images/suv2.png}" style="width:213px; height:119px">
 					</p>
 				</div>
 			</td>
