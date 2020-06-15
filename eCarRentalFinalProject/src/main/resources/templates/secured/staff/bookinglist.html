@@ -6,7 +6,7 @@
 
 <th:block layout:fragment="content">
     	<a style="text-align: center">BOOKINGS</a>
-		<a style="float:right;" href="/ecarrental/staff/booking/addnew">ADD NEW BOOKING</a>
+		<a style="float:right;" href="/ecarrental/staff/booking/addnew" >ADD NEW BOOKING</a>
 		<br></br>
     	<table class="table table-striped">
 			<thead>
@@ -32,7 +32,7 @@
 					 <td th:text="${booking.totalPrice}"></td>
 					<td>
 						<a th:href="@{'/ecarrental/staff/booking/edit/' + ${booking.bookingId}}" class="btn btn-outline-success">Edit</a>
-						<a th:href="@{'/ecarrental/staff/booking/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Delete</a>
+						<a th:href="@{'/ecarrental/staff/booking/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Del ete</a>
 					</td>
 				</tr>
 			</tbody>

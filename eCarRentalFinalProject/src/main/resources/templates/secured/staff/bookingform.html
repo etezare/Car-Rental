@@ -19,7 +19,7 @@
                             <label for="referenceNumber">Reference Number</label>
                             <span th:if="${#fields.hasErrors('referenceNumber')}" th:errors="*{referenceNumber}"
                                   class="alert alert-danger"></span>
-                            <input id="referenceNumber" name="referenceNumber" type="text" class="form-control"
+                            <input id="referenceNumber" name="referenceNumber" type="text" class="form-control" required = "required"
                                    th:value="${booking.referenceNumber}" readonly>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                             <label for="bookingDate">Booking Date</label>
                             <span th:if="${#fields.hasErrors('bookingDate')}" th:errors="*{bookingDate}"
                                   class="alert alert-danger"></span>
-                            <input id="bookingDate" name="bookingDate" type="date" class="form-control"
+                            <input id="bookingDate" name="bookingDate" type="date" class="form-control" required = "required"
                                    aria-describedby="bookingDatehHelp" th:value="${booking.bookingDate}">
                             <small id="bookingDateHelp" class="form-text text-muted">Enter a valid Date.</small>
                         </div>
@@ -38,7 +38,7 @@
                             <label for="startDate">Start Date</label>
                             <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}"
                                   class="alert alert-danger"></span>
-                            <input id="startDate" name="startDate" type="date" class="form-control"
+                            <input id="startDate" name="startDate" type="date" class="form-control" required = "required"
                                    aria-describedby="startDatehHelp" th:value="${booking.startDate}">
                             <small id="startDateHelp" class="form-text text-muted">Enter a valid Date.</small>
                         </div>
@@ -48,7 +48,7 @@
                             <label for="endDate">End Date</label>
                             <span th:if="${#fields.hasErrors('endDate')}" th:errors="*{endDate}"
                                   class="alert alert-danger"></span>
-                            <input id="endDate" name="endDate" type="date" class="form-control"
+                            <input id="endDate" name="endDate" type="date" class="form-control" required = "required"
                                    aria-describedby="endDatehHelp" th:value="${booking.endDate}">
                             <small id="endDateHelp" class="form-text text-muted">Enter a valid Date.</small>
                         </div>
@@ -60,8 +60,8 @@
                                   class="alert alert-danger"></span>
                             <select name="vehicle" id="vehicle" class="form-control" required="required">
                                 <option value="vehicleNumber">Select a Vehicle Number</option>
-                                <option th:each="vehicle : ${vehicles}" th:value="${vehicle.vehicleNumber}"
-                                        th:text="${vehicle.vehicleNumber}"></option>
+                                <option th:each="vehicle : ${vehicles}" th:value="${vehicle.vehicleId}"
+                                        th:text="${vehicle.vehicleId}"></option>
                             </select>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                             <label for="firstName">Customer First Name</label>
                             <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
                                   class="alert alert-danger"></span>
-                            <input id="firstName" name="firstName" type="text" class="form-control"
+                            <input id="firstName" name="firstName" type="text" class="form-control" required = "required"
                                    th:value="${booking.firstName}">
                         </div>
                     </div>
@@ -79,7 +79,7 @@
                             <label for="lastName">Customer Last Name</label>
                             <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
                                   class="alert alert-danger"></span>
-                            <input id="lastName" name="lastName" type="text" class="form-control"
+                            <input id="lastName" name="lastName" type="text" class="form-control" required = "required"
                                    th:value="${booking.lastName}">
                         </div>
                     </div>
@@ -88,7 +88,7 @@
                             <label for="dateOfBirth">Customer's Date of Birth</label>
                             <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"
                                   class="alert alert-danger"></span>
-                            <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control"
+                            <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control" required = "required"
                                    aria-describedby="dateOfBirthHelp" th:value="${booking.dateOfBirth}">
                             <small id="dateOfBirthHelp" class="form-text text-muted">Enter a valid Date.</small>
                         </div>
@@ -98,7 +98,7 @@
                             <label for="licenseNumber">Customer License Name</label>
                             <span th:if="${#fields.hasErrors('licenseNumber')}" th:errors="*{licenseNumber}"
                                   class="alert alert-danger"></span>
-                            <input id="licenseNumber" name="licenseNumber" type="text" class="form-control"
+                            <input id="licenseNumber" name="licenseNumber" type="text" class="form-control" required = "required"
                                    th:value="${booking.licenseNumber}">
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                             <label for="email">Customer Email Address</label>
                             <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
                                   class="alert alert-danger"></span>
-                            <input id="email" name="email" type="email" class="form-control"
+                            <input id="email" name="email" type="email" class="form-control" required = "required"
                                    th:value="${booking.email}">
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                             <label for="totalPrice">Payment</label>
                             <span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}"
                                   class="alert alert-danger"></span>
-                            <input id="totalPrice" name="totalPrice" type="totalPrice" class="form-control"
+                            <input id="totalPrice" name="totalPrice" type="totalPrice" class="form-control" required = "required"
                                    th:value="${booking.totalPrice}">
                         </div>
                     </div>
