@@ -27,7 +27,6 @@ public class Booking {
 
     @Column(name = "start_date",nullable=false)
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    //@NotBlank(message = "Please provide booking start date and time")
     @FutureOrPresent(message = "Please provide booking start date and time")
     private LocalDate startDate;
 
@@ -77,7 +76,7 @@ public class Booking {
     public Booking() {
     }
 
-    public Booking(Long bookingId, @NotBlank String referenceNumber, @NotBlank(message = "Please provide booking date")
+    public Booking(Long bookingId, @NotBlank String referenceNumber,
             LocalDate bookingDate, @FutureOrPresent(message = "Please provide booking start date and time")
             LocalDate startDate, @Future(message = "Please provide future booking end date and time")
             LocalDate endDate, @DecimalMin(value = "0.00", message = "Total-price must be greater than 0")

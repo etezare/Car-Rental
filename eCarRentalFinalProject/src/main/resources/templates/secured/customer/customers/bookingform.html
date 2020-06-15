@@ -81,7 +81,6 @@
 			                    <input id="licenseNumber" name="licenseNumber" type="text" class="form-control" required="required" th:value="${booking.licenseNumber}">
 			                </div>
 	                	</div>
-	                	
 	                	<div class="col-md-6">
 		                	<div class="form-group">               
 								<label for="email">Email Address</label>
@@ -95,7 +94,14 @@
 			                    <span th:if="${#fields.hasErrors('totalPrice')}" th:errors="*{totalPrice}" class="alert alert-danger"></span>
 			                    <input id="totalPrice" name="totalPrice" type="text" class="form-control"  required="required" th:value="${booking.totalPrice}" readonly>
 			                </div>
-	                	</div>         
+	                	</div>
+<!--						<div class="col-md-6">-->
+<!--							<div class="form-group">-->
+<!--								<label for="vehicles.make">vehicle type</label>-->
+<!--								<span th:if="${#fields.hasErrors('vehilces.make')}" th:errors="*{vehicle.make}" class="alert alert-danger"></span>-->
+<!--								<input id="vehicles.make" name="email" type="text" class="form-control" th:value="${vehicle.}">-->
+<!--							</div>-->
+<!--						</div>-->
 			    	</div>
 		    	</div>
 		    	<div style="float:right;">

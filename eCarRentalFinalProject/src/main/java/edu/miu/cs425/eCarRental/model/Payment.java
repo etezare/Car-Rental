@@ -15,7 +15,7 @@ public class Payment {
     private Long paymentId;
 
     @Column(name = "payment_date",nullable=true)
-    @FutureOrPresent
+//    @FutureOrPresent
     private LocalDate paymentDate;
 
     @Column(name = "payment_type",nullable=true)
@@ -23,11 +23,9 @@ public class Payment {
     private String paymentType;
 
     @Column(name = "card_number",nullable=true)
-//	@NotBlank(message = "Please provide payment card type")
     private Long cardNumber;
 
     @Column(name = "card_cvv",nullable=true)
-//	@NotBlank(message = "Please provide payment card CVV")
     private Integer cardCVV;
 
     @Column(name = "total_price",nullable=true)
