@@ -8,7 +8,6 @@ import java.util.List;
 @Table(name = "catagories")
 public class Category {
 
-
     @Id
     @Column(name = "category_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +29,7 @@ public class Category {
     private Integer doors;
 
     @Column(name = "rate_per_day",nullable=false)
-    @NotBlank(message = "Please provide rate per day")
+//    @NotBlank(message = "Please provide rate per day")
     @DecimalMin(value = "0.00" , message = "Please provide rate per day")
     private Double ratePerDay;
 

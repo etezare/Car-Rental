@@ -37,7 +37,7 @@ public class Vehicle {
 	
 	@ManyToOne
 	@JoinColumn(name="category_id", nullable = false)
-	@NotBlank(message = "Please select category")
+//	@NotBlank(message = "Please select category")
 	private Category category;
 	
 	@OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL)
