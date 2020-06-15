@@ -18,37 +18,75 @@
                         <div class="form-group">
                             <label style="color: white" for="start">Pickup Date
                                 </label>
-                            <input id="start" name="start" type="date" onnkeyup="checkDate()" min="2020-06-16" class="form-control" required="required">
-                            <div id="datewarn"></div>
+                            <input id="start" name="start" type="date" oninput="checkDate()"  class="form-control" required="required">
+                            <div id="datewarn"> </div>
                         </div>
                     </div>
-
-<!--                    <div class="col-md-6">-->
-<!--                        <div class="form-group">-->
-<!--                            <label style="color: white" for="categoryName">Choose Category</label>-->
-<!--&lt;!&ndash;                            <span th:if="${#fields.hasErrors('licenseNumber')}" th:errors="*{licenseNumber}" class="alert alert-danger"></span>&ndash;&gt;-->
-<!--                            <input id="categoryName" name="categoryName" type="text" class="form-control" required="required">-->
-<!--                        </div>-->
-<!--                    </div>-->
-<!--                    <input type="date" id="start" name="trip-start"-->
-<!--                           value="2018-07-22"-->
-<!--                           min="2018-01-01" max="2018-12-31">-->
-
                     <div class="col-md-6">
                         <div class="form-group">
                             <label style="color: white" for="end">Return Date</label>
-                            <input id="end" name="end" type="date" min="today" class="form-control" required="required">
+                            <input id="end" name="end" type="date" oninput="checkDate()" class="form-control" required="required">
+                       <div id="datewarn"> </div>
                         </div>
                     </div>
                 </div>
+
             </div>
             <div class="col-xs-4 text-center">
-                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success">Find My Car
+                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success" >Search Cars
                 </button>
             </div>
         </fieldset>
     </form>
-    </body>
+
+   <script>
+
+       function checkDate() {
+           let idate = document.getElementById("start")
+               let button = document.getElementById("btnSbmit")
+               resultDiv = document.getElementById("datewarn")
+           //     dateReg = /(0[1-9]|[12][0-9]|3[01])[\/](0[1-9]|1[012])[\/]201[4-9]|20[2-9][0-9]/;
+           //
+           // if(!dateReg.test(idate.value)){
+           //     resultDiv.innerHTML = "Invalid date!";
+           //     resultDiv.style.color = "red";
+           //     return;
+           //
+           console.log(idate.value)
+           let check = isFutureDate(idate.value)
+           if(!check){
+               resultDiv.innerHTML = "It's a valid date";
+               resultDiv.style.color = "green";
+           }
+
+
+
+           else{
+
+               resultDiv.innerHTML = "Enter valid date";
+               resultDiv.style.color = "red";
+                // button.value.disabled=true;
+           }
+       }
+
+       function isFutureDate(x) {
+           let today = new Date().getTime(),
+               idate = x.split("-");
+           idate = new Date(idate[0], idate[1]-1, idate[2]).getTime();
+           console.log(idate)
+
+           return (today - idate) > 1;
+       }
+
+
+
+
+   </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>   </body>
+
 </th:block>
+
 </body>
 </html>
