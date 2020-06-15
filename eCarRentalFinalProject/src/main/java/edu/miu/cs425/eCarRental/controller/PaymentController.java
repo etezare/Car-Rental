@@ -40,7 +40,7 @@ public class PaymentController {
         List<Payment> payments = paymentService.findAll();
         modelAndView.addObject("payments", payments);
         modelAndView.setViewName("customer/payments/payments");
-        return modelAndView;
+        return  modelAndView;
     }
 
     @GetMapping(value = "/ecarrental/customer/payments/add")
