@@ -29,7 +29,7 @@
 
 								<label for="startDate">Start Date</label>
 			                    <span th:if="${#fields.hasErrors('startDate')}" th:errors="*{startDate}" class="alert alert-danger"></span>
-			                    <input id="startDate" min="2018-01-01" max="2018-12-31" name="startDate" type="date" class="form-control" required="required" aria-describedby="startDatehHelp" th:value="${booking.startDate}" readOnly>
+			                    <input id="startDate" name="startDate" type="date" class="form-control" required="required" aria-describedby="startDatehHelp" th:value="${booking.startDate}" readOnly>
 <!--			              		    <small id="startDateHelp" class="form-text text-muted">Enter a valid Date.</small>-->
 
 			                </div>
@@ -66,7 +66,7 @@
 		                	<div class="form-group">               
 								<label for="dateOfBirth">Date of Birth</label>
 			                    <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}" class="alert alert-danger"></span>
-			                    <input id="dateOfBirth" name="dateOfBirth" type="date" class="form-control" required="required" th:value="${booking.dateOfBirth}">
+			                    <input id="dateOfBirth" max="2002-07-01" name="dateOfBirth" type="date" class="form-control" required="required" th:value="${booking.dateOfBirth}">
 			                </div>
 	                	</div>
 
