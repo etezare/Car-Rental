@@ -69,8 +69,8 @@ public class VehicleController {
     }
 
     @GetMapping(value="/ecarrental/admin/vehicles/delete/{vehicleId}")
-    public String deleteVehicle(@PathVariable("vehicleId") Long id, Model model){
-        vehicleService.delete(id);
+    public String deleteVehicle(@PathVariable("vehicleId") Long vehicleId){
+        vehicleService.delete(vehicleId);
         return "redirect:/ecarrental/admin/vehicleslist";
     }
 

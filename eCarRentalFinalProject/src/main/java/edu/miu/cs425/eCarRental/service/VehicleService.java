@@ -9,7 +9,7 @@ public interface VehicleService {
     List<Vehicle> findAll();
     Vehicle save(Vehicle vehicle);
     Vehicle findById(Long vId);
-    void delete(Long vId);
+    void delete(Long vehicleId);
     String assignVehicleNumber();
 
 }

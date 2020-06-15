@@ -3,6 +3,8 @@ package edu.miu.cs425.eCarRental.model;
 import javax.persistence.*;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 @Entity
@@ -22,10 +24,10 @@ public class Payment {
 //	@NotBlank(message = "Please provide payment type")
     private String paymentType;
 
-    @Column(name = "card_number",nullable=true)
+    @Column(name = "card_number",nullable=false)
     private Long cardNumber;
 
-    @Column(name = "card_cvv",nullable=true)
+    @Column(name = "card_cvv",nullable=false)
     private Integer cardCVV;
 
     @Column(name = "total_price",nullable=true)

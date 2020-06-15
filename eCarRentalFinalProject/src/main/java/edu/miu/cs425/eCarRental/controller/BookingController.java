@@ -39,29 +39,31 @@ import java.util.List;
         @Autowired
         private SearchService searchService;
 
-//        @RequestMapping(value = "/ecarrental/staff/bookinglist", method = RequestMethod.GET)
-//        public ModelAndView bookingsList() {
-//            List<Booking> bookings = bookingService.findAllOrderByDate();
-//            ModelAndView modelAndView = new ModelAndView();
-//            modelAndView.addObject("bookings", bookings);
-//            modelAndView.setViewName("secured/staff/bookinglist");
-//
-//            return modelAndView;
-//        }
+        @RequestMapping(value = "/ecarrental/staff/bookinglist", method = RequestMethod.GET)
+        public ModelAndView bookingsList() {
+            List<Booking> bookings = bookingService.findAllOrderByDate();
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("bookings", bookings);
+            modelAndView.setViewName("secured/staff/bookinglist");
 
-//        @RequestMapping(value = "/ecarrental/staff/booking/addnew", method = RequestMethod.GET)
-//        public String newBookingForm(Model model) {
-//            Booking newBooking = new Booking();
-//            newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
-//            List<Vehicle> vehicles = vehicleService.findAll();
-//            List<User> users = userService.findAll();
-//            List<Payment> payments = paymentService.findAll();
-//            model.addAttribute("booking", newBooking);
-//            model.addAttribute("vehicles", vehicles);
-//            model.addAttribute("users", users);
-//            model.addAttribute("payments", payments);
-//            return "secured/staff/bookingform";
-//        }
+            return modelAndView;
+        }
+
+
+
+        @RequestMapping(value = "/ecarrental/staff/booking/addnew", method = RequestMethod.GET)
+        public String newBookingForm(Model model) {
+            Booking newBooking = new Booking();
+            newBooking.setReferenceNumber(bookingService.assignReferenceNumber());
+            List<Vehicle> vehicles = vehicleService.findAll();
+            List<User> users = userService.findAll();
+            List<Payment> payments = paymentService.findAll();
+            model.addAttribute("booking", newBooking);
+            model.addAttribute("vehicles", vehicles);
+            model.addAttribute("users", users);
+            model.addAttribute("payments", payments);
+            return "secured/staff/bookingform";
+        }
 
 
         @PostMapping(value = "/ecarrental/staff/bookingform/save")
@@ -103,6 +105,12 @@ import java.util.List;
             return "redirect:/ecarrental/staff/bookinglist  ";
         }
 
+//        @GetMapping(value = "/ecarrental/admin/vehicles/delete/{bookingId}")
+//        public String deleteAdminBooking(@PathVariable("bookingId") Long id) {
+//            bookingService.delete(id);
+//            return "redirect:/ecarrental/admin/vehicleslist  ";
+//        }
+
         @RequestMapping(value = "/ecarrental/secured/customer/customers/newbookingform/{category}", method = RequestMethod.GET)
         @DateTimeFormat(pattern = "yyyy-MM-dd")
         public String newPublicBookingForm(Model model, @PathVariable("category") Category category) {
@@ -131,6 +139,8 @@ import java.util.List;
             return "secured/customer/customers/bookingform";
         }
 
+
+
         @PostMapping(value = "/ecarrental/customer/bookings/addnewbooking/save")
         @DateTimeFormat(pattern = "yyyy-MM-dd")
 
@@ -148,6 +158,8 @@ import java.util.List;
         public String homePage() {
             return "secured/customer/customers/confirmation";
         }
+
+
 
     }
 
