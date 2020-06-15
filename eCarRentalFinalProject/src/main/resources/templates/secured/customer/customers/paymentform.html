@@ -3,10 +3,10 @@
       xmlns:th="http://www.thymeleaf.org">
 <body>
 <th:block layout:fragment="content">
+    <h3 style="align-content: center">NEW PAYMENT FORM</h3>
     <form id="paymentForm" method="post" action="/ecarrental/cutomer/payments/add/save" th:object="${payment}">
-        <input type="hidden" name="paymentId" th:value="${payment.paymentId}"/>
-        <h3 style="align-content: center">NEW PAYMENT FORM</h3>
         <fieldset>
+            <input type="hidden" name="paymentId" th:value="${payment.paymentId}"/>
             <div class="form-group">
                 <div class="col-md-4">
                     <label for="paymentType">Payment Type</label>
