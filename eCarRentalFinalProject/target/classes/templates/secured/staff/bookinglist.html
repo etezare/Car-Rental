@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+
+
+<th:block layout:fragment="content">
+    	<a style="text-align: center">BOOKINGS</a>
+<!--		<a style="float:right;" href="/ecarrental/staff/booking/addnew" >ADD NEW BOOKING</a>-->
+		<br></br>
+    	<table class="table table-striped">
+			<thead>
+				<th scope="col">No.</th>
+				<th>Reference Number</th>
+				<th>Booking Date</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+<!--				 <th>Vehicle</th>-->
+				<th>User</th>
+				 <th>Total Price</th>
+				<th>Actions</th>
+			</thead>
+			<tbody>
+				<tr th:each="booking, rowNumbering : ${bookings}">
+					<td scope="row" th:text="${rowNumbering.count}+'.'"></td>
+					<td th:text="${booking.referenceNumber}"></td>
+					<td th:text="${booking.bookingDate}"></td>
+					<td th:text="${booking.startDate}"></td>
+					<td th:text="${booking.endDate}"></td>
+<!--					 <td th:text="${booking.vehicle.vehicleId}"></td>-->
+					<td th:text="${booking.firstName}"></td>
+					 <td th:text="${booking.totalPrice}"></td>
+					<td>
+						<a th:href="@{'/ecarrental/staff/booking/edit/' + ${booking.bookingId}}" class="btn btn-outline-success">Edit</a>
+						<a th:href="@{'/ecarrental/staff/booking/delete/' + ${booking.bookingId}}" class="btn btn-outline-warning">Delete</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+    </th:block>
+</body>
+</html>

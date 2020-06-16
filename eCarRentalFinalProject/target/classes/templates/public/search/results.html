@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml"
+	  xmlns:id="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="header">
+	<div class="col-xs-4 text-center">
+		<h1>Select Your Car</h1>
+	</div>
+</th:block>
+<th:block layout:fragment="content">
+	<table class="table table-white">
+		<thead>
+
+		</thead>
+		<tbody>
+		<tr th:each="category : ${availableCategories}">
+			<td th:text="${category.categoryName}"></td>
+			<td>
+				<div th:switch="${category.categoryName}">
+					<p th:case="'sportsCar'">
+						<img src="/static/images/sportsCar.jpg" th:src="@{/images/sportsCar.jpg}" style="width:213px; height:119px">
+					</p>
+					<p th:case="'Compact'">
+						<img src="/static/images/compact.jpeg" th:src="@{/images/compact.jpeg}" style="width:213px; height:119px">
+					</p>
+					<p th:case="'Standard'">
+						<img src="/static/images/standard.jpg" th:src="@{/images/standard.jpg}" style="width:213px; height:119px">
+					</p>
+					<p th:case="'Crossover'">
+						<img src="/static/images/crossover.jpeg" th:src="@{/images/crossover.jpeg}" style="width:213px; height:119px">
+					</p>
+					<p th:case="'SUV'">
+						<img src="/static/images/suv2.png" th:src="@{/images/suv2.png}" style="width:213px; height:119px">
+					</p>
+				</div>
+			</td>
+			<td th:text="${category.seats} + ' ' +seats"></td>
+			<td th:text="${category.doors} + ' ' + doors"></td>
+			<td th:text="${category.getCategoryName()}"></td>
+			<td th:text="${category.ratePerDay} + ' USD / Day'">
+<!--			<td th:text="${category.getCategoryName()}"></td>-->
+			</td>
+
+			<td>
+				<a class="btn btn-outline-success"
+				   th:href="@{'/ecarrental/secured/customer/customers/newbookingform/' + ${category.categoryId}}">BOOK</a>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+</th:block>
+</body>
+</html>

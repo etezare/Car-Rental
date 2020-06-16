@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+<th:block layout:fragment="content">
+    <h4 style="background: lightgoldenrodyellow">This page contains information about a specific car rental company that is going to be using the eCarRent
+    Software System.</h4>
+    <img src="/static/images/about.png" th:src="@{/images/about.png}" style="
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;">
+
+
+    <div class="col-xs-4 text-left">
+        <p style="background: lightgoldenrodyellow">What we're about
+            We want to make renting a car as simple and personal as driving your own.
+
+            Renting a car brings you freedom, and we’ll help you find the right car for you at a great price. But
+            there’s much more to us than that. We're here to make renting a car a lot less hassle.
+
+            We know the service you receive matters
+            So we use real reviews, genuine customer feedback and our own experience to guide you through your best
+            options.
+
+            We work with car hire companies all over the world
+            From household names to small local specialists – to bring you the cars, choices and deals that make the
+            difference to your trip.
+
+            And we stay with you every step of the way
+            Our customer team is here to support you through your trip, wherever and whenever you need extra help,
+            we are here for you</p>
+    </div>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+<body>
+	<th:block layout:fragment="header">
+		<div class="col-xs-4 text-left">
+			<h1>CONTACT INFORMATION</h1>	
+		</div><br></br>
+	</th:block>
+    <th:block layout:fragment="content">
+		<img style="background-repeat:no-repeat;background-attachment: fixed;background-size: cover" th:src="@{/images/contact.png}"/>
+    </th:block>
+    <th:block layout:fragment="footer"></th:block>
+</body>
+</html>
