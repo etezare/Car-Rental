@@ -18,6 +18,11 @@ public class VehicleServiceImp implements VehicleService {
 		this.vehicleRepository = vehicleRepository;
 	}
 
+//	@Override
+//	public List<Vehicle> findAllByCategoryCategoryId(Long categoryId) {
+//		return vehicleRepository.findAllByCategoryCategoryId(categoryId);
+//	}
+
 	@Override
 	public List<Vehicle> findAll() {
 		return vehicleRepository.findAll();
@@ -34,9 +39,10 @@ public class VehicleServiceImp implements VehicleService {
 	}
 
 	@Override
-	public void delete(Long vehicleId) {
-		vehicleRepository.deleteById(vehicleId);
+	public void delete(Long vId) {
+	vehicleRepository.deleteById(vId);
 	}
+
 
 	@Override
 	public String assignVehicleNumber() {

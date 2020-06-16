@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.Valid;
+import javax.validation.constraints.FutureOrPresent;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -34,7 +36,7 @@ public class SearchController {
     @GetMapping(value = "/ecarrental/search")
     @DateTimeFormat(pattern = "yyyy-MM-dd")
 
-    public ModelAndView searchVehicles(@RequestParam("start") @DateTimeFormat (pattern = "yyyy-MM-dd") LocalDate start,
+    public ModelAndView searchVehicles(@RequestParam ("start") @DateTimeFormat (pattern = "yyyy-MM-dd") LocalDate start,
                                        @RequestParam("end")  @DateTimeFormat(pattern = "yyyy-MM-dd")  LocalDate end) {
         ModelAndView modelAndView = new ModelAndView();
         List<Category> availableCategories = searchService.findAvailableCategories(start, end);

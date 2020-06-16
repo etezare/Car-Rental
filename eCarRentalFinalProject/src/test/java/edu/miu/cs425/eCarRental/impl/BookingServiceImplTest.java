@@ -34,7 +34,7 @@ public class BookingServiceImplTest extends AbstractECarRentalComponentTest {
     public void testGetAllBookings() {
         List<Booking> bookings = (List<Booking>)bookingService.findAllOrderByDate();
         Assert.assertNotNull("Failure: expected bookings to be not null", bookings);
-        Assert.assertEquals("Failure: expected size", 20, bookings.size());
+        Assert.assertEquals("Failure: expected size", 21, bookings.size());
 //        logger.info("Books list data: " + Arrays.toString(bookings.toArray()));
     }
 
@@ -47,14 +47,6 @@ public class BookingServiceImplTest extends AbstractECarRentalComponentTest {
 //        logger.info("Booking data: " + booking);
     }
 
-//    @Test
-//    public void testGetBookByIdForInvalidId() {
-//        Integer bookId = Integer.MAX_VALUE;
-//        Book book = bookService.getBookById(bookId);
-//        Assert.assertNull("Failure: expected null", book);
-//        logger.info("Book data: " + book);
-//    }
-//
     @Test
     public void testSaveBook() {
         Booking newBooking=new Booking((long) 333, "12345", LocalDate.now(), LocalDate.of(2020, 6,
@@ -72,23 +64,7 @@ public class BookingServiceImplTest extends AbstractECarRentalComponentTest {
         Assert.assertNotNull("Failure: expected bookId to be not null", savedBook.getBookingId());
         Assert.assertEquals("Failure: expected book title match", "12345", savedBook.getReferenceNumber());
         List<Booking> bookings = bookingService.findAllOrderByDate();
-        Assert.assertEquals("Failure: expected size", 21, bookings.size());
-//        logger.info("Books list data: " + Arrays.toString(books.toArray()));
+        Assert.assertEquals("Failure: expected size", 22, bookings.size());
     }
-//
-//    @Test
-//    public void testDeleteBookById() {
-//        Long bookingId = new Long(1);
-//        Booking booking = bookingService.findById(bookingId);
-//        Assert.assertNotNull("Failure: expected booking to be not null", booking);
-//        bookingService.delete(bookingId);
-//        List<Booking> bookingList = bookingService.findAllOrderByDate();
-//        Assert.assertEquals("Failure: expected size", 20, bookingList.size());
-//        Booking deletedBooking = bookingService.findById(bookingId);
-//        Assert.assertNull("Failure: expected deletedbooking to be null since is supposed to have been deleted", deletedBooking);
-//    }
-//*/
-    /* Execute unit-tests via maven on cmdline: mvn clean package */
-    /* Execute package only without unit-tests via maven on cmdline:
-    /* mvn clean package -DskipTests */
+
 }

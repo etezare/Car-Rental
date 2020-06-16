@@ -4,6 +4,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -32,7 +33,7 @@ public class Vehicle {
     private String model;
 	
 	@Column(name = "year",nullable=false)
-//	@Past(message = "Please provide year")
+//	@NotNull(message="year is required")
     private Integer year;
 	
 	@ManyToOne
@@ -142,7 +143,6 @@ public class Vehicle {
 				", make='" + make + '\'' +
 				", model='" + model + '\'' +
 				", year=" + year +
-				", category=" + category +
 				'}';
 	}
 }

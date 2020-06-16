@@ -10,9 +10,9 @@ import java.util.Optional;
 
 @Repository("bookingRepository")
 public interface IBookingRepository extends JpaRepository<Booking, Long> {
-@Query("SELECT b FROM Booking b order by b.bookingDate desc")
-
-//    List<Booking> findallByReferenceEquals(String referenceNumber);
-
+    @Query("SELECT b FROM Booking b order by b.bookingDate desc")
     List<Booking> findAllOrderByDate();
+
+
+
 }

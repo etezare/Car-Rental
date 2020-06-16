@@ -1,11 +1,14 @@
 package edu.miu.cs425.eCarRental.model;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Entity
-@Table(name = "catagories")
+@Table(name = "categories")
 public class Category {
 
     @Id
@@ -13,22 +16,22 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long categoryId;
 
-    @Column(name = "category_name",nullable=false)
+    @Column(name = "category_name",nullable=true)
     @NotBlank(message = "Please provide category name")
     private String categoryName;
 
-    @Column(name = "seats",nullable=false)
+    @Column(name = "seats",nullable=true)
     @Min(2)
     @Max(8)
     private Integer seats;
 
-    @Column(name = "doors",nullable=false)
+    @Column(name = "doors",nullable=true)
     @Min(2)
     @Max(4)
     //@NotBlank(message = "Please provide number of doors")
     private Integer doors;
 
-    @Column(name = "rate_per_day",nullable=false)
+    @Column(name = "rate_per_day",nullable=true)
 //    @NotBlank(message = "Please provide rate per day")
     @DecimalMin(value = "0.00" , message = "Please provide rate per day")
     private Double ratePerDay;

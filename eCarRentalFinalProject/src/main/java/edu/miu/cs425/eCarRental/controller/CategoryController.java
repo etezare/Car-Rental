@@ -56,7 +56,7 @@ public class CategoryController {
         return "secured/admin/categories/categorieslist";
     }
 
-    @GetMapping(value="/ecarrental/admin/categories/delete/{categoryId}")
+    @PostMapping(value="/ecarrental/admin/categories/delete/{categoryId}")
     public String deleteCategory(@PathVariable("categoryId") Long id, Model model){
         categoryService.delete(id);
         return "redirect:/ecarrental/admin/categories";
