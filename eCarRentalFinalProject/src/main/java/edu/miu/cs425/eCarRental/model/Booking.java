@@ -77,8 +77,29 @@ public class Booking {
     public Booking() {
     }
 
+    public Booking(@NotBlank String referenceNumber,
+                   @NotNull(message = "Please provide booking date") LocalDate bookingDate,
+                   @FutureOrPresent(message = "Please provide booking start date and time") LocalDate startDate,
+                   @Future(message = "Please provide future booking end date and time") LocalDate endDate,
+                   @DecimalMin(value = "0.00", message = "Total-price must be greater than 0") Double totalPrice,
+                   @NotBlank(message = "Please provide user first name") String firstName,
+                   @NotBlank(message = "Please provide user last name") String lastName,
+                   @Past(message = "Please provide correct date of birth") LocalDate dateOfBirth, Long licenseNumber,
+                   @NotBlank(message = "Please provide email address") String email) {
+        this.referenceNumber = referenceNumber;
+        this.bookingDate = bookingDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalPrice = totalPrice;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.licenseNumber = licenseNumber;
+        this.email = email;
+    }
+
     public Booking(Long bookingId, @NotBlank String referenceNumber,
-            LocalDate bookingDate, @FutureOrPresent(message = "Please provide booking start date and time")
+                   LocalDate bookingDate, @FutureOrPresent(message = "Please provide booking start date and time")
             LocalDate startDate, @Future(message = "Please provide future booking end date and time")
             LocalDate endDate, @DecimalMin(value = "0.00", message = "Total-price must be greater than 0")
             Double totalPrice, @NotBlank(message = "Please provide user first name") String firstName,
@@ -87,6 +108,30 @@ public class Booking {
                    @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, User user,
                    Payment payment) {
         this.bookingId = bookingId;
+        this.referenceNumber = referenceNumber;
+        this.bookingDate = bookingDate;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.totalPrice = totalPrice;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dateOfBirth = dateOfBirth;
+        this.licenseNumber = licenseNumber;
+        this.email = email;
+        this.vehicle = vehicle;
+        this.user = user;
+        this.payment = payment;
+    }
+
+    public Booking(@NotBlank String referenceNumber, @NotNull(message = "Please provide booking date") LocalDate bookingDate,
+                   @FutureOrPresent(message = "Please provide booking start date and time") LocalDate startDate,
+                   @Future(message = "Please provide future booking end date and time") LocalDate endDate,
+                   @DecimalMin(value = "0.00", message = "Total-price must be greater than 0") Double totalPrice,
+                   @NotBlank(message = "Please provide user first name") String firstName,
+                   @NotBlank(message = "Please provide user last name") String lastName,
+                   @Past(message = "Please provide correct date of birth") LocalDate dateOfBirth, Long licenseNumber,
+                   @NotBlank(message = "Please provide email address") String email, Vehicle vehicle, User user,
+                   Payment payment) {
         this.referenceNumber = referenceNumber;
         this.bookingDate = bookingDate;
         this.startDate = startDate;
@@ -119,6 +164,8 @@ public class Booking {
         this.vehicle = vehicle;
         this.payment = payment;
     }
+
+
 
 
     public Long getBookingId() {

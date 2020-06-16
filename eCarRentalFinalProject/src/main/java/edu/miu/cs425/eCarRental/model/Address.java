@@ -49,7 +49,23 @@ public class Address {
         this.payment = payment;
     }
 
-    public Address(@NotBlank(message = "Please provide street number!") String street, @NotBlank(message = "Please provide city name!") String city, @NotBlank(message = "Please provide state name!") String state,  Integer zipCode, @NotBlank(message = "Please provide country name!") String country, Payment payment) {
+    public Address(Long addressId, @NotBlank(message = "Please provide street number!") String street,
+                   @NotBlank(message = "Please provide city name!")
+            String city, @NotBlank(message = "Please provide state name!") String state,
+                   @Digits(fraction = 0, integer = 5, message = "Please provide valid zip code")
+            Integer zipCode, @NotBlank(message = "Please provide country name!") String country) {
+        this.addressId = addressId;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.country = country;
+    }
+
+    public Address(@NotBlank(message = "Please provide street number!") String street,
+                   @NotBlank(message = "Please provide city name!") String city,
+                   @NotBlank(message = "Please provide state name!") String state, Integer zipCode,
+                   @NotBlank(message = "Please provide country name!") String country, Payment payment) {
         this.street = street;
         this.city = city;
         this.state = state;

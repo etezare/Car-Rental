@@ -57,8 +57,19 @@ public class Payment {
         this.booking = booking;
     }
 
+    public Payment(Long paymentId, LocalDate paymentDate, String paymentType, Long cardNumber, Integer cardCVV,
+                   Double totalPrice, Address billingAddress) {
+        this.paymentId = paymentId;
+        this.paymentDate = paymentDate;
+        this.paymentType = paymentType;
+        this.cardNumber = cardNumber;
+        this.cardCVV = cardCVV;
+        this.totalPrice = totalPrice;
+        this.billingAddress = billingAddress;
+    }
+
     public Payment(LocalDate paymentDate, String paymentType, Long cardNumber, Integer cardCVV,
-                   Double totalPrice,  Booking booking, Address billingAddress) {
+                   Double totalPrice, Booking booking, Address billingAddress) {
         this.paymentDate = paymentDate;
         this.paymentType = paymentType;
         this.cardNumber = cardNumber;

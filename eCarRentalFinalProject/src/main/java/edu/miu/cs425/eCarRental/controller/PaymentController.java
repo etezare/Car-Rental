@@ -33,6 +33,8 @@ public class PaymentController {
     private AddressService addressService;
 
     private Booking booking;
+    @Autowired
+    private BookingService bookingService;
 
     @GetMapping(value = "/ecarrental/customer/payments")
     public ModelAndView managePayments() {
@@ -47,6 +49,8 @@ public class PaymentController {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     public String newPaymentForm(Model model) {
         Payment newPayment = new Payment();
+        Booking newBooking=new Booking();
+        newBooking.setPayment(newPayment);
         Address address=new Address();
         newPayment.setBillingAddress(address);
         model.addAttribute("payment", newPayment);
@@ -70,10 +74,20 @@ public class PaymentController {
         }
 
         addressService.save(payment.getBillingAddress());
+
         payment.setPaymentDate(booking.getBookingDate());
         payment.setTotalPrice(booking.getTotalPrice());
-//         payment.setBooking(booking);
+//        if(booking!=null) {
+//            Booking booking2 = bookingService.findById(booking.getBookingId());
+//            payment.setBooking(booking);
+//            bookingService.save(booking2);
+//        }
+//        booking.setPayment(payment);
         paymentService.save(payment);
+//        payment.setBooking(bookingService.findById(booking.getBookingId()));
+//        bookingService.save(payment.getBooking());
+
+
 
         return "secured/customer/customers/paymentconfirmation";
     }

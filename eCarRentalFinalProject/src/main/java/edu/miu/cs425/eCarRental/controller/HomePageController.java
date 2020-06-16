@@ -7,15 +7,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomePageController {
-    @GetMapping(value = {"/","/ecarrental","/public/home"})
+    @GetMapping(value = {"/","/ecarrental","/public/home","ecarrental/public/home"})
     public String home0() {
-        return "redirect:/ecarrental/public/home";
-    }
-
-    @GetMapping(value = {"/public/home","/ecarrental/public/home"})
-    public String home1() {
         return "public/home/index";
     }
+
+//    @GetMapping(value = {"/public/home","/ecarrental/public/home"})
+//    public String home1() {
+//        return "public/home/index";
+//    }
 
     @GetMapping(value = {"/secured/service","/ecarrental/secured/service"})
     public String service() {
