@@ -1,0 +1,12 @@
+package edu.miu.cs425.eCarRental.controller;
+
+import edu.miu.cs425.eCarRental.service.CredentialService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+
+@Controller
+public class CredentialController {
+
+//    @Autowired
+//    private CredentialService credentialService;
+}

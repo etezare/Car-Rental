@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<!--	<th:block layout:fragment="header">-->
+<!--		<span style="float:right;" class="text-muted">Logged in as: testmail@company.com</span>-->
+<!--		<br>-->
+<!--		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">LOG OUT</a>-->
+<!--		<a class="btn btn-outline-success" style="float:right" href="/company/page/underconstruction">Manage Your Account</a>-->
+<!--		<a class="btn btn-outline-success" style="float:left" href="/company/admin/home">ADMIN HOME</a>-->
+<!--		<br/><br/>-->
+<!--		<hr style = "background:green">-->
+<!--	</th:block>-->
+<th:block layout:fragment="content">
+    <a>V E H I C L E S</a>
+    <a style="float:right;" href="/ecarrental/admin/vehicles/add">ADD NEW VEHICLE</a>
+    <a style="float:right; padding-right: 2em;" href="/ecarrental/admin/categories">MANAGE VEHICLE CATEGORIES</a>
+    <br></br>
+    <table class="table table-striped">
+        <thead>
+        <th scope="col">No.</th>
+        <th>Vehicle Number</th>
+        <th>Plate Number</th>
+        <th>Make</th>
+        <th>Model</th>
+        <th>Year</th>
+        <th>Category</th>
+        <th>Actions</th>
+        </thead>
+        <tbody>
+        <tr th:each="vehicle, rowNumbering : ${vehicles}">
+            <td scope="row" th:text="${rowNumbering.count}+'.'"></td>
+            <td th:text="${vehicle.vehicleNumber}"></td>
+            <td th:text="${vehicle.plateNumber}"></td>
+            <td th:text="${vehicle.make}"></td>
+            <td th:text="${vehicle.model}"></td>
+            <td th:text="${vehicle.year}"></td>
+            <td th:text="${vehicle.category.categoryName}"></td>
+            <td>
+                <a th:href="@{'/ecarrental/admin/vehicles/edit/' + ${vehicle.vehicleId}}"
+                   class="btn btn-outline-success">Edit</a>
+                <a th:href="@{'/ecarrental/admin/vehicles/delete/' + ${vehicle.vehicleId}}"
+                   class="btn btn-outline-warning">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</th:block>
+x</body>
+</html>

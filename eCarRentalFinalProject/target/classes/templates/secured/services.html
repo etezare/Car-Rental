@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      data-layout-decorator="layout/masterlayout">
+<head>
+    <title>Services</title>
+</head>
+<body>
+    <div layout:fragment="content" style="padding-top:1em;" class="container">
+        <h3>eCarRental<sup>&reg;</sup> Services</h3>
+        <hr/>
+        <div style="font-size: 1em">
+            <p>Select the service you want from the option(s) presented below.</p>
+            <br/>
+            <div class="row">
+                <div sec:authorize="hasRole('ROLE_STAFF')" class="col-md-4">
+                    <div style="font-size: 1em;">
+                        <div class="card border-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">STAFF PAGE</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Staff Tools</h4>
+                                <p class="card-text">
+                                    <a href="/ecarrental/staff/bookinglist">
+                                        Manage bookings
+                                    </a>
+                                </p>
+                                <p class="card-text">
+                                    <a href="#">
+                                       Manage Customers
+                                    </a>
+                                </p>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div sec:authorize="hasRole('ROLE_CUSTOMER')" class="col-md-4">
+                    <div style="font-size: 1em;">
+                        <div class="card border-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">CUSTOMER PAGE</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Customer Tools</h4>
+                                <p class="card-text">
+                                    <a href="/ecarrental">
+                                        Book Vehicles
+                                    </a>
+                                </p>
+<!--                                <p class="card-text">-->
+<!--                                    <a href="#">-->
+<!--                                        Browse Our Collection of Cars-->
+<!--                                    </a>-->
+<!--                                </p>-->
+<!--                                <p class="card-text">-->
+<!--                                    <a href="#">-->
+<!--                                        Retrieve Your Booking By Reference-->
+<!--                                    </a>-->
+<!--                                </p>-->
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-4">
+                    <div style="font-size: 1em;">
+                        <div class="card border-primary mb-3" style="max-width: 20rem;">
+                            <div class="card-header">System Administration</div>
+                            <div class="card-body">
+                                <h4 class="card-title">Admin Tools</h4>
+                                <p class="card-text">
+                                    <a href="/ecarrental/admin/vehicleslist">
+                                        Manage Vehicles
+                                    </a>
+                                </p>
+                                <p class="card-text">
+                                     <a href="/ecarrental/admin/categories">
+                                        Manage categories
+                                    </a>
+                                </p>
+                                <p class="card-text">
+                                    <a href="#">
+                                        Manage staff members
+                                    </a>
+                                </p>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

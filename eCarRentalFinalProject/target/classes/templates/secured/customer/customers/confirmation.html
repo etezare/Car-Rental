@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<th:block layout:fragment="header">
+		<div class="col-xs-4 text-center">
+			<h1>Your Booking Is Confirmed</h1>	
+		</div>
+	</th:block>
+    <th:block layout:fragment="content">
+    	<div class="col-xs-4 text-center">
+    		<h1>Thank You</h1>
+    		<a>How do you want to pay for Your Booking!</a>
+    		<br></br>
+    	</div>
+    	<!-- <table class="table table-white">
+			<thead>				
+				<th>Your Booking Reference Number</th>	
+			</thead>
+			<tbody>
+				<tr th:object= ${booking}>
+					<td th:text="${booking.bookingNumber}"></td>
+				</tr>
+			</tbody>
+		</table> -->
+		<div class="col-xs-4 text-center">
+
+			<a th:href="@{'/ecarrental/customer/payments/add'}" class="btn btn-outline-success" th:align = center>MAKE PAYMENT NOW</a>
+
+			<br></br>
+
+			<a th:href="@{'/ecarrental'}" class="btn btn-outline-success" th:align = center>EXIT (PAY AT PICKUP)</a>
+
+			<br></br>
+
+
+
+		</div>
+    </th:block>
+</body>
+</html>

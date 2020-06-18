@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+      xmlns:th="http://www.thymeleaf.org">
+<body>
+<th:block layout:fragment="content">
+    <h3 style="align-content: center">NEW PAYMENT FORM</h3>
+    <form id="paymentForm" method="post" action="/ecarrental/cutomer/payments/add/save" th:object="${payment}">
+        <fieldset>
+            <input type="hidden" name="paymentId" th:value="${payment.paymentId}"/>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="paymentType">Payment Type</label>
+                    <span th:if="${#fields.hasErrors('paymentType')}" th:errors="*{paymentType}"
+                          class="alert alert-danger"></span>
+                    <input id="paymentType" name="paymentType" type="text" class="form-control" required="payment type"
+                           th:value="${payment.paymentType}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="cardNumber">Card Number</label>
+                    <span th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}"
+                          class="alert alert-danger"></span>
+                    <input id="cardNumber" name="cardNumber" type="number" class="form-control" required="card Number"
+                           th:value="${payment.cardNumber}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label for="cardCVV">Card CVV</label>
+                    <span th:if="${#fields.hasErrors('cardCVV')}" th:errors="*{cardCVV}"
+                          class="alert alert-danger"></span>
+                    <input id="cardCVV" name="cardCVV" type="number" maxlength="3" minlength="3" class="form-control" required="cvv"
+                           th:value="${payment.cardCVV}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label th:for="${'billingAddress.street'}">Street:</label>
+                    <span th:if="${#fields.hasErrors('billingAddress.street')}"
+                          th:errors="*{billingAddress.street}"
+                          class="alert alert-danger"></span>
+                    <input type="text" class="form-control" required="street" th:field="*{billingAddress.street}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label th:for="${'billingbillingAddress.city'}">City:</label>
+                    <span th:if="${#fields.hasErrors('billingAddress.city')}" th:errors="*{billingAddress.city}"
+                          class="alert alert-danger"></span>
+                    <input type="text" class="form-control" required="city" th:field="*{billingAddress.city}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label th:for="${'billingAddress.state'}">State:</label>
+                    <span th:if="${#fields.hasErrors('billingAddress.state')}"
+                          th:errors="*{billingAddress.state}"
+                          class="alert alert-danger"></span>
+                    <input type="text" class="form-control" required="state"  th:field="*{billingAddress.state}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label th:for="${'billingAddress.zipCode'}">Zip Code:</label>
+                    <span th:if="${#fields.hasErrors('billingAddress.zipCode')}"
+                          th:errors="*{billingAddress.zipCode}"
+                          class="alert alert-danger"></span>
+                    <input type="text" class="form-control"  required="zipcode"  maxlength="5" minlength="5"
+                           th:field="*{billingAddress.zipCode}">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                    <label th:for="${'billingAddress.country'}">Country:</label>
+                    <span th:if="${#fields.hasErrors('billingAddress.country')}"
+                          th:errors="*{billingAddress.country}"
+                          class="alert alert-danger"></span>
+                    <input type="text" class="form-control"  required="country" th:field="*{billingAddress.country}">
+                </div>
+            </div>
+            <div style="float:right;">
+                <a href="@{'/ecarrental/home'}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                <button id="btnSubmit" type="submit" class="btn btn-outline-success">Make Payment</button>
+            </div>
+        </fieldset>
+
+    </form>
+</th:block>
+</body>
+</html>

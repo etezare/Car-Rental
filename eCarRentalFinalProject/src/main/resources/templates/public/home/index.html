@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html data-layout-decorator="layout/masterlayout"
+      xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.w3.org/1999/xhtml">
+
+<body>
+<th:block layout:fragment="content">
+
+    <body style="background: url(/images/homepage.png) no-repeat center center fixed">
+    <div style="color: white" class="col-xs-4 text-center">
+        <h1>Book Your Car Now</h1>
+    </div>
+    <!-- ? start=start & end=end -->
+    <form id="searchForm" method="get" th:action="@{/ecarrental/search}">
+        <fieldset>
+            <div class="container" style="margin-top: 1em;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label style="color: white" for="start">Pickup Date
+                            </label>
+                            <input id="start" name="start" type="date" oninput="checkDate()" class="form-control"
+                                   required="required">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label style="color: white" for="end">Return Date</label>
+                            <input id="end" name="end" type="date" oninput="checkDate()" class="form-control"
+                                   required="required">
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-xs-4 text-center">
+                <button th:align=center id="btnSubmit" type="submit" class="btn btn-outline-success" disabled>Search
+                    Cars
+                </button>
+                <div id="datewarn"></div>
+            </div>
+        </fieldset>
+    </form>
+
+    <script>
+
+        function checkDate() {
+            let idate = document.getElementById("start")
+            let end = document.getElementById("end")
+            let btn = document.getElementById("btnSubmit")
+            resultDiv = document.getElementById("datewarn")
+
+            let check = isFutureDate(idate.value)
+            let check2 = isFutureDate(end.value)
+                    //console.log("==>",check)
+
+            if ((!check && !check2)) {
+                resultDiv.innerHTML = "It's a valid date";
+                resultDiv.style.color = "green";
+                btn.disabled = false
+
+
+            } else {
+
+                resultDiv.innerHTML = "Enter valid date";
+                resultDiv.style.color = "red";
+                btn.disabled = true
+            }
+        }
+
+        function isFutureDate(x) {
+            let today = new Date().getTime(),
+                idate = x.split("-");
+            idate = new Date(idate[0], idate[1] - 1, idate[2]).getTime();
+            return (today - idate) > 1;
+        }
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+            integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+            crossorigin="anonymous"></script>
+    </body>
+
+</th:block>
+
+</body>
+</html>
