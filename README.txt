@@ -147,3 +147,14 @@ public class RestErrorHandler {
 }
 
 
+
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+spring.datasource.platform=h2
+spring.jpa.show-sql=true
+spring.datasource.url=jdbc:h2:mem:waa
+spring.datasource.driver-class-name=org.h2.Driver
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+server.error.path=/error
+
+
